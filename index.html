@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>PhotoGift</title>
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/normalize.css"> 
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -14,18 +15,48 @@
         </div>
         <div id="container">
             <div id="tools-panel"></div>
-            <div id="work-field"></div>
-            <div id="content-panel"></div>
+            <div id="work-field">
+            </div>
+            <div id="content-panel">
+                <div class="uploadButton">
+                    <input type="file" name="file" id="fileLoad" class="inputfile" />
+                    <label for="fileLoad">Choose a picture</label>
+                </div>
+                <div class="picturesContainer">
+                    <div class="pictHolder"></div>
+                    <div class="pictHolder"></div>
+                    <div class="pictHolder"></div>
+                </div>
+            </div>
             <div id="file-buttons">
                 <button type="button" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-primary">Publish</button>
             </div>
         </div>
-            <div id="categories"></div>
-            <div id="carousel"></div>
+            <div id="categories">
+                <a href="" class="calendarItem">Calendar</a>
+                <a href="" class="postcardItem">Postcard</a>
+            </div>
+            <div id="carousel">
+                <div class="prev fa fa-chevron-left templNav"></div>
+                <div class="next fa fa-chevron-right templNav"></div>
+                <div class="carouselList">
+                    <ul>
+                        <li id="1" style="background: green;" class="visibl">1</li>
+                        <li id="2" style="background: yellow;" class="visibl">2</li>
+                        <li id="3" style="background: brown;" class="visibl">3</li>
+                        <li id="4" style="background: red;" class="visibl">4</li>
+                        <li id="5" style="background: purple;" class="visibl">5</li>
+                        <li id="6" style="background: gray;" class="invisibl">6</li>
+                        <li id="7" style="background: blue;" class="invisibl">7</li>
+                        <li id="8" style="background: green;" class="invisibl">8</li>
+                        <li id="9" style="background: magenta;" class="invisibl">9</li>
+                        <li id="10" style="background: silver;" class="invisibl">10</li>
+                    </ul>
+                </div>
+            </div>
             <div id="footer">&copy; PhotoGift</div>
     </div>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
-
-
