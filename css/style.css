@@ -1,85 +1,86 @@
 * {
-	margin: 0;
+	box-sizing: border-box;
 }
 
-.header {
-	height: 38px;
-}
-
-.logo {
-	height: 38px;
-	width: 10%;
-	background-image: url('../logo.png');
-	display: inline-block;
-	float: left;
-}
-
-.nav {
-	height: 38px;
-	display: inline-block;
-	width: 70%;
+#wrapper {
+	width: 100%;
 	background-color: silver;
+}
+
+#header {
+	height: 38px;
+	background-color: silver;
+}
+
+#logo {
+	height: 38px;
+	width: 134px;
+	background-image: url('../img/logo.png');
+	display: inline-block;
 	float: left;
 }
 
-.login {
+#login {
 	height: 38px;
 	display: inline-block;
 	width: 20%;
 	background-color: grey;
-	float: left;
-}
-
-.left-panel{
-	height: 550px;
-	width: 12%;
-	background-color: rgb(198, 220, 242);
-	display: inline-block;
-	float: left;
-}
-
-.wrapper{
-	height: 550px;
-	width: 88%;
-	background-color: rgb(198, 220, 242);
-	display: inline-block;
 	float: right;
 }
 
-.work-field {
-	width: 80%;
-	height: 500px;
+#container{
+	height: 590px;
+	width: 100%;
+	background-color: rgb(198, 220, 242);
+}
+
+#tools-panel{
+	height: 100%;
+	width: 10%;
+	background-color: rgb(100, 220, 242);
+	display: inline-block;
+	float: left;
+}
+
+
+#work-field {
+	width: 75%;
+	height: 550px;
 	background-color: rgb(250, 222, 255);
 	display: inline-block;
 	position: relative;
 }
 
-.right-panel{
-	width: 20%;
-	height: 500px;
+#content-panel{
+	width: 15%;
+	height: 100%;
 	background-color: rgb(131, 159, 173);
 	display: inline-block;
 	float: right;
 }
 
-.bottom-panel {
-	clear: left;
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	margin: 5px;
+#file-buttons {
+	text-align: right;
+	padding-right: 215px;
+	padding-top: 5px;
 }
 
-.items-field {
+#categories {
 	height: 120px;
 	background-color: rgb(250, 222, 255);
 	width: 100%;
 	clear: left;
 }
 
-.templates-field {
+#carousel {
 	height: 150px;
 	width: 100%;
 	background-color: rgb(198, 220, 242);
 	clear: left;
+}
+
+#footer{
+	background-color: cyan;
+	padding: 10px;
+	text-align: center;
 }
