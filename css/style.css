@@ -128,6 +128,7 @@ background-size: 16px 16px;
     margin: 0 10px;
     display: inline-block;
 }
+#file-buttons button:hover,
 #categories a:hover,
 #content-panel .inputfile + label:hover {
     border-top-color: #28597a;
