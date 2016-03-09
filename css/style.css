@@ -3,9 +3,8 @@
 }
 
 #wrapper {
-    width: 1200px;
+	width: 100%;
 	background-color: silver;
-    margin: 0 auto;
 }
 
 #header {
@@ -29,18 +28,41 @@
 	float: right;
 }
 
-#container{
+#container {
 	padding: 10px 0;
 	width: 100%;
 	background-color: rgb(198, 220, 242);
     overflow: hidden;
 }
 
-#tools-panel{
+#tools-panel {
 	height: 550px;
 	width: 10%;
 	background-color: rgb(100, 220, 242);
 	float: left;
+}
+
+#tools-panel .tool-button {
+	display: inline-block;
+	width: 46%;
+	margin: 2% 1%;
+	height: 52px;
+	background-color: grey;
+	text-align: center;
+	font-size: 2.5em;
+	padding-top: 6px;
+}
+
+#tools-panel .tool-button:hover {
+	color: #23423F;
+	text-shadow: 0px 0px 10px rgb(61, 204, 191);
+}
+
+#tools-panel .tool-button:active {
+	color: #23423F;
+	text-shadow: 0px 0px 10px rgb(61, 204, 191);
+	position: relative;
+	top: 1px;
 }
 
 #work-field {
@@ -97,10 +119,6 @@ background-size: 16px 16px;
 	text-align: right;
 	padding-right: 215px;
 	padding-top: 5px;
-    clear: both;
-}
-#file-buttons button {
-    border: none;
 }
 /*---------------choose template category-------------------*/
 #categories {
@@ -111,7 +129,6 @@ background-size: 16px 16px;
     text-align: left;
     padding: 10px 2%;
 }
-#file-buttons button,
 #categories a,
 #content-panel .inputfile + label  {
     border-top: 1px solid #96d1f8;
@@ -128,7 +145,6 @@ background-size: 16px 16px;
     margin: 0 10px;
     display: inline-block;
 }
-#file-buttons button:hover,
 #categories a:hover,
 #content-panel .inputfile + label:hover {
     border-top-color: #28597a;
