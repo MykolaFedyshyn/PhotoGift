@@ -4,6 +4,8 @@
 
 #wrapper {
 	width: 100%;
+    min-width: 800px;
+    max-width: 1000px;
 	background-color: silver;
 }
 
@@ -96,6 +98,10 @@ background-size: 16px 16px;
 	text-align: right;
 	padding-right: 215px;
 	padding-top: 5px;
+    clear: both;
+}
+#file-buttons button {
+    border: none;
 }
 /*---------------choose template category-------------------*/
 #categories {
@@ -106,6 +112,7 @@ background-size: 16px 16px;
     text-align: left;
     padding: 10px 2%;
 }
+#file-buttons button,
 #categories a,
 #content-panel .inputfile + label  {
     border-top: 1px solid #96d1f8;
