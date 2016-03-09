@@ -3,10 +3,9 @@
 }
 
 #wrapper {
-	width: 100%;
-    min-width: 800px;
-    max-width: 1000px;
+    width: 1200px;
 	background-color: silver;
+    margin: 0 auto;
 }
 
 #header {
