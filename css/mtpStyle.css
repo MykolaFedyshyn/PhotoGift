@@ -1,0 +1,130 @@
+/*-----------------------button for downloading a picture-------*/
+#content-panel .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+#content-panel .inputfile + label {
+    cursor: pointer;
+}
+/*----------------------picture container-----------------------*/
+#content-panel .picturesContainer {
+    width: 94%;
+    /*overflow-y: scroll;*/
+    margin: 15px 3%;
+    height: 450px;
+}
+#content-panel .pictHolder {
+    width: 160px;
+    margin: 0 2% 10px;
+    height: 160px;
+    border: 3px solid #58777c;
+    border-radius: 6px;
+    overflow: hidden;
+}
+#content-panel [draggable] {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: move;
+}
+/*-------------------------------------------------------*/
+
+#file-buttons button,
+#categories a,
+#content-panel .inputfile + label  {
+    border-top: 1px solid #96d1f8;
+    background: #65a9d7;
+    /*background: linear-gradient(#3e779d, #65a9d7);*/
+    padding: 9px 21px;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+    text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+    vertical-align: middle;
+    margin: 0 10px;
+    display: inline-block;
+}
+#file-buttons button:hover,
+#categories a:hover,
+#content-panel .inputfile + label:hover {
+    border-top-color: #28597a;
+    background: #28597a;
+    color: #ccc;
+}
+#categories a:active {
+    border-top-color: #1b435e;
+    background: #1b435e;
+}
+#categories .calendarItem {
+    margin-left: 0;
+}
+/*---------------------------------------------------*/
+#file-buttons button {
+    border: none;
+}
+/*------------template carousel----------------*/
+#carousel .carouselList {
+    width: 90%;
+    overflow: hidden;
+    /*margin: 0 5%;*/
+    margin: 0 auto;
+    height: 100px;
+}
+#carousel .carouselList ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    transition: left 0.5s linear;
+    left: 0;
+}
+#carousel .carouselList li {
+    /*display: inline-block;*/
+    height: 100px;
+    width: 17%;
+    background: #3ddde0;
+    margin: 0 1%;
+    line-height: 100px;
+    border: 2px solid #fff;
+    transition: all 1s linear;
+}
+#carousel .carouselList li.visibl {
+    display: inline-block;
+}
+#carousel .carouselList li.invisibl {
+    display: none;
+}
+#carousel .carouselList li:hover {
+    /*transform: scale(1.2, 1.2);*/
+}
+#carousel .templNav {
+    width: 3%;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    cursor: pointer;
+    border-radius: 6px;
+}
+#carousel .templNav::before {
+    position: absolute;
+    display: block;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    line-height: 100px;
+    font-size: 20px;
+    color: #fff;
+}
+#carousel .prev {
+    left: 2%;
+}
+#carousel .next {
+    right: 2%;
+}
+/*---------------------------------------------*/
