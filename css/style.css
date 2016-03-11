@@ -75,12 +75,12 @@
     border: 10px solid rgba(45, 45, 41, 1);
     /*background: rgba(152, 152, 147, 0.23);*/
     background:
-radial-gradient(#3C3A3A 15%, transparent 16%) 0 0,
-radial-gradient(#3C3A3A 15%, transparent 16%) 8px 8px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-background-color: #655F5F;
-background-size: 16px 16px;
+	radial-gradient(#3C3A3A 15%, transparent 16%) 0 0,
+	radial-gradient(#3C3A3A 15%, transparent 16%) 8px 8px,
+	radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+	radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+	background-color: #655F5F;
+	background-size: 16px 16px;
 }
 
 #content-panel {
