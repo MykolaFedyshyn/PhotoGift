@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/canvas.css">
     <link rel="stylesheet" type="text/css" href="css/mtpStyle.css">
-
+    <link rel="stylesheet" type="text/css" href="css/toolsPanel.css">
 </head>
 <body>
     <div id="wrapper">
@@ -18,16 +18,15 @@
         </div>
         <div id="container">
             <div id="tools-panel">
-              <button type="submit" class="tool-button fa fa-arrows"></button>
-              <button type="submit" class="tool-button fa fa-search-plus"></button>
-              <button type="submit" class="tool-button fa fa-font"></button>
-              <button type="submit" class="tool-button fa fa-star"></button>
-              <button type="submit" class="tool-button fa fa-star"></button>
-              <button type="submit" class="tool-button fa fa-star"></button>
-              <button type="submit" class="tool-button fa fa-star"></button>
-              <button type="submit" class="tool-button fa fa-star"></button>
-              <button type="submit" class="tool-button fa fa-star"></button>
-              <button type="submit" class="tool-button fa fa-star"></button>
+              <div class="tool-button"><i class="icon fa fa-arrows"></i>&nbsp;ALIGN</div>
+              <div class="tool-button"><i class="icon fa fa-search-plus"></i>&nbsp;ZOOM</div>
+              <div class="tool-button"><i class="icon fa fa-font"></i>&nbsp;TEXT</div>
+              <div class="tool-button"><i class="icon fa fa-star"></i>&nbsp;NEW OPTION</div>
+              <div class="tool-button"><i class="icon fa fa-star"></i>&nbsp;NEW OPTION</div>
+              <div class="tool-button"><i class="icon fa fa-star"></i>&nbsp;NEW OPTION</div>
+              <div class="tool-button"><i class="icon fa fa-star"></i>&nbsp;NEW OPTION</div>
+              <div class="tool-button"><i class="icon fa fa-undo"></i>&nbsp;UNDO</div>
+              <div class="tool-button"><i class="icon fa fa-repeat"></i>&nbsp;REDO</div>
             </div>
             <div id="work-field">
                 <canvas id="work-field-canvas"></canvas>
@@ -65,7 +64,7 @@
             </div>
             <div id="footer">&copy; PhotoGift</div>
     </div>
-    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script> 
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script>
     <script src="scripts/postcardTemplates.js"></script>
     <script src="scripts/script.js"></script>

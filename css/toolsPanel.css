@@ -1,0 +1,45 @@
+#tools-panel {
+	height: 550px;
+	width: 10%;
+	background-color: rgb(100, 220, 242);
+	float: left;
+}
+
+#tools-panel .tool-button {
+	width: 98%;
+	margin: 0 1% 7% 3%;
+	height: 52px;
+	background-color: #009688;
+	font-size: 1em;
+  color: #fff;
+
+  border: 0 none;
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 160px;
+  text-align: center;
+  line-height: 1.3;
+  font-size: 14px;
+  color: #fff;
+  text-transform: none;
+  font-weight: 500;
+  transition: all 100ms ease-in-out;
+}
+
+#tools-panel .tool-button:hover {
+  opacity: .9;
+  transition: all 100ms ease;
+}
+
+#tools-panel .tool-button:active {
+  opacity: .75;
+  transform: scale(.97);
+  transition: all 100ms ease;
+}
+
+.icon {
+  font-size: 1.5em;
+}
