@@ -3,7 +3,7 @@
 }
 
 #wrapper {
-	width: 100%;
+	 width: 1200px;
 	background-color: silver;
     margin: 0 auto;
 }
@@ -67,7 +67,7 @@
 }
 
 #work-field {
-	width: 73%;
+	width: 70.5%;
     margin: 0 1% 10px;
 	height: 550px;
 	float: left;
@@ -84,7 +84,7 @@
 }
 
 #content-panel {
-	width: 15%;
+	width: 16.5%;
 	height: 100%;
 	float: right;
     text-align: center;

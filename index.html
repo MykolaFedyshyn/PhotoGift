@@ -30,7 +30,7 @@
               <button type="submit" class="tool-button fa fa-star"></button>
             </div>
             <div id="work-field">
-                <canvas id="work-field-canvas"></canvas>
+                <canvas id="work-field-canvas" width="826" height="530" ></canvas>
             </div>
             <div id="content-panel">
                 <div class="uploadButton">
@@ -38,9 +38,15 @@
                     <label for="fileLoad">Choose a picture</label>
                 </div>
                 <div class="picturesContainer">
-                    <div class="pictHolder"></div>
-                    <div class="pictHolder"></div>
-                    <div class="pictHolder"></div>
+                    <div class="pictHolder">
+                        <canvas id="picture1" width="160" height="160" draggable="true"></canvas>
+                    </div>
+                    <div class="pictHolder">
+                        <canvas id="picture2" width="160" height="160"  draggable="true"></canvas>
+                    </div>
+                    <div class="pictHolder">
+                        <canvas id="picture3" width="160" height="160"  draggable="true"></canvas>
+                    </div>
                 </div>
             </div>
             <div id="file-buttons">
@@ -65,9 +71,9 @@
             </div>
             <div id="footer">&copy; PhotoGift</div>
     </div>
-    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script> 
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script>
     <script src="scripts/postcardTemplates.js"></script>
-    <script src="scripts/script.js"></script>
+    <script src="scripts/rightPanel.js"></script>
 </body>
 </html>

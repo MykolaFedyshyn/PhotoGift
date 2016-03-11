@@ -3,9 +3,9 @@
     var ref = new Firebase("https://intense-torch-8426.firebaseio.com");
 
     ref.on("value", function(data) { // Listen for realtime changes
-    var templates = []; 
+    var templates = [];
         templObj = data.val();
-        for ( var key in templObj) { 
+        for ( var key in templObj) {
             templates.push(templObj[key]);
         }
         addPostcardTemplate(templates);
