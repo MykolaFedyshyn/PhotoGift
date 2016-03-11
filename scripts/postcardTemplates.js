@@ -20,7 +20,12 @@
             templSvg[i].addEventListener('click',draw,false);
         }
         function draw(){
-            canvg(canvas, this.firstChild.firstChild.outerHTML);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            var svgEl = this.firstChild.firstChild.outerHTML;
+            canvas.width = 400;
+            //canvas.height = 510;
+            ctx.drawSvg(this.firstChild.firstChild.outerHTML, 0, 10, 400, 510);
+            //canvg(canvas, this.firstChild.firstChild.outerHTML);
         }
     }
 
