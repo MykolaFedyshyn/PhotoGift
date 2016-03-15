@@ -65,12 +65,18 @@
 	position: relative;
 	top: 1px;
 }
-
-#work-field {
-	width: 70.5%;
+#work-field-container {
+    width: 70.5%;
     margin: 0 1% 10px;
+    float: left;
+}
+#work-field {
+    transition: all 0.5s;
+    overflow: hidden;
+    position: relative;
+	width: 100%;
+    margin: 0 auto;
 	height: 550px;
-	float: left;
     border-radius: 10px;
     border: 10px solid rgba(45, 45, 41, 1);
     /*background: rgba(152, 152, 147, 0.23);*/

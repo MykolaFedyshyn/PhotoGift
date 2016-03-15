@@ -1,3 +1,44 @@
+#work-field-container .active {
+    box-shadow: 0px 0px 15px 4px rgba(0,0,0,0.5);
+    cursor: move;
+}
+#work-field-container .canvAncor {
+    width: 20px;
+    height: 20px;
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    z-index: -5;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+    border-radius: 20px 0 0 0;
+}
+#work-field-container .canvDel {
+    width: 20px;
+    height: 20px;
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    z-index: -5;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+#work-field-container .canvDel::before {
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #989191;
+    cursor: pointer;
+}
+#work-field-container .canvDel:hover::before {
+    color: rgba(255,255,255,0.8);
+}
+#work-field-container .canvAncor:hover {
+    background: rgba(255,255,255,0.5);
+}
+
 /*-----------------------button for downloading a picture-------*/
 #content-panel .inputfile {
     width: 0.1px;

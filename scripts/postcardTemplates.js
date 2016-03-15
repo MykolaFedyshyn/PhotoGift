@@ -20,9 +20,20 @@
             templSvg[i].addEventListener('click',draw,false);
         }
         function draw(){
+            var mainel = document.getElementById('work-field');
+            var canvas = document.getElementById('work-field-canvas');
+            while(true) {
+                var sibling = canvas.nextElementSibling;
+                if(sibling) {
+                    sibling.parentNode.removeChild(sibling);
+                } else {
+                    break;
+                }
+            }
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             var svgEl = this.firstChild.firstChild.outerHTML;
             canvas.width = 400;
+            mainel.style.width = canvas.width + 20 + 'px';
             //canvas.height = 510;
             ctx.drawSvg(this.firstChild.firstChild.outerHTML, 0, 10, 400, 510);
             //canvg(canvas, this.firstChild.firstChild.outerHTML);
