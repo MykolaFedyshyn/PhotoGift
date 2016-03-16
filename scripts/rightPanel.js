@@ -34,7 +34,7 @@ canvasContainer.ondragover = function(ev) {
 };
 canvasContainer.ondrop = function(ev) {
     ev.preventDefault();
-    var data = event.dataTransfer.getData("text/plain");
+    var data = ev.dataTransfer.getData("text/plain");
     var img = new Image();
     img.src = data;
     var rect = this.getBoundingClientRect();
