@@ -52,30 +52,33 @@
                     </div>
                 </div>
             </div>
-            <div id="file-buttons">
+           <!--  <div id="file-buttons">
                 <button type="button" class="btn btn-primary" id = 'save'>Save</button>
                 <button type="button" class="btn btn-primary">Publish</button>
-            </div>
+            </div> -->
         </div>
-            <div id="categories">
-                <a href="" class="calendarItem">Calendar</a>
-                <a href="" class="postcardItem">Postcard</a>
-            </div>
+            
             <div id="carousel">
-                <div class="prev fa fa-chevron-left templNav"></div>
-                <div class="next fa fa-chevron-right templNav"></div>
-                <div class="carouselList">
-                    <ul class = "postcard-list" id="postcards">
-                       <!-- Postcards templates from FireBase -->
-                    </ul>
-                    <ul class = "calendar-list">
-                    </ul>
+                <div id="categories">
+                    <a href="" class="calendarItem">Calendar</a>
+                    <a href="" class="postcardItem">Postcard</a>
                 </div>
+                <div id="template-wrapper">
+                    <div class="prev fa fa-chevron-left templNav"></div>
+                    <div class="next fa fa-chevron-right templNav"></div>
+                    <div class="carouselList">
+                        <ul class = "postcard-list" id="postcards">
+                       <!-- Postcards templates from FireBase -->
+                        </ul>
+                        <ul class = "calendar-list">
+                        </ul>
+                    </div>
+                </div>
+                
             </div>
             <div id="footer">&copy; PhotoGift</div>
     </div>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-    <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script>
     <script src="scripts/postcardTemplates.js"></script>
     <script src="scripts/rightPanel.js"></script>
 </body>

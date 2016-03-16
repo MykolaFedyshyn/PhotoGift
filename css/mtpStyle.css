@@ -83,7 +83,6 @@
 /*-------------------------------------------------------*/
 
 #file-buttons button,
-#categories a,
 #content-panel .inputfile + label  {
     border-top: 1px solid #96d1f8;
     background: #65a9d7;
@@ -100,16 +99,23 @@
     display: inline-block;
 }
 #file-buttons button:hover,
-#categories a:hover,
 #content-panel .inputfile + label:hover {
     border-top-color: #28597a;
     background: #28597a;
     color: #ccc;
 }
-#categories a:active {
-    border-top-color: #1b435e;
-    background: #1b435e;
+
+#categories a{
+    color: #FFF;
+    margin: 6px;
+    font: 16px;
+    text-decoration: none;
 }
+
+#categories a:hover{
+    text-decoration: underline;
+}
+
 #categories .calendarItem {
     margin-left: 0;
 }
@@ -134,14 +140,12 @@
     left: 0;
 }
 #carousel .carouselList li {
-    /*display: inline-block;*/
     height: 100px;
-    width: 17%;
-    background: #3ddde0;
     margin: 0 1%;
+    padding: 5px 10px; 
     line-height: 100px;
-    border: 2px solid #fff;
     transition: all 1s linear;
+    cursor: pointer;
 }
 #carousel .carouselList li.visibl {
     display: inline-block;
@@ -172,8 +176,10 @@
 }
 #carousel .prev {
     left: 2%;
+    text-align: center;
 }
 #carousel .next {
     right: 2%;
+    text-align: center;
 }
 /*---------------------------------------------*/

@@ -3,7 +3,7 @@
 }
 
 #wrapper {
-	 width: 1200px;
+	width: 1200px;
 	background-color: silver;
     margin: 0 auto;
 }
@@ -69,6 +69,7 @@
     width: 70.5%;
     margin: 0 1% 10px;
     float: left;
+    position: relative;
 }
 #work-field {
     transition: all 0.5s;
@@ -94,28 +95,38 @@
 	height: 100%;
 	float: right;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 #file-buttons {
 	text-align: right;
-	padding-right: 215px;
-	padding-top: 5px;
+	position: absolute;
+	bottom: 0px;
+	right: 100px;
 }
 
 #categories {
-	/*height: 120px;*/
-	background-color: rgb(250, 222, 255);
-	width: 100%;
-	clear: both;
-    text-align: left;
-    padding: 10px 2%;
+    padding: 10px;
+    display: inline-block;
+    background-color: rgba(128, 128, 128, 0.5);
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    margin-left: 70px;
 }
 
 #carousel {
     width: 100%;
     overflow: hidden;
-    padding: 20px 0;
+    padding: 10px 0;
     position: relative;
+    text-align: left;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+}
+
+#template-wrapper{
+	background-color: rgba(128, 128, 128, 0.5);
     text-align: center;
 }
 

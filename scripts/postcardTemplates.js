@@ -31,31 +31,29 @@
                 }
             }
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            var svgEl = this.firstChild.firstChild.outerHTML;
-            canvas.width = 400;
+            canvas.width = this.naturalWidth;
+            canvas.height = this.naturalHeight;
             mainel.style.width = canvas.width + 20 + 'px';
-            //canvas.height = 510;
-            ctx.drawSvg(this.firstChild.firstChild.outerHTML, 0, 10, 400, 510);
-            //canvg(canvas, this.firstChild.firstChild.outerHTML);
+            mainel.style.height = canvas.height + 20 + 'px';
+            ctx.drawImage(this,0,0);
         }
     }
 
     function addPostcardTemplate(data){
-        var li, svg, template, id, i;
+        var li, img, i;
         var ul = document.getElementById('postcards');
         for (i=0; i<data.length;i++){
             li = document.createElement('li');
             li.className = 'visibl';
-            svg = document.createElement('svg');
-            svg.innerHTML = '<svg viewBox="0 0 400 510" width="200" height="100" id="id'+i+'">'+
-                            '<use xlink:href="#'+i+'"/></svg>';
-            svg.className = 'templates';
-            li.appendChild(svg);
+            img = document.createElement('img');
+            img.className = 'templates';
+            img.src = data[i];
+            img.style.height = '100%';
+            li.appendChild(img);
             ul.appendChild(li);
-            template = document.getElementById('id' + i);
-            template.innerHTML = data[i];
-            addToCanvas();
+           
         }
+         addToCanvas();
     }
 
 //---------------work with categories------------------------------------------------//
