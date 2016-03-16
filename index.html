@@ -41,23 +41,22 @@
                     <label for="fileLoad">Choose a picture</label>
                 </div>
                 <div class="picturesContainer">
-                    <div class="pictHolder">
-                        <canvas id="picture1" width="160" height="160" draggable="true"></canvas>
+                    <div class="pictHolder fa fa-picture-o">
+                        <canvas id="picture1" width="160" height="160"></canvas>
                     </div>
-                    <div class="pictHolder">
-                        <canvas id="picture2" width="160" height="160"  draggable="true"></canvas>
+                    <div class="pictHolder fa fa-picture-o">
+                        <canvas id="picture2" width="160" height="160"></canvas>
                     </div>
-                    <div class="pictHolder">
-                        <canvas id="picture3" width="160" height="160"  draggable="true"></canvas>
+                    <div class="pictHolder fa fa-picture-o">
+                        <canvas id="picture3" width="160" height="160"></canvas>
                     </div>
                 </div>
             </div>
-           <!--  <div id="file-buttons">
-                <button type="button" class="btn btn-primary" id = 'save'>Save</button>
-                <button type="button" class="btn btn-primary">Publish</button>
-            </div> -->
+          <div id="file-buttons">
+                <a href="#" class="save fa fa-floppy-o">Save</a>
+                <a href="#" class="postTo fa fa-facebook-square">Post</a>
+            </div>
         </div>
-            
             <div id="carousel">
                 <div id="categories">
                     <a href="" class="calendarItem">Calendar</a>
@@ -74,12 +73,14 @@
                         </ul>
                     </div>
                 </div>
-                
+
             </div>
             <div id="footer">&copy; PhotoGift</div>
     </div>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="scripts/postcardTemplates.js"></script>
     <script src="scripts/rightPanel.js"></script>
+    <script src="scripts/save.js"></script>
+    <script src="scripts/postTo.js"></script>
 </body>
 </html>

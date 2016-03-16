@@ -1,11 +1,12 @@
 #work-field-container .active {
-    box-shadow: 0px 0px 15px 4px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.5);
     cursor: move;
 }
+
 #work-field-container .canvAncor {
     width: 20px;
     height: 20px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     position: absolute;
     z-index: -5;
     bottom: 0;
@@ -13,16 +14,18 @@
     cursor: se-resize;
     border-radius: 20px 0 0 0;
 }
+
 #work-field-container .canvDel {
     width: 20px;
     height: 20px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     position: absolute;
     z-index: -5;
     top: 0;
     right: 0;
     cursor: pointer;
 }
+
 #work-field-container .canvDel::before {
     font-size: 20px;
     position: absolute;
@@ -32,14 +35,17 @@
     color: #989191;
     cursor: pointer;
 }
+
 #work-field-container .canvDel:hover::before {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
+
 #work-field-container .canvAncor:hover {
-    background: rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.5);
 }
 
 /*-----------------------button for downloading a picture-------*/
+
 #content-panel .inputfile {
     width: 0.1px;
     height: 0.1px;
@@ -48,16 +54,20 @@
     position: absolute;
     z-index: -1;
 }
+
 #content-panel .inputfile + label {
     cursor: pointer;
 }
+
 /*----------------------picture container-----------------------*/
+
 #content-panel .picturesContainer {
     width: 94%;
     /*overflow-y: scroll;*/
     margin: 10px 3%;
     height: 503px;
 }
+
 #content-panel .pictHolder {
     width: 165px;
     margin: 0 0 4px;
@@ -65,16 +75,36 @@
     border: 3px solid #58777c;
     border-radius: 6px;
     overflow: hidden;
+    display: block;
+    position: relative;
 }
+
+#content-panel .pictHolder > canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#content-panel .pictHolder::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(88, 119, 124, 0.7);
+    font-size: 80px;
+}
+
 #content-panel .pictHolder:last-of-type {
     margin: 0;
 }
+
 #content-panel [draggable] {
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
     cursor: move;
 }
+
 #content-panel .uploadButton {
     position: relative;
     text-align: left;
@@ -82,11 +112,10 @@
 
 /*-------------------------------------------------------*/
 
-#file-buttons button,
-#content-panel .inputfile + label  {
+#file-buttons a,
+#content-panel .inputfile + label {
     border-top: 1px solid #96d1f8;
     background: #65a9d7;
-    /*background: linear-gradient(#3e779d, #65a9d7);*/
     padding: 9px 22px;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
@@ -98,32 +127,70 @@
     margin: 0 10px;
     display: inline-block;
 }
-#file-buttons button:hover,
+
+#file-buttons a:hover,
 #content-panel .inputfile + label:hover {
     border-top-color: #28597a;
     background: #28597a;
     color: #ccc;
 }
 
-#categories a{
+#file-buttons a:active {
+    border-top-color: #1b435e;
+    background: #1b435e;
+}
+
+#categories .calendarItem {
+    margin-left: 0;
+}
+
+#categories a {
     color: #FFF;
     margin: 6px;
     font: 16px;
     text-decoration: none;
 }
 
-#categories a:hover{
+#categories a:hover {
     text-decoration: underline;
 }
 
 #categories .calendarItem {
     margin-left: 0;
 }
-/*---------------------------------------------------*/
-#file-buttons button {
-    border: none;
+
+#file-buttons .save,
+#file-buttons .postTo {
+    position: fixed;
+    right: -58px;
+    margin: 0;
+    border-radius: 8px 0 0 8px;
+    font-size: 20px;
+    box-shadow: 0px 2px 5px 1px rgba(50, 50, 50, 0.75);
+    transition: all 0.5s;
 }
+
+#file-buttons .save {
+    top: 10px;
+    padding: 11px 15px 11px 45px;
+}
+
+#file-buttons .postTo {
+    top: 70px;
+    padding: 11px 19px 11px 45px;
+}
+
+#file-buttons .save::before,
+#file-buttons .postTo::before {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 27px;
+}
+
 /*------------template carousel----------------*/
+
 #carousel .carouselList {
     width: 90%;
     overflow: hidden;
@@ -131,6 +198,7 @@
     margin: 0 auto;
     height: 100px;
 }
+
 #carousel .carouselList ul {
     list-style: none;
     margin: 0;
@@ -139,23 +207,28 @@
     transition: left 0.5s linear;
     left: 0;
 }
+
 #carousel .carouselList li {
     height: 100px;
     margin: 0 1%;
-    padding: 5px 10px; 
+    padding: 5px 10px;
     line-height: 100px;
     transition: all 1s linear;
     cursor: pointer;
 }
+
 #carousel .carouselList li.visibl {
     display: inline-block;
 }
+
 #carousel .carouselList li.invisibl {
     display: none;
 }
+
 #carousel .carouselList li:hover {
     /*transform: scale(1.2, 1.2);*/
 }
+
 #carousel .templNav {
     width: 3%;
     height: 100px;
@@ -164,6 +237,7 @@
     cursor: pointer;
     border-radius: 6px;
 }
+
 #carousel .templNav::before {
     position: absolute;
     display: block;
@@ -174,12 +248,13 @@
     font-size: 20px;
     color: #fff;
 }
+
 #carousel .prev {
     left: 2%;
     text-align: center;
 }
+
 #carousel .next {
     right: 2%;
     text-align: center;
 }
-/*---------------------------------------------*/

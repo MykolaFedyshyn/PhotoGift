@@ -18,12 +18,13 @@ inpFile.addEventListener('change', function(e) {
         tempCanv.id = 'picture' + index;
         tempCanv.setAttribute('width', '160');
         tempCanv.setAttribute('height', '160');
-        tempCanv.setAttribute('draggable', 'true');
+        //tempCanv.setAttribute('draggable', 'true');
         tempEl.appendChild(tempCanv);
         pictContainer.appendChild(tempEl);
         pictContainer.style.overflowY = 'scroll';
     }
     var canvas = document.getElementById('picture' + index);
+    canvas.setAttribute('draggable', 'true');
     var ctx = canvas.getContext('2d');
     handleImage(e, ctx, canvas);
     index++;
@@ -220,7 +221,7 @@ function addResizeListeners(img, that, ev) {
     function doResize(e) {
         //var w = startWidth + e.clientX - startX;
         var h = startHeight + e.clientY - startY;
-        var w = h * ratio;
+        var w = Math.floor(h * ratio);
         if (h > maxHeiht && w > maxWidth) {
             container.style.width = w + 'px';
             container.style.height = h + 'px';
