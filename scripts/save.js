@@ -25,7 +25,9 @@
         }
         //var w = window.open('about:blank','image from canvas', "width=" + mainCanvas.width + ", height=" + mainCanvas.height);
         //w.document.write("<img src='" + newCanv.toDataURL("image/png", 1) + "' alt='from canvas'/>");
-        var w = window.open(newCanv.toDataURL("image/png", 1), '', "width=" + mainCanvas.width + ", height=" + mainCanvas.height);
+        var winTop = (screen.height / 2) - (mainCanvas.height / 2);
+        var winLeft = (screen.width / 2) - (mainCanvas.width / 2);
+        window.open(newCanv.toDataURL("image/png", 1), '','top=' + winTop + ',left=' + winLeft + ",width=" + mainCanvas.width + ", height=" + mainCanvas.height);
     };
     saveBtn.onmouseover = function() {
         this.style.right = 0;
