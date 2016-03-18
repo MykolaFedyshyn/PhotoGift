@@ -1,0 +1,25 @@
+#textBoxes {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+}
+#textBoxes .textBox {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	display: block;
+	width: 100px;
+	height: 100px;
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
+#textBoxes .textBox [draggable] {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: move;
+}
