@@ -199,8 +199,8 @@ function addMoveListeners(img, context) {
 
 function addResizeListeners(img, that, ev) {
     var startX, startY, startWidth, startHeight, ratio;
-    var maxWidth = 100;
-    var maxHeiht = 100;
+    var maxWidth = 70;
+    var maxHeiht = 70;
     var container = that.parentNode;
     var containerCanv = container.getElementsByTagName('canvas')[0];
     resizeInit(ev);

@@ -1,16 +1,22 @@
 * {
     box-sizing: border-box;
 }
+body {
+    background: #70e1f5;
+    background: -webkit-linear-gradient(to left, #70e1f5 , #ffd194);
+    background: linear-gradient(to left, #70e1f5 , #ffd194);
+}
 
 #wrapper {
     width: 1200px;
-    background-color: silver;
+    /* background-color: silver; */
     margin: 0 auto;
 }
 
 #header {
     height: 38px;
-    background-color: silver;
+    background-color: rgba(192, 192, 192, 0.66);
+    box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.75);
 }
 
 #logo {
@@ -24,16 +30,16 @@
 #login {
     height: 38px;
     display: inline-block;
-    width: 20%;
+    width: 19%;
     background-color: grey;
     float: right;
 }
 
 #container {
-    padding: 10px 0;
+    padding: 0 0 10px;
     width: 100%;
-    background-color: rgb(198, 220, 242);
-    overflow: hidden;
+    /* background-color: rgb(198, 220, 242); */
+    /* overflow: hidden; */
 }
 
 #tools-panel {
@@ -41,6 +47,7 @@
     width: 10%;
     background-color: rgb(100, 220, 242);
     float: left;
+    position: relative;
 }
 
 #tools-panel .tool-button {
@@ -67,8 +74,8 @@
 }
 
 #work-field-container {
-    width: 70.5%;
-    margin: 0 1% 10px;
+    width: 69%;
+    margin: 10px 1% 10px;
     float: left;
     position: relative;
 }
@@ -78,10 +85,11 @@
     overflow: hidden;
     position: relative;
     width: 100%;
+    max-width: 828px;
     margin: 0 auto;
-    height: 550px;
+    height: auto;
     border-radius: 10px;
-    border: 10px solid rgba(45, 45, 41, 1);
+    border: 10px solid rgb(99, 109, 120);
     /*background: rgba(152, 152, 147, 0.23);*/
     background: radial-gradient(#3C3A3A 15%, transparent 16%) 0 0, radial-gradient(#3C3A3A 15%, transparent 16%) 8px 8px, radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 0 1px, radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 8px 9px;
     background-color: #655F5F;
@@ -89,11 +97,17 @@
 }
 
 #content-panel {
-    width: 16.5%;
+    width: 19%;
     height: 100%;
     float: right;
     text-align: center;
     /* margin-bottom: 30px; */
+    border-radius: 0 0 20px 20px;
+    background: rgba(157, 188, 185, 0.56);
+    border: 1px solid rgba(104, 131, 121, 0.57);
+    border-top: none;
+    padding: 10px 0 0 24px;
+    box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.75);
 }
 
 #file-buttons {
@@ -114,7 +128,7 @@
 
 #carousel {
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     padding: 10px 0;
     position: relative;
     text-align: left;
@@ -129,7 +143,8 @@
 }
 
 #footer {
-    background-color: cyan;
+    background-color: rgba(72, 168, 168, 0.24);
     padding: 10px;
     text-align: center;
+    clear: both;
 }

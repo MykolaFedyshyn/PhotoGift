@@ -77,6 +77,7 @@
     overflow: hidden;
     display: block;
     position: relative;
+    background: #E0E4E9;
 }
 
 #content-panel .pictHolder > canvas {
@@ -116,7 +117,7 @@
 #content-panel .inputfile + label {
     border-top: 1px solid #96d1f8;
     background: #65a9d7;
-    padding: 9px 22px;
+    padding: 9px 23px;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
     text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
@@ -160,7 +161,8 @@
 }
 
 #file-buttons .save,
-#file-buttons .postTo {
+#file-buttons .postTo,
+#file-buttons .help {
     position: fixed;
     right: -58px;
     margin: 0;
@@ -179,16 +181,78 @@
     top: 70px;
     padding: 11px 19px 11px 45px;
 }
+#file-buttons .help {
+    top: 130px;
+    padding: 11px 5px 11px 45px;
+}
 
 #file-buttons .save::before,
-#file-buttons .postTo::before {
+#file-buttons .postTo::before,
+#file-buttons .help::before {
     position: absolute;
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 27px;
 }
-
+/*-----------------info boxes----------------------*/
+.infoBox {
+    padding: 10px 20px;
+    background: rgba(192, 203, 124, 0.7);
+    border: 3px solid #47556C;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 200;
+    transition: all 2s;
+    opacity: 0;
+    box-shadow: -5px 6px 12px 0px rgba(50, 50, 50, 0.75);
+}
+.infoBox::before {
+    position: absolute;
+    color: #47556C;
+    font-size: 30px;
+    font-weight: 900;
+    text-shadow: -1px 2px 1px rgba(50, 50, 50, 1);
+}
+.infoBox.fa-arrow-right::before {
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation-name: move_v_r;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+@keyframes move_v_r {
+    0% {right: -40px;}
+    50% {right: -45px;}
+    100% {right: -40px;}
+}
+.infoBox.fa-arrow-down::before {
+    left: 50%;
+    bottom: -42px;
+    transform: translateX(-50%);
+    animation-name: move_h;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+@keyframes move_h {
+    0% {bottom: -42px;}
+    50% {bottom: -47px;}
+    100% {bottom: -42px;}
+}
+.infoBox.fa-arrow-left::before {
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation-name: move_v_l;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+@keyframes move_v_l {
+    0% {left: -40px;}
+    50% {left: -45px;}
+    100% {left: -40px;}
+}
 /*------------template carousel----------------*/
 
 #carousel .carouselList {
