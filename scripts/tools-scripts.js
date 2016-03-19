@@ -9,5 +9,5 @@ addTextBox.addEventListener("click", function() {
   // textBox.innertext = "azazaza";
   // textBoxCounter++;
   //
-  // document.getElementById("tools-panel").appendChild(textBox);
+  // document.gtettetElementById("tools-panel").appendChild(textBox);
 })

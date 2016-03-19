@@ -117,6 +117,7 @@ function createElem(source, name, width, height, image, x, y) {
     source.appendChild(canvEl);
     canvEl.style.top = y + 'px';
     canvEl.style.left = x + 'px';
+    canvEl.rotateDeg = 0;
     canvImagesCount++;
     return canvEl;
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>PhotoGift</title>
@@ -9,7 +10,9 @@
     <link rel="stylesheet" type="text/css" href="css/canvas.css">
     <link rel="stylesheet" type="text/css" href="css/mtpStyle.css">
     <link rel="stylesheet" type="text/css" href="css/toolsPanel.css">
+    <link rel="stylesheet" type="text/css" href="css/toolPanelExtra.css">
 </head>
+
 <body>
     <div id="wrapper">
         <div id="header">
@@ -18,19 +21,19 @@
         </div>
         <div id="container">
             <div id="tools-panel">
+                <div id="rotate-left" class="toolBtn"></div>
+                <div id="rotate-right" class="toolBtn"></div>
+                <div id="layer-up" class="toolBtn"></div>
+                <div id="layer-down" class="toolBtn"></div>
                 <div class="tool-button"><i class="icon fa fa-arrows"></i>&nbsp;ALIGN</div>
                 <div class="tool-button"><i class="icon fa fa-search-plus"></i>&nbsp;ZOOM</div>
                 <div class="tool-button" id="addTextBox"><i class="icon fa fa-font"></i>&nbsp;TEXT</div>
-                <div class="tool-button"><i class="icon fa fa-star"></i>&nbsp;NEW OPTION</div>
-                <div class="tool-button"><i class="icon fa fa-star"></i>&nbsp;NEW OPTION</div>
-                <div class="tool-button"><i class="icon fa fa-star"></i>&nbsp;NEW OPTION</div>
-                <div class="tool-button"><i class="icon fa fa-star"></i>&nbsp;NEW OPTION</div>
                 <div class="tool-button"><i class="icon fa fa-undo"></i>&nbsp;UNDO</div>
                 <div class="tool-button"><i class="icon fa fa-repeat"></i>&nbsp;REDO</div>
             </div>
             <div id="work-field-container">
                 <div id="work-field">
-                    <canvas id="work-field-canvas" width="808" height="542" >
+                    <canvas id="work-field-canvas" width="808" height="542">
                     </canvas>
                 </div>
             </div>
@@ -51,33 +54,31 @@
                     </div>
                 </div>
             </div>
-          <div id="file-buttons">
-                <a href="#" class="save fa fa-floppy-o">Save</a>
-                <a href="#" class="postTo fa fa-facebook-square">Post</a>
-                <a href="#" class="help fa fa-question-circle">Help?</a>
-
-
+            <div id="file-buttons">
+                <a href="#" class="save fa fa-floppy-o"><span>Save</span></a>
+                <a href="#" class="postTo fa fa-facebook-square"><span>Post</span></a>
+                <a href="#" class="help fa fa-question-circle"><span>Help?</span></a>
             </div>
         </div>
-            <div id="carousel">
-                <div id="categories">
-                    <a href="" class="calendarItem">Calendar</a>
-                    <a href="" class="postcardItem">Postcard</a>
-                </div>
-                <div id="template-wrapper">
-                    <div class="prev fa fa-chevron-left templNav"></div>
-                    <div class="next fa fa-chevron-right templNav"></div>
-                    <div class="carouselList">
-                        <ul class = "postcard-list" id="postcards">
-                       <!-- Postcards templates from FireBase -->
-                        </ul>
-                        <ul class = "calendar-list">
-                        </ul>
-                    </div>
-                </div>
-
+        <div id="carousel">
+            <div id="categories">
+                <a href="" class="calendarItem">Calendar</a>
+                <a href="" class="postcardItem">Postcard</a>
             </div>
-            <div id="footer">&copy; PhotoGift</div>
+            <div id="template-wrapper">
+                <div class="prev fa fa-chevron-left templNav"></div>
+                <div class="next fa fa-chevron-right templNav"></div>
+                <div class="carouselList">
+                    <ul class="postcard-list" id="postcards">
+                        <!-- Postcards templates from FireBase -->
+                    </ul>
+                    <ul class="calendar-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="footer">&copy; PhotoGift</div>
+
     </div>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="scripts/postcardTemplates.js"></script>
@@ -85,6 +86,8 @@
     <script src="scripts/save.js"></script>
     <script src="scripts/postTo.js"></script>
     <script src="scripts/help.js"></script>
+    <script src="scripts/rotate.js"></script>
     <script src="scripts/tools-scripts.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,28 @@
+#tools-panel .toolBtn {
+    background: #65a9d7 no-repeat center center;
+    width: 50%;
+    padding: 22px 0;
+    border-radius: 10px;
+    margin: 0 auto 7px;
+    border-top: 1px solid #96d1f8;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 1);
+}
+#tools-panel .toolBtn:hover {
+    background-color: #28597a;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 1);
+}
+#tools-panel .toolBtn:active {
+    background-color: #1b435e;
+}
+#tools-panel #rotate-left {
+    background-image: url('../img/rotate-left.png');
+}
+#tools-panel #rotate-right {
+    background-image: url('../img/rotate-right.png');
+}
+#tools-panel #layer-up {
+    background-image: url('../img/layer-top.png');
+}
+#tools-panel #layer-down {
+    background-image: url('../img/layer-back.png');
+}
