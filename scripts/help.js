@@ -40,7 +40,7 @@
         var coverDiv = document.createElement('div');
         coverDiv.className = 'hoverBlack';
         wrap.appendChild(coverDiv);
-        coverDiv.style.zIndex = 25;
+        coverDiv.style.zIndex = 40;
         coverDiv.style.width = document.body.clientWidth + 'px';
         coverDiv.style.height = document.body.clientHeight + 'px';
         createHelpBox(containerArr[i], objArr[i], wrap, coverDiv);
@@ -60,9 +60,9 @@
         var tempElem = null;
         if(container.id == 'file-buttons') {
             tempElem = container.querySelector('.save');
-            tempElem.style.zIndex = 30;
+            tempElem.style.zIndex = 45;
         } else {
-            container.style.zIndex = 30;
+            container.style.zIndex = 45;
         }
         var tempDiv = document.createElement('div');
         tempDiv.className = 'infoBox ' + obj.classN;
@@ -79,9 +79,9 @@
             setTimeout(function() {
                 tempDiv.style.opacity = 0;
                 if(tempElem) {
-                    tempElem.style.zIndex = 15;
+                    tempElem.style.zIndex = 25;
                 } else {
-                    container.style.zIndex = 15;
+                    container.style.zIndex = 25;
                 }
                 if (i < 4) {
                     i++;

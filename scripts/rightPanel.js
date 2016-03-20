@@ -9,6 +9,8 @@ var index = 1;
 var canvImagesCount = 1;
 var canMove = true;
 var imageArr = [];
+var totalZindex = 1;
+var zIndexLimit = 20;
 
 inpFile.addEventListener('change', function(e) {
     if (index > 3) {
@@ -70,7 +72,7 @@ function handleImage(e, ctx, canvas) {
             var centerShift_y = (canvas.height - img.height * ratio) / 2;
             ctx.drawImage(img, 0, 0, img.width, img.height,
                 centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
-        }
+        };
         img.src = event.target.result;
         canvas.ondragstart = function(ev) {
             ev.dataTransfer.setData("text/plain", img.src);
@@ -81,7 +83,7 @@ function handleImage(e, ctx, canvas) {
         canvas.ondragend = function(ev) {
             ev.target.parentElement.style.border = "3px solid #58777c";
         };
-    }
+    };
     reader.readAsDataURL(e.target.files[0]);
 }
 //--------------------------------------------------
@@ -91,7 +93,7 @@ function createElem(source, name, width, height, image, x, y) {
     canvEl.style.height = height + 'px';
     canvEl.id = 'mainCanvElement' + canvImagesCount;
     canvEl.style.position = 'absolute';
-    canvEl.style.zIndex = 1;
+    canvEl.style.zIndex = totalZindex;
 
     var ancrEl = addToolElem(canvEl, 'canvAncor');
     ancrEl.onmousedown = function(e) {
@@ -104,7 +106,7 @@ function createElem(source, name, width, height, image, x, y) {
         e.stopPropagation();
         var container = this.parentNode.parentNode;
         container.removeChild(this.parentNode);
-    }
+    };
 
     var tempCanv = document.createElement('canvas');
     tempCanv.id = name + canvImagesCount;
@@ -119,6 +121,9 @@ function createElem(source, name, width, height, image, x, y) {
     canvEl.style.left = x + 'px';
     canvEl.rotateDeg = 0;
     canvImagesCount++;
+    if(totalZindex < zIndexLimit) {
+        totalZindex++;
+    }
     return canvEl;
 }
 //--------------------------------------------------
@@ -152,20 +157,6 @@ function addMoveListeners(img, context) {
     }
     changeZindex(context, 'canvAncor', 5);
     changeZindex(context, 'canvDel fa fa-times', 5);
-
-    // var ancorEl = context.getElementsByClassName('canvAncor')[0];
-    // var delEl = context.getElementsByClassName('canvDel fa fa-times')[0];
-
-    // ancorEl.onmousedown = function(e) {
-    //     e.stopPropagation();
-    //     var that = this;
-    //     addResizeListeners(img, that, e);
-    // };
-    // delEl.onclick = function(e) {
-    //     e.stopPropagation();
-    //     var container = this.parentNode.parentNode;
-    //     container.removeChild(this.parentNode);
-    // }
 
     context.onmousedown = function() {
         if (context.className == 'active' && canMove == true) {
