@@ -102,6 +102,22 @@
                 allCalendars[i].className = 'invisibl fade-in';
             }
         });
+        document.querySelector('#collapse-btn').addEventListener('click', function(event) {
+            var tmplPanel = document.querySelector('#template-wrapper');
+            var collapsePanel = document.querySelector('#categories');
+            if (document.querySelector('#collapse-btn').className !== 'collapsed') {
+                tmplPanel.style.display = 'none';
+                collapsePanel.style.position = 'absolute';
+                collapsePanel.style.bottom = '0';
+                document.querySelector('#collapse-btn').className = 'collapsed';
+                document.querySelector('#collapse-btn').innerHTML = '<i class="fa fa-chevron-up collapse"></i>';
+            } else {
+                tmplPanel.style.display = 'block';
+                collapsePanel.style.position = 'static';
+                document.querySelector('#collapse-btn').className = '';
+                document.querySelector('#collapse-btn').innerHTML = '<i class="fa fa-chevron-down collapse"></i>';
+            }
+        });
 
     function ulMover(flag) {
         if (flag == 1) {
@@ -121,6 +137,8 @@
 }
 
 })();
+
+
 
 
 

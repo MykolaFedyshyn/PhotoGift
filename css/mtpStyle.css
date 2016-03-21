@@ -338,7 +338,7 @@
     background: rgba(0, 0, 0, 0.8);
 }
 
-#categories a:hover{
+#categories a:hover, .collapse:hover{
     background-color: rgba(255, 231, 159, 0.9);
     text-decoration: none;
     color: grey;
@@ -356,4 +356,12 @@
 a.calendarItem, a.postcardItem{
     border-radius: 26px;
     padding: 9px;
+}
+
+.collapse{
+    color: #FFF;
+    border: 1px solid #FFF;
+    padding: 3px;
+    border-radius: 12px;
+    cursor: pointer;
 }
