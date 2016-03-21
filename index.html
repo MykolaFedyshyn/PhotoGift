@@ -28,8 +28,8 @@
                 <div class="tool-button"><i class="icon fa fa-arrows"></i>&nbsp;ALIGN</div>
                 <div class="tool-button"><i class="icon fa fa-search-plus"></i>&nbsp;ZOOM</div>
                 <div class="tool-button" id="addTextBox"><i class="icon fa fa-font"></i>&nbsp;TEXT</div>
-                <div class="tool-button"><i class="icon fa fa-undo"></i>&nbsp;UNDO</div>
-                <div class="tool-button"><i class="icon fa fa-repeat"></i>&nbsp;REDO</div>
+<!--                 <div class="tool-button"><i class="icon fa fa-undo"></i>&nbsp;UNDO</div>
+                <div class="tool-button"><i class="icon fa fa-repeat"></i>&nbsp;REDO</div> -->
             </div>
             <div id="work-field-container">
                 <div id="work-field">
@@ -62,8 +62,8 @@
         </div>
         <div id="carousel">
             <div id="categories">
+                <a href="" class="postcardItem active">Postcard</a>
                 <a href="" class="calendarItem">Calendar</a>
-                <a href="" class="postcardItem">Postcard</a>
             </div>
             <div id="template-wrapper">
                 <div class="prev fa fa-chevron-left templNav"></div>
@@ -71,8 +71,9 @@
                 <div class="carouselList">
                     <ul class="postcard-list" id="postcards">
                         <!-- Postcards templates from FireBase -->
+                        <li id="spinner" class="fade-in"><img src="img/spinner.gif" height="90px"></li>
                     </ul>
-                    <ul class="calendar-list">
+                    <ul class="calendar-list" id="calendars">
                     </ul>
                 </div>
             </div>
@@ -89,6 +90,7 @@
     <script src="scripts/rotate.js"></script>
     <script src="scripts/layerChange.js"></script>
     <script src="scripts/tools-scripts.js"></script>
+
 </body>
 
 </html>

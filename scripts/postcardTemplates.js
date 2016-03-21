@@ -1,14 +1,18 @@
 (function(){
 // Create a connection to Firebase database
     var ref = new Firebase("https://intense-torch-8426.firebaseio.com");
-
     ref.on("value", function(data) { // Listen for realtime changes
-    var templates = [];
-        templObj = data.val();
-        for ( var key in templObj) {
-            templates.push(templObj[key]);
+    var postcardTempl = [];
+    var calendarTempl = [];
+    var templObj = data.val();
+        for ( var key in templObj.postcards) {
+            postcardTempl.push(templObj.postcards[key]);
         }
-        addPostcardTemplate(templates);
+        for ( var key in templObj.calendars) {
+            calendarTempl.push(templObj.calendars[key]);
+        }
+        addPostcardTemplate(calendarTempl, 'calendars');
+        addPostcardTemplate(postcardTempl, 'postcards');
         carousel();
     });
 
@@ -39,19 +43,23 @@
         }
     }
 
-    function addPostcardTemplate(data){
+    function addPostcardTemplate(data, id){
         var li, img, i;
-        var ul = document.getElementById('postcards');
+        var ul = document.getElementById(id);
+            if (id == 'postcards') {
+                var spin = document.getElementById('spinner');
+                ul.removeChild(spin);
+            }
+       
         for (i=0; i<data.length;i++){
             li = document.createElement('li');
-            li.className = 'visibl';
+            li.className = 'visibl fade-in';
             img = document.createElement('img');
-            img.className = 'templates';
+            img.className = 'templates fade-in';
             img.src = data[i];
             img.style.height = '100%';
             li.appendChild(img);
             ul.appendChild(li);
-           
         }
          addToCanvas();
     }
@@ -74,24 +82,38 @@
         });
         document.querySelector('#categories .calendarItem').addEventListener('click', function(event) {
             event.preventDefault();
-            elemContainer.style.left = '100%';
+            var allPostCards = document.querySelectorAll('#postcards > li');
+            var allCalendars = document.querySelectorAll('#calendars > li');
+            for (var i = 0; i < allPostCards.length; i++) {
+                allPostCards[i].className = 'invisibl fade-in';
+            }
+            for (var i = 0; i < allCalendars.length; i++) {
+                allCalendars[i].className = 'visibl fade-in';
+            }
         });
         document.querySelector('#categories .postcardItem').addEventListener('click', function(event) {
             event.preventDefault();
-            elemContainer.style.left = '0';
+            var allPostCards = document.querySelectorAll('#postcards > li');
+            var allCalendars = document.querySelectorAll('#calendars > li');
+            for (var i = 0; i < allPostCards.length; i++) {
+                allPostCards[i].className = 'visibl fade-in';
+            }
+            for (var i = 0; i < allCalendars.length; i++) {
+                allCalendars[i].className = 'invisibl fade-in';
+            }
         });
 
     function ulMover(flag) {
         if (flag == 1) {
             if (currIndex > 0) {
                 currIndex--;
-                containerLi[currIndex].className = 'visibl';
-                containerLi[currIndex + 5].className = 'invisibl';
+                containerLi[currIndex].className = 'visibl fade-in';
+                containerLi[currIndex + 5].className = 'invisibl fade-in';
             }
         } else {
             if (currIndex + 5 < containerLi.length) {
-                containerLi[currIndex].className = 'invisibl';
-                containerLi[currIndex + 5].className = 'visibl';
+                containerLi[currIndex].className = 'invisibl fade-in';
+                containerLi[currIndex + 5].className = 'visibl fade-in';
                 currIndex++;
             }
         }

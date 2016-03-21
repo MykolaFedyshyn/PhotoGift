@@ -262,7 +262,7 @@
 /*------------template carousel----------------*/
 
 #carousel .carouselList {
-    width: 90%;
+    width: 85%;
     overflow: hidden;
     /*margin: 0 5%;*/
     margin: 0 auto;
@@ -274,7 +274,7 @@
     margin: 0;
     padding: 0;
     position: relative;
-    transition: left 0.5s linear;
+    transition: left 0.9s linear;
     left: 0;
 }
 
@@ -300,12 +300,15 @@
 }
 
 #carousel .templNav {
-    width: 3%;
+    width: 100px;
     height: 100px;
-    background: rgba(0, 0, 0, 0.4);
     position: absolute;
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 26px;
+}
+
+#carousel .templNav:hover {
+    background: rgba(72, 168, 168, 0.6);
 }
 
 #carousel .templNav::before {
@@ -315,24 +318,42 @@
     left: 0;
     right: 0;
     line-height: 100px;
-    font-size: 20px;
+    font-size: 24px;
     color: #fff;
 }
 
 #carousel .prev {
-    left: 2%;
+    left: 0;
     text-align: center;
 }
 
 #carousel .next {
-    right: 2%;
+    right: 0;
     text-align: center;
 }
 .hoverBlack {
     position: absolute;
     top: 0;
     left: 0;
-    /* width: 100%;
-    height: 5000px; */
     background: rgba(0, 0, 0, 0.8);
+}
+
+#categories a:hover{
+    background-color: rgba(255, 231, 159, 0.9);
+    text-decoration: none;
+    color: grey;
+
+}
+
+#categories .active{
+    background-color: rgba(100, 100, 100, 0.9);
+}
+
+#categories .no-active{
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+a.calendarItem, a.postcardItem{
+    border-radius: 26px;
+    padding: 9px;
 }
