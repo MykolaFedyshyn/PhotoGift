@@ -346,7 +346,7 @@
 }
 
 #categories .active{
-    background-color: rgba(100, 100, 100, 0.9);
+    background-color: rgb(75, 75, 75);
 }
 
 #categories .no-active{

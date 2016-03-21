@@ -19,9 +19,9 @@
     function addToCanvas(){
         var canvas = document.getElementById('work-field-canvas');
         var ctx = canvas.getContext('2d');
-        var templSvg = document.getElementsByClassName('templates');
-        for (var i = 0; i < templSvg.length; i++) {
-            templSvg[i].addEventListener('click',draw,false);
+        var tmpl = document.getElementsByClassName('templates');
+        for (var i = 0; i < tmpl.length; i++) {
+            tmpl[i].addEventListener('click',draw,false);
         }
         function draw(){
             var mainel = document.getElementById('work-field');
@@ -90,6 +90,8 @@
             for (var i = 0; i < allCalendars.length; i++) {
                 allCalendars[i].className = 'visibl fade-in';
             }
+            document.querySelector('#categories .calendarItem').className = 'calendarItem active';
+            document.querySelector('#categories .postcardItem').className = 'postcardItem no-active';
         });
         document.querySelector('#categories .postcardItem').addEventListener('click', function(event) {
             event.preventDefault();
@@ -101,6 +103,8 @@
             for (var i = 0; i < allCalendars.length; i++) {
                 allCalendars[i].className = 'invisibl fade-in';
             }
+            document.querySelector('#categories .calendarItem').className = 'calendarItem no-active';
+            document.querySelector('#categories .postcardItem').className = 'postcardItem active';
         });
         document.querySelector('#collapse-btn').addEventListener('click', function(event) {
             var tmplPanel = document.querySelector('#template-wrapper');
