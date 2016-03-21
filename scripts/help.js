@@ -41,8 +41,8 @@
         coverDiv.className = 'hoverBlack';
         wrap.appendChild(coverDiv);
         coverDiv.style.zIndex = 40;
-        coverDiv.style.width = document.body.clientWidth + 'px';
-        coverDiv.style.height = document.body.clientHeight + 'px';
+        coverDiv.style.width = window.innerWidth + 'px';
+        coverDiv.style.height = window.innerHeight + 'px';
         createHelpBox(containerArr[i], objArr[i], wrap, coverDiv);
     };
 
