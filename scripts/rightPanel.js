@@ -1,16 +1,33 @@
-//------------------add new elem to picture list-----------------------
-
 var inpFile = document.querySelector('#fileLoad');
 var pictContainer = document.querySelector('.picturesContainer');
 var canvasContainer = document.getElementById('work-field');
 var mainCanvas = document.getElementById('work-field-canvas');
+var drawBtn = document.getElementById('addDrawBox');
+var drawAllow = document.getElementById('drawAllow');
 var mainctx = mainCanvas.getContext('2d');
 var index = 1;
 var canvImagesCount = 1;
 var canMove = true;
-var imageArr = [];
 var totalZindex = 1;
-var zIndexLimit = 20;
+var zIndexLimit = 35;
+var paint;
+var colorList = {
+    purpleCol: "#cb3594",
+    greenCol: "#659b41",
+    yellowCol: "#ffcf33",
+    brownCol: "#986928",
+    blueCol: "#69c",
+    whiteCol: "#fff",
+    blackCol: "#000"
+};
+var curColor = colorList.purpleCol;
+var sizeList = {
+    smallSize: 3,
+    normSize: 8,
+    largeSize: 14,
+    hugeSize: 19
+};
+var curSize = sizeList.smallSize;
 
 inpFile.addEventListener('change', function(e) {
     if (index > 3) {
@@ -44,22 +61,39 @@ canvasContainer.ondrop = function(ev) {
     var xPos = (ev.clientX - rect.left) - (img.width / 10);
     var yPos = (ev.clientY - rect.top) - (img.height / 10);
 
-    var mainCont = document.getElementById('work-field');
-    var cnvEl = createElem(mainCont, 'cnvImage', Math.floor(img.width / 5), Math.floor(img.height / 5), img, xPos, yPos);
+    //var mainCont = document.getElementById('work-field');
+    var newWidth = Math.floor(img.width / 5);
+    var newHeight = Math.floor(img.height / 5);
+    var cnvEl = createElem({
+        source: this,
+        name: 'cnvImage',
+        image: img,
+        width: newWidth,
+        height: newHeight,
+        posX: xPos,
+        posY: yPos,
+        canRotate: true,
+        canDraw: false
+    });
     cnvEl.onclick = function() {
         var that = this;
-        addMoveListeners(img, that);
+        addMoveListeners(that);
     };
 };
 mainCanvas.onclick = function() {
+    var drawPanel = document.getElementById('drawTools');
     var allElems = this.parentNode.children;
     for (var i = 0; i < allElems.length; i++) {
         allElems[i].className = '';
         changeZindex(allElems[i], 'canvAncor', -5);
         changeZindex(allElems[i], 'canvDel fa fa-times', -5);
     }
+    drawPanelAnime(drawPanel, 0, 0, '0 10px', 0);
+    startDraw(drawAllow, true);
 };
-//--------------------------------------------------
+//----------------------------------------------------------------------------------
+// Handler for adding image to right area and start listeners for dragging
+//----------------------------------------------------------------------------------
 function handleImage(e, ctx, canvas) {
     var reader = new FileReader();
     reader.onload = function(event) {
@@ -86,20 +120,29 @@ function handleImage(e, ctx, canvas) {
     };
     reader.readAsDataURL(e.target.files[0]);
 }
-//--------------------------------------------------
-function createElem(source, name, width, height, image, x, y) {
+//----------------------------------------------------------------------------------
+// Handler for element creating on editor area
+//----------------------------------------------------------------------------------
+function createElem(paramObj) {
     var canvEl = document.createElement('div');
-    canvEl.style.width = width + 'px';
-    canvEl.style.height = height + 'px';
-    canvEl.id = 'mainCanvElement' + canvImagesCount;
+    canvEl.style.width = paramObj.width + 'px';
+    canvEl.style.height = paramObj.height + 'px';
+    canvEl.id = paramObj.name + canvImagesCount;
     canvEl.style.position = 'absolute';
     canvEl.style.zIndex = totalZindex;
-
+    if (!!paramObj.bg) {
+        canvEl.style.background = paramObj.bg;
+    }
+    canvEl.canRotate = paramObj.canRotate;
+    canvEl.canDraw = paramObj.canDraw;
     var ancrEl = addToolElem(canvEl, 'canvAncor');
     ancrEl.onmousedown = function(e) {
-        //e.stopPropagation();
         var that = this;
-        addResizeListeners(image, that, e);
+        if (!!paramObj.image) {
+            addResizeListeners(that, e, paramObj.image);
+        } else {
+            addResizeListeners(that, e);
+        }
     };
     var delEl = addToolElem(canvEl, 'canvDel fa fa-times');
     delEl.onclick = function(e) {
@@ -107,21 +150,21 @@ function createElem(source, name, width, height, image, x, y) {
         var container = this.parentNode.parentNode;
         container.removeChild(this.parentNode);
     };
-
     var tempCanv = document.createElement('canvas');
-    tempCanv.id = name + canvImagesCount;
-    tempCanv.setAttribute('width', width);
-    tempCanv.setAttribute('height', height);
+    tempCanv.setAttribute('width', paramObj.width);
+    tempCanv.setAttribute('height', paramObj.height);
     var curCont = tempCanv.getContext('2d');
-    curCont.drawImage(image, 0, 0, width, height);
+    if (!!paramObj.image) {
+        curCont.drawImage(paramObj.image, 0, 0, paramObj.width, paramObj.height);
+    }
 
     canvEl.appendChild(tempCanv);
-    source.appendChild(canvEl);
-    canvEl.style.top = y + 'px';
-    canvEl.style.left = x + 'px';
+    paramObj.source.appendChild(canvEl);
+    canvEl.style.top = paramObj.posY + 'px';
+    canvEl.style.left = paramObj.posX + 'px';
     canvEl.rotateDeg = 0;
     canvImagesCount++;
-    if(totalZindex < zIndexLimit) {
+    if (totalZindex < zIndexLimit) {
         totalZindex++;
     }
     return canvEl;
@@ -140,8 +183,10 @@ function changeZindex(parent, cls, value) {
         ancrEl.style.zIndex = value;
     }
 }
-//--------------------------------------------------
-function addMoveListeners(img, context) {
+//----------------------------------------------------------------------------------
+// Handle for element moving
+//----------------------------------------------------------------------------------
+function addMoveListeners(context) {
     var selected = null;
     var x_pos = 0,
         y_pos = 0;
@@ -171,7 +216,6 @@ function addMoveListeners(img, context) {
         selected = elem;
         x_elem = x_pos - selected.offsetLeft;
         y_elem = y_pos - selected.offsetTop;
-
     }
 
     function move_elem(e) {
@@ -187,16 +231,38 @@ function addMoveListeners(img, context) {
         selected = null;
     }
     context.className = 'active';
+    var drawPanel = document.getElementById('drawTools');
+    if (context.canDraw) {
+        drawPanelAnime(drawPanel, '56px', 1, '10px', '0 0 10px');
+    } else {
+        drawPanelAnime(drawPanel, 0, 0, '0 10px', 0);
+        startDraw(drawAllow, true);
+    }
+    context.onmouseover = function() {
+        context.style.cursor = (context.canDraw && !canMove) ? 'url(img/Pencil.cur), auto' : 'move';
+    }
+
 }
 
-function addResizeListeners(img, that, ev) {
+function drawPanelAnime(ctx, hgt, op, padd, marg) {
+    ctx.style.height = hgt;
+    ctx.style.opacity = op;
+    ctx.style.padding = padd;
+    ctx.style.margin = marg;
+}
+//----------------------------------------------------------------------------------
+// Handler for element resizing
+//----------------------------------------------------------------------------------
+function addResizeListeners(that, ev, img) {
     var startX, startY, startWidth, startHeight, ratio;
     var maxWidth = 70;
     var maxHeiht = 70;
     var container = that.parentNode;
     var containerCanv = container.getElementsByTagName('canvas')[0];
-    resizeInit(ev);
 
+    if (canMove) {
+        resizeInit(ev);
+    }
 
     function resizeInit(e) {
         canMove = false;
@@ -211,16 +277,24 @@ function addResizeListeners(img, that, ev) {
     }
 
     function doResize(e) {
-        //var w = startWidth + e.clientX - startX;
         var h = startHeight + e.clientY - startY;
-        var w = Math.floor(h * ratio);
+        var w;
+        if (!!img) {
+            w = Math.floor(h * ratio);
+        } else {
+            w = startWidth + e.clientX - startX;
+        }
         if (h > maxHeiht && w > maxWidth) {
             container.style.width = w + 'px';
             container.style.height = h + 'px';
             containerCanv.width = w;
             containerCanv.height = h;
             var curCont = containerCanv.getContext('2d');
-            curCont.drawImage(img, 0, 0, w, h);
+            if (!!img) {
+                curCont.drawImage(img, 0, 0, w, h);
+            } else {
+                redraw(curCont);
+            }
         }
     }
 
@@ -229,5 +303,136 @@ function addResizeListeners(img, that, ev) {
         document.removeEventListener('mousemove', doResize, false);
         document.removeEventListener('mouseup', stopResize, false);
     }
-
 }
+//----------------------------------------------------------------------------------
+// Add an area for drawing and draw on it
+//----------------------------------------------------------------------------------
+drawAllow.onclick = function(e) {
+    e.preventDefault();
+    if (!canMove) {
+        startDraw(this, true);
+    } else {
+        startDraw(this, false);
+    }
+};
+drawBtn.onclick = function(e) {
+    e.preventDefault();
+    var canvEl = createElem({
+        source: canvasContainer,
+        name: 'cnvPaint',
+        image: '',
+        width: 200,
+        height: 200,
+        posX: 0,
+        posY: 0,
+        bg: 'rgba(219, 221, 219, 0.3)',
+        canRotate: false,
+        canDraw: true
+    });
+    var innerCanv = canvEl.getElementsByTagName('canvas')[0];
+    innerCanv.clickX = [];
+    innerCanv.clickY = [];
+    innerCanv.clickDrag = [];
+    innerCanv.clickColor = [];
+    innerCanv.clickSize = [];
+    context = innerCanv.getContext('2d');
+    canvEl.onclick = function() {
+        var that = this;
+        addMoveListeners(that);
+    };
+    innerCanv.onmousedown = function(e) {
+        if (!canMove && canvEl.className == 'active') {
+            var rect = this.getBoundingClientRect();
+            var mouseX = e.clientX - rect.left;
+            var mouseY = e.clientY - rect.top;
+
+            paint = true;
+            addClick(this, mouseX, mouseY);
+            redraw(this.getContext('2d'));
+        }
+
+    };
+    innerCanv.onmousemove = function(e) {
+        if (paint) {
+            var rect = this.getBoundingClientRect();
+            addClick(this, e.clientX - rect.left, e.clientY - rect.top, true);
+            redraw(this.getContext('2d'));
+        }
+    };
+    innerCanv.onmouseup = function(e) {
+        paint = false;
+    };
+    innerCanv.onmouseleave = function(e) {
+        paint = false;
+    };
+};
+
+function addClick(that, x, y, dragging) {
+    that.clickX.push(x);
+    that.clickY.push(y);
+    that.clickDrag.push(dragging);
+    that.clickColor.push(curColor);
+    that.clickSize.push(curSize);
+}
+
+function redraw(ctx) {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.lineJoin = "round";
+
+    for (var i = 0; i < ctx.canvas.clickX.length; i++) {
+        ctx.beginPath();
+        if (ctx.canvas.clickDrag[i] && i) {
+            ctx.moveTo(ctx.canvas.clickX[i - 1], ctx.canvas.clickY[i - 1]);
+        } else {
+            ctx.moveTo(ctx.canvas.clickX[i] - 1, ctx.canvas.clickY[i]);
+        }
+        ctx.lineTo(ctx.canvas.clickX[i], ctx.canvas.clickY[i]);
+        ctx.closePath();
+        ctx.strokeStyle = ctx.canvas.clickColor[i];
+        ctx.lineWidth = ctx.canvas.clickSize[i];
+        ctx.stroke();
+    }
+}
+
+function startDraw(container, flag) {
+    if (flag) {
+        canMove = true;
+        container.className = '';
+        container.innerHTML = 'Start drawing';
+    } else {
+        canMove = false;
+        container.className = 'drawON';
+        container.innerHTML = 'Stop drawing';
+    }
+}
+
+//------------------------------------------
+var colorSelectEl = document.getElementById('colorChooser');
+colorSelectEl.onclick = function(e) {
+    drawingFeatures(this, colorList, 'currCol', 'color', e);
+};
+var sizeSelectEl = document.getElementById('sizeChooser');
+sizeSelectEl.onclick = function(e) {
+    drawingFeatures(this, sizeList, 'currSize', 'size', e);
+};
+
+function drawingFeatures(ctx, propList, clsN, param, ev) {
+    var targId = ev.target.id;
+    if (targId) {
+        for (var i = 0; i < ctx.children.length; i++) {
+            ctx.children[i].className = ' ';
+        }
+        for (key in propList) {
+            if (key == targId) {
+                if (param == 'color') {
+                    curColor = propList[key];
+                } else {
+                    curSize = propList[key];
+                }
+                ev.target.className = clsN;
+            }
+        }
+    }
+}
+
+//-----------------------------------------

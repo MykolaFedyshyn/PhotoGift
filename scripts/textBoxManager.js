@@ -32,7 +32,7 @@ var TextBoxManager = {
 		var textBoxesNode = document.createElement("div");
 		textBoxesNode.setAttribute("id", "textBoxes");
 		textBoxesNode.setAttribute("class", "textBoxes");
-		this.workFieldDOMNode.appendChild(textBoxesNode);
+		document.getElementById("work-field").appendChild(textBoxesNode);
 
 		// Save the reference to it for later
 		this.textBoxesDOMNode = document.querySelector("#textBoxes");
@@ -47,18 +47,15 @@ var TextBoxManager = {
 		newTextBox.setAttribute("id", "textBox-" + (this.textBoxInstances.length + 1));
 
 		// Position every new textBox in a chess like cascade
-		newTextBox.style.top = (this.textBoxInstances.length)*60 + "px";
-		// newTextBox.style.left = (this.textBoxInstances.length)*100 + "px";
+		newTextBox.style.top = (this.textBoxInstances.length)*100 + "px";
+		newTextBox.style.left = (this.textBoxInstances.length)*100 + "px";
 
 	  // textBox.innerText = "azazaza";
 	  this.textBoxInstances.push(newTextBox);
 	  console.log("Added new textbox");
 	},
 
-	remove: function(textBox) {
-		/* var indexOfRemovedTextBox = this.textBoxInstances.findIndex(function(instance) { return instance === textBox; });
-		this.textBoxInstances = Array.concat(this.textBoxInstances.slice(0, indexOfRemovedTextBox), this.textBoxInstances.slice(indexOfRemovedTextBox + 1, this.textBoxInstances.length - 1)) */
-	},
+	remove: function() {},
 
 	/**
 	 * Triggered whenever any textBox is added, updated or removed
@@ -67,11 +64,12 @@ var TextBoxManager = {
 	onChange: function(changes) {
 		console.log("changes: ", changes);
 
+		// this.textBoxesDOMNode.innerHTML = "";
+
 		// Deal with added textBoxes
-		changes[0].object.forEach(function(textBox, index, changes) {
+		changes[0].object.forEach(function(textBox) {
 			this.textBoxesDOMNode.appendChild(textBox);
 			this.mountedInTheDOM(textBox);
-			index + 1 === changes.length && textBox.focus();
 		}.bind(this));
 
 		// Deal with removed textBoxes
@@ -82,35 +80,36 @@ var TextBoxManager = {
 	},
 
 	onClick: function(event) {},
-
-	onMouseDown: function(textBox, event) {
-		textBox.dataset.draggable = true;
+	onMouseDown: function(event) {
+		event.target.setAttribute("draggable", true);
 	},
 
 	onMove: function(textBox, event) {
-		if(textBox.dataset.draggable === "true") {
+		if(event.target.getAttribute("draggable") === "true") {
 			textBox.style.left= (event.pageX - this.workFieldDOMNode.offsetLeft) + "px";
 			// textBox.style.left= (event.pageX - event.offsetX - this.workFieldDOMNode.offsetLeft) + "px";
 			textBox.style.top = (event.pageY - this.workFieldDOMNode.offsetTop) + "px";
 			// textBox.style.top = (event.pageY - event.offsetY - this.workFieldDOMNode.offsetTop) + "px";
+
+    	console.log("textBox.style.left: ", textBox.style.left);
+    	console.log("textBox.style.top: ", textBox.style.top);
+
+    	console.log("event.target.style.left: ", event.target.style.left);
+    	console.log("event.target.style.top: ", event.target.style.top);
+
+    	console.log("workFieldDOMNode.offsetLeft: ", this.workFieldDOMNode.offsetLeft);
+    	console.log("workFieldDOMNode.offsetTop: ", this.workFieldDOMNode.offsetTop);
+
+    	console.log("event.pageX: ", event.pageX + "px");
+    	console.log("event.pageY: ", event.pageY + "px");
+
+    	// console.log("Applied left: " + event.target.style.left +
+    	// 													" and top: " + event.target.style.top);
 		}
 	},
 
 	onMouseUp: function(textBox, event) {
-		textBox.dataset.draggable = false;
-	},
-
-	onResize: function(textBox, event) {
-		event.stopPropagation();
-
-		// textBox.style.width =
-		// textBox.style.height =
-
-		document.body.addEventListener("mouseup", function() {});
-	},
-
-	onClose: function(textBox, event) {
-		this.remove(textBox);
+		textBox.setAttribute("draggable", false);
 	},
 
 	/**
@@ -119,18 +118,10 @@ var TextBoxManager = {
 	 */
 	mountedInTheDOM: function(textBox) {
 		textBox.addEventListener("click", 		this.onClick.bind(this), false);
-		textBox.addEventListener("mousedown", this.onMouseDown.bind(this, textBox), false);
+		textBox.addEventListener("mousedown", this.onMouseDown.bind(this), false);
+		textBox.addEventListener("mousemove", this.onMove.bind(this, textBox), false);
 
-		Array.prototype.forEach.call(textBox.querySelectorAll("button.resize"), function(button) {
-			button.addEventListener("mousedown", this.onResize.bind(this, textBox), false);
-		});
-
-		Array.prototype.forEach.call(textBox.querySelectorAll("button.close"), function(button) {
-			button.addEventListener("click", this.onClose.bind(this, textBox), false);
-		});
-
-		this.textBoxesDOMNode.addEventListener("mousemove", this.onMove.bind(this, textBox), false);
-		this.textBoxesDOMNode.addEventListener("mouseup",   this.onMouseUp.bind(this, textBox), false);
+		document.body.addEventListener("mouseup",   this.onMouseUp.bind(this, textBox), false);
 	},
 
 	/**

@@ -1,0 +1,121 @@
+#drawTools {
+    padding: 0 10px;
+    height: 0;
+    opacity: 0;
+    /* display: none; */
+    transition: all 0.25s;
+    box-shadow: rgba(50, 50, 50, 0.74902) 0px 2px 5px 0px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+}
+#drawAllow {
+    border-top: 1px solid #96d1f8;
+    background: #65a9d7;
+    padding: 9px 0;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+    text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+    vertical-align: super;
+    /* margin: 0 10px; */
+    display: inline-block;
+    width: 135px;
+    text-align: center;
+}
+#drawAllow:hover,
+#drawAllow.drawON {
+    border-top-color: #28597a;
+    background: #28597a;
+    color: #ccc;
+}
+#colorChooser,
+#sizeChooser {
+    display: inline-block;
+    /* vertical-align: middle; */
+    margin: 0 10px;
+}
+#colorChooser > div,
+#sizeChooser > div {
+    display: inline-block;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    width: 30px;
+    height: 30px;
+    /* float:left; */
+    margin: 0 7px;
+    border-radius: 5px;
+    height: 28px;
+    vertical-align: text-bottom;
+    cursor: pointer;
+}
+
+#colorChooser div:first-of-type,
+#sizeChooser div:first-of-type {
+    width: auto;
+    border: none;
+    line-height: 2;
+    vertical-align: super;
+    font-size: 18px;
+    color: #fff;
+    text-shadow: -1px 1px 3px rgba(0, 0, 0, 1);
+}
+#colorChooser div:hover,
+#sizeChooser div:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+#colorChooser div:first-of-type:hover,
+#sizeChooser div:first-of-type:hover {
+    box-shadow: none;
+}
+#purpleCol {
+    background: #cb3594;
+}
+#greenCol {
+    background: #659b41;
+}
+#yellowCol {
+    background: #ffcf33;
+}
+#brownCol {
+    background: #986928;
+}
+#blueCol {
+    background: #69c;
+}
+#blackCol {
+    background: #000;
+}
+#whiteCol {
+    background: #fff;
+}
+#colorChooser .currCol,
+#sizeChooser .currSize {
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+#sizeChooser .currSize {
+    background: rgba(195, 188, 188, 0.55);
+}
+#sizeChooser > div {
+    border-radius: 50%;
+}
+#sizeChooser #smallSize {
+    width: 12px;
+    height: 12px;
+    margin-bottom: 8px;
+}
+#sizeChooser #normSize {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 5px;
+}
+#sizeChooser #largeSize {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 2px;
+}
+#sizeChooser #hugeSize {
+    width: 30px;
+    height: 30px;
+}

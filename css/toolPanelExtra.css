@@ -26,3 +26,6 @@
 #tools-panel #layer-down {
     background-image: url('../img/layer-back.png');
 }
+#tools-panel #addDrawBox {
+    background-image: url('../img/paint.png');
+}

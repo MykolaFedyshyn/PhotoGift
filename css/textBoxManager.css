@@ -9,20 +9,17 @@
 #textBoxes .textBox {
 	position: absolute;
 	top: 0;
-	left: 400px;
+	left: 0;
 	z-index: 10;
 	display: block;
 	width: 100px;
-	height: 50px;
-	text-align: center;
-	font-size: 2em;
+	height: 100px;
+	background-color: rgba(255, 255, 255, 0.7);
 }
 
-#textBoxes .textBox:focus,
-#textBoxes .textBox[data-draggable="true"] {
-  /*-moz-user-select: none;
+#textBoxes .textBox [draggable] {
+  -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
-  cursor: move;*/
-  background-color: rgba(255, 255, 255, 0.7);
+  cursor: move;
 }

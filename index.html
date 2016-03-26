@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/mtpStyle.css">
     <link rel="stylesheet" type="text/css" href="css/toolsPanel.css">
     <link rel="stylesheet" type="text/css" href="css/toolPanelExtra.css">
-    <link rel="stylesheet" type="text/css" href="css/textBoxManager.css">
+    <link rel="stylesheet" type="text/css" href="css/drawingPanel.css">
 </head>
 
 <body>
@@ -20,19 +20,41 @@
             <div id="logo"></div>
             <div id="login"></div>
         </div>
-        <div id="container">
+        <div id="container" class="clearfix">
             <div id="tools-panel">
                 <div id="rotate-left" class="toolBtn"></div>
                 <div id="rotate-right" class="toolBtn"></div>
                 <div id="layer-up" class="toolBtn"></div>
                 <div id="layer-down" class="toolBtn"></div>
-                <div class="tool-button"><i class="icon fa fa-arrows"></i>&nbsp;ALIGN</div>
+                <div id="addDrawBox" class="toolBtn"></div>
                 <div class="tool-button"><i class="icon fa fa-search-plus"></i>&nbsp;ZOOM</div>
                 <div class="tool-button" id="addTextBox"><i class="icon fa fa-font"></i>&nbsp;TEXT</div>
 <!--                 <div class="tool-button"><i class="icon fa fa-undo"></i>&nbsp;UNDO</div>
                 <div class="tool-button"><i class="icon fa fa-repeat"></i>&nbsp;REDO</div> -->
             </div>
             <div id="work-field-container">
+                <div id="toolsFeatures">
+                <div id="drawTools">
+                    <a href="#" id="drawAllow">Start drawing</a>
+                    <div id="colorChooser">
+                        <div>Color:</div>
+                        <div id="greenCol" class="currCol"></div>
+                        <div id="blackCol" ></div>
+                        <div id="purpleCol" ></div>
+                        <div id="yellowCol" ></div>
+                        <div id="brownCol" ></div>
+                        <div id="blueCol" ></div>
+                        <div id="whiteCol" ></div>
+                    </div>
+                    <div id="sizeChooser">
+                        <div>Size:</div>
+                        <div id="smallSize" class="currSize"></div>
+                        <div id="normSize" ></div>
+                        <div id="largeSize" ></div>
+                        <div id="hugeSize" ></div>
+                    </div>
+                </div>
+            </div>
                 <div id="work-field">
                     <canvas id="work-field-canvas" width="808" height="542">
                     </canvas>
@@ -91,7 +113,7 @@
     <script src="scripts/help.js"></script>
     <script src="scripts/rotate.js"></script>
     <script src="scripts/layerChange.js"></script>
-    <script src="scripts/textBoxManager.js"></script>
+    <script src="scripts/tools-scripts.js"></script>
 
 </body>
 

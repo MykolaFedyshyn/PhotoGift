@@ -6,14 +6,14 @@
 
     rotLeft.onclick = function() {
         var activeEl = mainContainer.getElementsByClassName('active')[0];
-        if(activeEl) {
+        if(activeEl && activeEl.canRotate) {
             rotateEl(activeEl, '-');
         }
     };
     rotRight.onclick = function() {
         var activeEl = mainContainer.getElementsByClassName('active')[0];
-        if(activeEl) {
-        rotateEl(activeEl, '+');
+        if(activeEl  && activeEl.canRotate) {
+            rotateEl(activeEl, '+');
         }
     };
     //--------------------------------------
