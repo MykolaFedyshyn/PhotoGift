@@ -85,10 +85,9 @@ mainCanvas.onclick = function() {
     var allElems = this.parentNode.children;
     for (var i = 0; i < allElems.length; i++) {
         allElems[i].className = '';
-        changeZindex(allElems[i], 'canvAncor', -5);
-        changeZindex(allElems[i], 'canvDel fa fa-times', -5);
+        changeZindex(allElems[i], ['canvAncor', 'canvDel fa fa-times'], -5, 0);
     }
-    drawPanelAnime(drawPanel, 0, 0, '0 10px', 0);
+    drawPanelAnime(drawPanel, 0, 0, '0 10px', 0, 'absolute');
     startDraw(drawAllow, true);
 };
 //----------------------------------------------------------------------------------
@@ -133,6 +132,9 @@ function createElem(paramObj) {
     if (!!paramObj.bg) {
         canvEl.style.background = paramObj.bg;
     }
+    if(!!paramObj.image) {
+        canvEl.imgSrc = paramObj.image.src;
+    }
     canvEl.canRotate = paramObj.canRotate;
     canvEl.canDraw = paramObj.canDraw;
     var ancrEl = addToolElem(canvEl, 'canvAncor');
@@ -147,8 +149,10 @@ function createElem(paramObj) {
     var delEl = addToolElem(canvEl, 'canvDel fa fa-times');
     delEl.onclick = function(e) {
         e.stopPropagation();
-        var container = this.parentNode.parentNode;
-        container.removeChild(this.parentNode);
+        if (canMove) {
+            var container = this.parentNode.parentNode;
+            container.removeChild(this.parentNode);
+        }
     };
     var tempCanv = document.createElement('canvas');
     tempCanv.setAttribute('width', paramObj.width);
@@ -177,10 +181,14 @@ function addToolElem(container, clsName) {
     return tempDiv;
 }
 
-function changeZindex(parent, cls, value) {
-    var ancrEl = parent.getElementsByClassName(cls)[0];
-    if (ancrEl) {
-        ancrEl.style.zIndex = value;
+function changeZindex(parent, cls, value, transp) {
+    var ancrEl;
+    for (var i = 0; i < cls.length; i++) {
+        ancrEl = parent.getElementsByClassName(cls[i])[0];
+        if (ancrEl) {
+            ancrEl.style.zIndex = value;
+            ancrEl.style.opacity = transp;
+        }
     }
 }
 //----------------------------------------------------------------------------------
@@ -197,15 +205,22 @@ function addMoveListeners(context) {
 
     for (var i = 0; i < allElems.length; i++) {
         allElems[i].className = '';
-        changeZindex(allElems[i], 'canvAncor', -5);
-        changeZindex(allElems[i], 'canvDel fa fa-times', -5);
+        changeZindex(allElems[i], ['canvAncor', 'canvDel fa fa-times'], -5, 0);
     }
-    changeZindex(context, 'canvAncor', 5);
-    changeZindex(context, 'canvDel fa fa-times', 5);
+    if (context.canDraw && !canMove) {
+        changeZindex(context, ['canvAncor', 'canvDel fa fa-times'], -5, 0);
+    } else {
+        changeZindex(context, ['canvAncor', 'canvDel fa fa-times'], 5, 1);
+    }
+    // changeZindex(context, 'canvAncor', 5, 1);
+    // changeZindex(context, 'canvDel fa fa-times', 5, 1);
 
     context.onmousedown = function() {
-        if (context.className == 'active' && canMove == true) {
-            drag_init(context);
+        if (this.className == 'active' && canMove) {
+            drag_init(this);
+            changeZindex(this, ['canvAncor', 'canvDel fa fa-times'], 5, 1);
+        } else if(this.canDraw) {
+            changeZindex(this, ['canvAncor', 'canvDel fa fa-times'], -5, 0);
         }
         return false;
     };
@@ -233,22 +248,30 @@ function addMoveListeners(context) {
     context.className = 'active';
     var drawPanel = document.getElementById('drawTools');
     if (context.canDraw) {
-        drawPanelAnime(drawPanel, '56px', 1, '10px', '0 0 10px');
+        drawPanelAnime(drawPanel, '56px', 1, '10px', '0 0 10px', 'relative');
     } else {
-        drawPanelAnime(drawPanel, 0, 0, '0 10px', 0);
+        drawPanelAnime(drawPanel, 0, 0, '0 10px', 0, 'absolute');
         startDraw(drawAllow, true);
     }
     context.onmouseover = function() {
         context.style.cursor = (context.canDraw && !canMove) ? 'url(img/Pencil.cur), auto' : 'move';
     }
-
 }
 
-function drawPanelAnime(ctx, hgt, op, padd, marg) {
+function drawPanelAnime(ctx, hgt, op, padd, marg, pos) {
+    var parentChildren = ctx.parentNode.children;
+    for (var i = 0; i < parentChildren.length; i++) {
+        parentChildren[i].style.height = 0;
+        parentChildren[i].style.opacity = 0;
+        parentChildren[i].style.padding = '0 10px';
+        parentChildren[i].style.margin = 0;
+        parentChildren[i].style.zIndex = 0;
+    }
     ctx.style.height = hgt;
     ctx.style.opacity = op;
     ctx.style.padding = padd;
     ctx.style.margin = marg;
+    ctx.style.zIndex = 5;
 }
 //----------------------------------------------------------------------------------
 // Handler for element resizing
@@ -262,6 +285,7 @@ function addResizeListeners(that, ev, img) {
 
     if (canMove) {
         resizeInit(ev);
+        container.style.cursor = 'se-resize';
     }
 
     function resizeInit(e) {
@@ -296,10 +320,13 @@ function addResizeListeners(that, ev, img) {
                 redraw(curCont);
             }
         }
+        container.style.cursor = 'se-resize';
+        changeZindex(container, ['canvAncor', 'canvDel fa fa-times'], 5, 1);
     }
 
     function stopResize(e) {
         canMove = true;
+        container.style.cursor = 'auto';
         document.removeEventListener('mousemove', doResize, false);
         document.removeEventListener('mouseup', stopResize, false);
     }
@@ -422,17 +449,11 @@ function drawingFeatures(ctx, propList, clsN, param, ev) {
         for (var i = 0; i < ctx.children.length; i++) {
             ctx.children[i].className = ' ';
         }
-        for (key in propList) {
-            if (key == targId) {
-                if (param == 'color') {
-                    curColor = propList[key];
-                } else {
-                    curSize = propList[key];
-                }
-                ev.target.className = clsN;
-            }
+        if (param == 'color') {
+            curColor = propList[targId];
+        } else {
+            curSize = propList[targId];
         }
+        ev.target.className = clsN;
     }
 }
-
-//-----------------------------------------

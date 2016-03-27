@@ -1,28 +1,28 @@
 (function() {
     var objArr = [{
         content: 'Choose proper template',
-        top: '-50px',
-        left: '450px',
+        top: '-90px',
+        left: '50px',
         classN: 'fa fa-arrow-down'
     }, {
         content: 'Add your images',
-        top: '-5px',
-        left: '-250px',
+        top: '-1px',
+        left: '-295px',
         classN: 'fa fa-arrow-right'
     }, {
         content: 'Drag the images to the work field',
         top: '25px',
-        left: '250px',
+        left: '170px',
         classN: 'fa fa-arrow-down'
     }, {
         content: 'Use the tools panel',
         top: '200px',
-        right: '-300px',
+        right: '-350px',
         classN: 'fa fa-arrow-left'
     }, {
         content: 'Save the postcard',
-        top: '8px',
-        right: '90px',
+        top: '10px',
+        right: '110px',
         classN: 'fa fa-arrow-right'
     }];
     var helpBtn = document.getElementsByClassName('help fa fa-question-circle')[0];

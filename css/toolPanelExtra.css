@@ -29,3 +29,6 @@
 #tools-panel #addDrawBox {
     background-image: url('../img/paint.png');
 }
+#tools-panel #addFilter {
+    background-image: url('../img/CMYK.png');
+}

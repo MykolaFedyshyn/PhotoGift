@@ -6,11 +6,13 @@
     clear: both;
     height: 0;
 }
+
 #toolsFeatures {
     width: 100%;
     /* height: 50px; */
     /* background: rgba(255, 255, 255, 0.35); */
 }
+
 #work-field-container .active {
     box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.5);
     cursor: move;
@@ -58,6 +60,7 @@
     background: rgba(255, 255, 255, 0.5);
 }
 
+
 /*-----------------------button for downloading a picture-------*/
 
 #content-panel .inputfile {
@@ -72,6 +75,7 @@
 #content-panel .inputfile + label {
     cursor: pointer;
 }
+
 
 /*----------------------picture container-----------------------*/
 
@@ -125,7 +129,9 @@
     text-align: left;
 }
 
+
 /*-------------------------------------------------------*/
+
 #file-buttons a {
     z-index: 25;
 }
@@ -198,6 +204,7 @@
     top: 70px;
     padding: 11px 19px 11px 45px;
 }
+
 #file-buttons .help {
     top: 130px;
     padding: 11px 5px 11px 45px;
@@ -212,30 +219,39 @@
     transform: translateY(-50%);
     font-size: 27px;
 }
+
 #file-buttons span {
     font-family: "Times New Roman", Georgia, Serif;
 }
+
+
 /*-----------------info boxes----------------------*/
+    @font-face {
+    font-family: funnyFont;
+    src: url(../fonts/Hangyaboly.ttf);
+}
+
 .infoBox {
-    padding: 10px 20px;
-    background: rgba(199, 199, 199, 0.9);
-    border: 3px solid #787779;
-    border-radius: 10px;
+    font-family: funnyFont;
+    color: #fff;
+    text-shadow: -1px 2px 1px rgba(50, 50, 50, 1);
     position: absolute;
     z-index: 200;
     transition: all 1s;
     opacity: 0;
-    box-shadow: -5px 3px 10px 0px rgba(50, 50, 50, 0.75);
-    font-size: 22px;
+    font-size: 38px;
     font-weight: 600;
 }
+
 .infoBox::before {
+    font-family: FontAwesome;
     position: absolute;
-    color: rgba(199, 199, 199, 0.9);
+    color: #fff;
     font-size: 30px;
-    font-weight: 900;
+    font-weight: 600;
     text-shadow: -1px 2px 1px rgba(50, 50, 50, 1);
 }
+
 .infoBox.fa-arrow-right::before {
     right: -40px;
     top: 50%;
@@ -244,11 +260,19 @@
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
 }
+
 @keyframes move_v_r {
-    0% {right: -40px;}
-    50% {right: -45px;}
-    100% {right: -40px;}
+    0% {
+        right: -40px;
+    }
+    50% {
+        right: -45px;
+    }
+    100% {
+        right: -40px;
+    }
 }
+
 .infoBox.fa-arrow-down::before {
     left: 50%;
     bottom: -42px;
@@ -257,11 +281,19 @@
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
 }
+
 @keyframes move_h {
-    0% {bottom: -42px;}
-    50% {bottom: -47px;}
-    100% {bottom: -42px;}
+    0% {
+        bottom: -42px;
+    }
+    50% {
+        bottom: -47px;
+    }
+    100% {
+        bottom: -42px;
+    }
 }
+
 .infoBox.fa-arrow-left::before {
     left: -40px;
     top: 50%;
@@ -270,11 +302,20 @@
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
 }
+
 @keyframes move_v_l {
-    0% {left: -40px;}
-    50% {left: -45px;}
-    100% {left: -40px;}
+    0% {
+        left: -40px;
+    }
+    50% {
+        left: -45px;
+    }
+    100% {
+        left: -40px;
+    }
 }
+
+
 /*------------template carousel----------------*/
 
 #carousel .carouselList {
@@ -347,6 +388,7 @@
     right: 0;
     text-align: center;
 }
+
 .hoverBlack {
     position: absolute;
     top: 0;
@@ -354,27 +396,28 @@
     background: rgba(0, 0, 0, 0.8);
 }
 
-#categories a:hover, .collapse:hover{
+#categories a:hover,
+.collapse:hover {
     background-color: rgba(255, 231, 159, 0.9);
     text-decoration: none;
     color: grey;
-
 }
 
-#categories .active{
+#categories .active {
     background-color: rgb(75, 75, 75);
 }
 
-#categories .no-active{
+#categories .no-active {
     background-color: rgba(128, 128, 128, 0.5);
 }
 
-a.calendarItem, a.postcardItem{
+a.calendarItem,
+a.postcardItem {
     border-radius: 26px;
     padding: 9px;
 }
 
-.collapse{
+.collapse {
     color: #FFF;
     border: 1px solid #FFF;
     padding: 3px;

@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 body {
     background: #70e1f5;
     background: -webkit-linear-gradient(to left, #70e1f5 , #ffd194);
@@ -9,14 +10,15 @@ body {
 
 #wrapper {
     width: 1200px;
-    /* background-color: silver; */
     margin: 0 auto;
 }
 
 #header {
     height: 38px;
-    background-color: rgba(192, 192, 192, 0.66);
+    background-color: rgb(192, 192, 192);
     box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.75);
+    position: relative;
+    z-index: 15;
 }
 
 #logo {
@@ -81,6 +83,7 @@ body {
 }
 
 #work-field {
+    z-index: 10;
     transition: all 0.5s;
     overflow: hidden;
     position: relative;
@@ -90,9 +93,10 @@ body {
     height: auto;
     border-radius: 10px;
     border: 10px solid rgb(99, 109, 120);
-    background: radial-gradient(#3C3A3A 15%, transparent 16%) 0 0, radial-gradient(#3C3A3A 15%, transparent 16%) 8px 8px, radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 0 1px, radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 8px 9px;
-    background-color: #655F5F;
-    background-size: 16px 16px;
+    background-color: #269;
+    background-image: linear-gradient(white 2px, transparent 2px), linear-gradient(90deg, white 2px, transparent 2px), linear-gradient(rgba(255, 255, 255, .3) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .3) 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px
 }
 
 #content-panel {
@@ -108,7 +112,6 @@ body {
     padding: 10px 0 0 24px;
     box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.75);
 }
-
 
 #categories {
     padding: 23px 26px 13px;
@@ -143,27 +146,51 @@ body {
     clear: both;
 }
 
+
 /*//-------------------------------fade-in effect-------------------------*/
 
-@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
 .fade-in {
-  opacity: 0;  /* make things invisible upon start */
-  -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
-  -moz-animation:fadeIn ease-in 1;
-  animation:fadeIn ease-in 1;
-
-  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
-  -moz-animation-fill-mode:forwards;
-  animation-fill-mode:forwards;
-
-  -webkit-animation-duration:0.5s;
-  -moz-animation-duration:0.5s;
-  animation-duration:0.5s;
-
+    opacity: 0;
+    /* make things invisible upon start */
+    -webkit-animation: fadeIn ease-in 1;
+    /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+    -webkit-animation-fill-mode: forwards;
+    /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 0.5s;
+    -moz-animation-duration: 0.5s;
+    animation-duration: 0.5s;
     -webkit-animation-delay: 0.4s;
-  -moz-animation-delay: 0.4s;
-  animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
 }

@@ -1,0 +1,31 @@
+#filterTools {
+    padding: 0 10px;
+    height: 0;
+    opacity: 0;
+    transition: all 0.25s;
+    box-shadow: rgba(50, 50, 50, 0.74902) 0px 2px 5px 0px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+    position: relative;
+}
+
+#filterTools a {
+    border-top: 1px solid #96d1f8;
+    background: #65a9d7;
+    padding: 9px 12px;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+    text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+    vertical-align: super;
+    margin: 0 10px;
+    display: inline-block;
+    text-align: center;
+}
+#filterTools a:hover {
+    border-top-color: #28597a;
+    background: #28597a;
+    color: #ccc;
+}

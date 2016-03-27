@@ -7,6 +7,7 @@
     box-shadow: rgba(50, 50, 50, 0.74902) 0px 2px 5px 0px;
     background: rgba(255, 255, 255, 0.35);
     border-radius: 10px;
+    position: relative;
 }
 #drawAllow {
     border-top: 1px solid #96d1f8;
@@ -19,7 +20,6 @@
     font-size: 15px;
     text-decoration: none;
     vertical-align: super;
-    /* margin: 0 10px; */
     display: inline-block;
     width: 135px;
     text-align: center;
@@ -33,7 +33,6 @@
 #colorChooser,
 #sizeChooser {
     display: inline-block;
-    /* vertical-align: middle; */
     margin: 0 10px;
 }
 #colorChooser > div,
@@ -42,7 +41,6 @@
     border: 3px solid rgba(0, 0, 0, 0.1);
     width: 30px;
     height: 30px;
-    /* float:left; */
     margin: 0 7px;
     border-radius: 5px;
     height: 28px;
