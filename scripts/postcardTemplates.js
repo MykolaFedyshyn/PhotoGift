@@ -5,14 +5,15 @@
     var postcardTempl = [];
     var calendarTempl = [];
     var templObj = data.val();
+    
         for ( var key in templObj.postcards) {
             postcardTempl.push(templObj.postcards[key]);
         }
         for ( var key in templObj.calendars) {
             calendarTempl.push(templObj.calendars[key]);
-        }
-        addPostcardTemplate(calendarTempl, 'calendars');
+        }    
         addPostcardTemplate(postcardTempl, 'postcards');
+        addPostcardTemplate(calendarTempl, 'calendars');
         carousel();
     });
 
@@ -45,9 +46,9 @@
 
     function addPostcardTemplate(data, id){
         var li, img, i;
+        var spin = document.getElementById('spinner');
         var ul = document.getElementById(id);
             if (id == 'postcards') {
-                var spin = document.getElementById('spinner');
                 ul.removeChild(spin);
             }
        
@@ -55,7 +56,7 @@
             li = document.createElement('li');
             li.className = 'visibl fade-in';
             img = document.createElement('img');
-            img.className = 'templates fade-in';
+            img.className = 'templates';
             img.src = data[i];
             img.style.height = '100%';
             li.appendChild(img);
@@ -66,74 +67,82 @@
 
 //---------------work with categories------------------------------------------------//
     function carousel() {
-        var elemContainer = document.querySelector('#postcards');
-        var containerLi = elemContainer.querySelectorAll('li');
+        var tmplPanel = document.querySelector('#template-wrapper');
+        var collapsePanel = document.querySelector('#categories');
+        var collapseBtn = document.querySelector('#collapse-btn');
+        var allPostCards = document.querySelectorAll('#postcards > li');
+        var allCalendars = document.querySelectorAll('#calendars > li');
         var prevNav = document.querySelector('#carousel .prev');
         var nextNav = document.querySelector('#carousel .next');
-        var containerPos = 0;
-        var containerWidth = 100;
+        var postcardCateg = document.querySelector('#categories .postcardItem');
+        var calendarCateg = document.querySelector('#categories .calendarItem');
         var currIndex = 0;
 
         prevNav.addEventListener('click', function() {
-            ulMover(1);
+            if (postcardCateg.className == 'postcardItem active') {
+                ulMover(1, allPostCards);
+            } else {
+                ulMover(1, allCalendars);
+            }
         });
         nextNav.addEventListener('click', function() {
-            ulMover(-1);
+            if (postcardCateg.className == 'postcardItem active') {
+                ulMover(-1, allPostCards);
+            } else {
+                ulMover(-1, allCalendars);
+            }
         });
-        document.querySelector('#categories .calendarItem').addEventListener('click', function(event) {
+        calendarCateg.addEventListener('click', function(event) {
             event.preventDefault();
-            var allPostCards = document.querySelectorAll('#postcards > li');
-            var allCalendars = document.querySelectorAll('#calendars > li');
+            
             for (var i = 0; i < allPostCards.length; i++) {
-                allPostCards[i].className = 'invisibl fade-in';
+                allPostCards[i].className = 'invisibl';
             }
             for (var i = 0; i < allCalendars.length; i++) {
                 allCalendars[i].className = 'visibl fade-in';
             }
-            document.querySelector('#categories .calendarItem').className = 'calendarItem active';
-            document.querySelector('#categories .postcardItem').className = 'postcardItem no-active';
+            calendarCateg.className = 'calendarItem active';
+            postcardCateg.className = 'postcardItem no-active';
         });
-        document.querySelector('#categories .postcardItem').addEventListener('click', function(event) {
+        postcardCateg.addEventListener('click', function(event) {
             event.preventDefault();
-            var allPostCards = document.querySelectorAll('#postcards > li');
-            var allCalendars = document.querySelectorAll('#calendars > li');
+
             for (var i = 0; i < allPostCards.length; i++) {
                 allPostCards[i].className = 'visibl fade-in';
             }
             for (var i = 0; i < allCalendars.length; i++) {
-                allCalendars[i].className = 'invisibl fade-in';
+                allCalendars[i].className = 'invisibl';
             }
-            document.querySelector('#categories .calendarItem').className = 'calendarItem no-active';
-            document.querySelector('#categories .postcardItem').className = 'postcardItem active';
+            calendarCateg.className = 'calendarItem no-active';
+            postcardCateg.className = 'postcardItem active';
         });
-        document.querySelector('#collapse-btn').addEventListener('click', function(event) {
-            var tmplPanel = document.querySelector('#template-wrapper');
-            var collapsePanel = document.querySelector('#categories');
-            if (document.querySelector('#collapse-btn').className !== 'collapsed') {
+        collapseBtn.addEventListener('click', function(event) {
+            
+            if (collapseBtn.className !== 'collapsed') {
                 tmplPanel.style.display = 'none';
                 collapsePanel.style.position = 'absolute';
                 collapsePanel.style.bottom = '0';
-                document.querySelector('#collapse-btn').className = 'collapsed';
-                document.querySelector('#collapse-btn').innerHTML = '<i class="fa fa-chevron-up collapse"></i>';
+                collapseBtn.className = 'collapsed';
+                collapseBtn.innerHTML = '<i class="fa fa-chevron-up collapse"></i>';
             } else {
                 tmplPanel.style.display = 'block';
                 collapsePanel.style.position = 'static';
-                document.querySelector('#collapse-btn').className = '';
-                document.querySelector('#collapse-btn').innerHTML = '<i class="fa fa-chevron-down collapse"></i>';
+                collapseBtn.className = '';
+                collapseBtn.innerHTML = '<i class="fa fa-chevron-down collapse"></i>';
             }
         });
 
-    function ulMover(flag) {
+    function ulMover(flag, containerLi) {
         if (flag == 1) {
             if (currIndex > 0) {
                 currIndex--;
-                containerLi[currIndex].className = 'visibl fade-in';
-                containerLi[currIndex + 5].className = 'invisibl fade-in';
+                containerLi[currIndex].className = 'visibl';
+                containerLi[currIndex + 8].className = 'invisibl';
             }
         } else {
-            if (currIndex + 5 < containerLi.length) {
-                containerLi[currIndex].className = 'invisibl fade-in';
-                containerLi[currIndex + 5].className = 'visibl fade-in';
+            if (currIndex + 8 < containerLi.length) {
+                containerLi[currIndex].className = 'invisibl';
+                containerLi[currIndex + 8].className = 'visibl';
                 currIndex++;
             }
         }

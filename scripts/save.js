@@ -36,24 +36,7 @@
             drawRotElem(temCtx, canvEl, rectLeft - mainLeft, rectTop - mainTop, elemArr[k].rotateDeg);
             canvEl.style.transform = 'rotate(0deg)';
         }
-        //-----------------------------------------------------
-        //canvElems = canvasContainer.querySelectorAll('canvas');
-        //        for (var i = 1; i < canvElems.length; i++) {
-        //            canvElParent = canvElems[i].parentNode;
-        //
-        //            canvElems[i].style.transform = 'rotate(' + (-canvElParent.rotateDeg) + 'deg)';
-        //
-        //            rect = canvElems[i].getBoundingClientRect();
-        //            rectTop = rect.top;
-        //            rectLeft = rect.left;
-        //            drawRotElem(temCtx, canvElems[i], rectLeft-mainLeft, rectTop-mainTop, canvElParent.rotateDeg);
-        //
-        //            canvElems[i].style.transform = 'rotate(0deg)';
-        //        }
 
-        //var w = window.open('about:blank','image from canvas', "width=" + mainCanvas.width + ", height=" + mainCanvas.height);
-        //w.document.write("<img src='" + newCanv.toDataURL("image/png", 1) + "' alt='from canvas'/>");
-        //
         var winTop = (screen.height / 2) - (mainCanvas.height / 2);
         var winLeft = (screen.width / 2) - (mainCanvas.width / 2);
         window.open(newCanv.toDataURL("image/png", 1), '', 'top=' + winTop + ',left=' + winLeft + ",width=" + mainCanvas.width + ", height=" + mainCanvas.height);
