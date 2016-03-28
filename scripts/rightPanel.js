@@ -245,8 +245,8 @@ function addMoveListeners(context) {
 
     function destroy() {
         selected = null;
-        document.removeEventListener('mousemove', move_elem);
-        document.removeEventListener('mouseup', destroy);
+        // document.removeEventListener('mousemove', move_elem);
+        // document.removeEventListener('mouseup', destroy);
     }
     context.className = 'active';
     var drawPanel = document.getElementById('drawTools');

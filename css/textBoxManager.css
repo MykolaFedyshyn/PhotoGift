@@ -1,106 +1,25 @@
-
-[id^="textBox"] {
+#textBoxes {
 	position: absolute;
-	z-index: 100;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+}
+#textBoxes .textBox {
+	position: absolute;
 	top: 0;
 	left: 0;
+	z-index: 10;
 	display: block;
 	width: 100px;
-	height: 50px;
-	background-color: rgba(0, 0, 0, 0.2);
+	height: 100px;
+	background-color: rgba(255, 255, 255, 0.7);
 }
 
-/**
- * Resize button. Is only shown, when textBox is hovered.
- */
-[id^="textBox"] button.resize {
-	display: block;
-	visibility: hidden;
-	width: 20px;
-    height: 20px;
-	position: absolute;
-    z-index: 101;
-    bottom: 0;
-    right: 0;
-    cursor: se-resize;
-    border: none;
-    border-radius: 20px 0 0 0;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-[id^="textBox"]:hover button.resize {
-	visibility: visible;
-}
-
-[id^="textBox"]:hover button.resize:before {
-	content: "\21F2"; // U+21F2
-	display: block;
-	width: 20px;
-	height: 20px;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	color: #fff;
-	text-indent: 0;
-}
-
-[id^="textBox"]:hover button.resize:focus {
-	outline: none;
-}
-
-[id^="textBox"] button.resize span.label {
-	display: block;
-	text-indent: -9999px;
-}
-
-
-/**
- * Remove button. Is only shown, when textBox is hovered.
- */
-[id^="textBox"] button.remove {
-	display: block;
-	visibility: hidden;
-	width: 20px;
-    height: 20px;
-	position: absolute;
-    z-index: 101;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-    border: none;
-    background: rgba(0, 0, 0, 0.5);
-    text-indent: -9999px;
-}
-
-[id^="textBox"]:hover button.remove {
-	visibility: visible;
-}
-
-[id^="textBox"]:hover button.remove:before {
-	content: "\2716"; // U+2716
-	display: block;
-	width: 20px;
-	height: 20px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	color: #fff;
-	text-indent: 0;
-}
-
-[id^="textBox"]:hover button.remove:focus {
-	outline: none;
-}
-
-[id^="textBox"] button.remove span.label {
-	display: block;
-	text-indent: -9999px;
-}
-
-/**
- * Canvas element, which contains the editable text
- */
-[id^="textBox"] canvas {
-	width: 100%;
-	height: 100%;
+#textBoxes .textBox [draggable] {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: move;
 }
