@@ -52,6 +52,7 @@
 
         var ancrEl = addToolElem(container, 'canvAncor');
         ancrEl.onmousedown = function(e) {
+            e.stopPropagation();
             var that = this;
             addResizeListeners(that, e, img);
         };

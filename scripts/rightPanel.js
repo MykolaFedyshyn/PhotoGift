@@ -139,6 +139,7 @@ function createElem(paramObj) {
     canvEl.canDraw = paramObj.canDraw;
     var ancrEl = addToolElem(canvEl, 'canvAncor');
     ancrEl.onmousedown = function(e) {
+        e.stopPropagation();
         var that = this;
         if (!!paramObj.image) {
             addResizeListeners(that, e, paramObj.image);
@@ -215,7 +216,7 @@ function addMoveListeners(context) {
     // changeZindex(context, 'canvAncor', 5, 1);
     // changeZindex(context, 'canvDel fa fa-times', 5, 1);
 
-    context.onmousedown = function() {
+    context.onmousedown = function(e) {
         if (this.className == 'active' && canMove) {
             drag_init(this);
             changeZindex(this, ['canvAncor', 'canvDel fa fa-times'], 5, 1);
@@ -224,8 +225,8 @@ function addMoveListeners(context) {
         }
         return false;
     };
-    document.onmousemove = move_elem;
-    document.onmouseup = destroy;
+    document.addEventListener('mousemove', move_elem);
+    document.addEventListener('mouseup', destroy);
 
     function drag_init(elem) {
         selected = elem;
@@ -244,6 +245,8 @@ function addMoveListeners(context) {
 
     function destroy() {
         selected = null;
+        document.removeEventListener('mousemove', move_elem);
+        document.removeEventListener('mouseup', destroy);
     }
     context.className = 'active';
     var drawPanel = document.getElementById('drawTools');
