@@ -184,7 +184,6 @@
 }
 
 #file-buttons .save,
-#file-buttons .print,
 #file-buttons .postTo,
 #file-buttons .help {
     position: fixed;
@@ -201,23 +200,17 @@
     padding: 11px 15px 11px 45px;
 }
 
-#file-buttons .print {
-    top: 70px;
-    padding: 11px 15px 11px 45px;
-}
-
 #file-buttons .postTo {
-    top: 130px;
+    top: 70px;
     padding: 11px 19px 11px 45px;
 }
 
 #file-buttons .help {
-    top: 190px;
+    top: 130px;
     padding: 11px 5px 11px 45px;
 }
 
 #file-buttons .save::before,
-#file-buttons .print::before,
 #file-buttons .postTo::before,
 #file-buttons .help::before {
     position: absolute;
@@ -326,7 +319,7 @@
 /*------------template carousel----------------*/
 
 #carousel .carouselList {
-    width: 80%;
+    width: 85%;
     overflow: hidden;
     /*margin: 0 5%;*/
     margin: 0 auto;
@@ -420,7 +413,7 @@
 
 a.calendarItem,
 a.postcardItem {
-    border-radius: 10px;
+    border-radius: 26px;
     padding: 9px;
 }
 

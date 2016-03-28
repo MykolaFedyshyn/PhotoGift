@@ -114,11 +114,11 @@ body {
 }
 
 #categories {
-    padding: 12px 10px 12px 8px;
+    padding: 23px 26px 13px;
     display: inline-block;
     background-color: rgba(128, 128, 128, 0.5);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
     margin-left: 70px;
 }
 
