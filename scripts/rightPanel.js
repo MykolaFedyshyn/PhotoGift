@@ -62,8 +62,9 @@ canvasContainer.ondrop = function(ev) {
     var yPos = (ev.clientY - rect.top) - (img.height / 10);
 
     //var mainCont = document.getElementById('work-field');
-    var newWidth = Math.floor(img.width / 5);
-    var newHeight = Math.floor(img.height / 5);
+    var ratio = (mainCanvas.width / 3) / img.width;
+    var newWidth = Math.floor(img.width * ratio);
+    var newHeight = Math.floor(img.height * ratio);
     var cnvEl = createElem({
         source: this,
         name: 'cnvImage',
@@ -132,7 +133,7 @@ function createElem(paramObj) {
     if (!!paramObj.bg) {
         canvEl.style.background = paramObj.bg;
     }
-    if(!!paramObj.image) {
+    if (!!paramObj.image) {
         canvEl.imgSrc = paramObj.image.src;
     }
     canvEl.canRotate = paramObj.canRotate;
@@ -220,7 +221,7 @@ function addMoveListeners(context) {
         if (this.className == 'active' && canMove) {
             drag_init(this);
             changeZindex(this, ['canvAncor', 'canvDel fa fa-times'], 5, 1);
-        } else if(this.canDraw) {
+        } else if (this.canDraw) {
             changeZindex(this, ['canvAncor', 'canvDel fa fa-times'], -5, 0);
         }
         return false;
