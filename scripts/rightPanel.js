@@ -58,13 +58,13 @@ canvasContainer.ondrop = function(ev) {
     var img = new Image();
     img.src = data;
     var rect = this.getBoundingClientRect();
-    var xPos = (ev.clientX - rect.left) - (img.width / 10);
-    var yPos = (ev.clientY - rect.top) - (img.height / 10);
 
     //var mainCont = document.getElementById('work-field');
     var ratio = (mainCanvas.width / 3) / img.width;
     var newWidth = Math.floor(img.width * ratio);
     var newHeight = Math.floor(img.height * ratio);
+    var xPos = (ev.clientX - rect.left) - (newWidth / 2);
+    var yPos = (ev.clientY - rect.top) - (newHeight / 2);
     var cnvEl = createElem({
         source: this,
         name: 'cnvImage',
