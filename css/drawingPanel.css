@@ -23,6 +23,7 @@
     display: inline-block;
     width: 135px;
     text-align: center;
+    margin: 0 10px;
 }
 #drawAllow:hover,
 #drawAllow.drawON {
@@ -41,7 +42,7 @@
     border: 3px solid rgba(0, 0, 0, 0.1);
     width: 30px;
     height: 30px;
-    margin: 0 7px;
+    margin: 0 5px;
     border-radius: 5px;
     height: 28px;
     vertical-align: text-bottom;
@@ -100,21 +101,21 @@
     border-radius: 50%;
 }
 #sizeChooser #smallSize {
-    width: 12px;
-    height: 12px;
-    margin-bottom: 8px;
+    width: 9px;
+    height: 9px;
+    margin-bottom: 9px;
 }
 #sizeChooser #normSize {
-    width: 18px;
-    height: 18px;
-    margin-bottom: 5px;
+    width: 15px;
+    height: 15px;
+    margin-bottom: 6px;
 }
 #sizeChooser #largeSize {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 2px;
+    width: 21px;
+    height: 21px;
+    margin-bottom: 3px;
 }
 #sizeChooser #hugeSize {
-    width: 30px;
-    height: 30px;
+    width: 27px;
+    height: 27px;
 }

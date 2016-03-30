@@ -32,3 +32,6 @@
 #tools-panel #addFilter {
     background-image: url('../img/CMYK.png');
 }
+#tools-panel #mirrorImg {
+    background-image: url('../img/mirror.png');
+}

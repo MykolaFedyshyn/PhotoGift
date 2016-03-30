@@ -135,6 +135,8 @@ function createElem(paramObj) {
     }
     if (!!paramObj.image) {
         canvEl.imgSrc = paramObj.image.src;
+        canvEl.filtered = false;
+        canvEl.mirrored = false;
     }
     canvEl.canRotate = paramObj.canRotate;
     canvEl.canDraw = paramObj.canDraw;
@@ -252,7 +254,7 @@ function addMoveListeners(context) {
     context.className = 'active';
     var drawPanel = document.getElementById('drawTools');
     if (context.canDraw) {
-        drawPanelAnime(drawPanel, '56px', 1, '10px', '0 0 10px', 'relative');
+        drawPanelAnime(drawPanel, '80px', 1, '21px 10px', '0 0 10px', 'relative');
     } else {
         drawPanelAnime(drawPanel, 0, 0, '0 10px', 0, 'absolute');
         startDraw(drawAllow, true);
@@ -286,6 +288,10 @@ function addResizeListeners(that, ev, img) {
     var maxHeiht = 70;
     var container = that.parentNode;
     var containerCanv = container.getElementsByTagName('canvas')[0];
+    // if (!!img) {
+    //     var img = new Image();
+    //     img.src = container.imgSrc;
+    // }
 
     if (canMove) {
         resizeInit(ev);
@@ -319,7 +325,7 @@ function addResizeListeners(that, ev, img) {
             containerCanv.height = h;
             var curCont = containerCanv.getContext('2d');
             if (!!img) {
-                curCont.drawImage(img, 0, 0, w, h);
+                drawMirroredImg(container, img, curCont, w, h);
             } else {
                 redraw(curCont);
             }
@@ -333,6 +339,18 @@ function addResizeListeners(that, ev, img) {
         container.style.cursor = 'auto';
         document.removeEventListener('mousemove', doResize, false);
         document.removeEventListener('mouseup', stopResize, false);
+    }
+}
+
+function drawMirroredImg(container, img, ctx, w, h) {
+    ctx.clearRect(0, 0, w, h);
+    if (container.mirrored) {
+        ctx.save();
+        ctx.scale(-1, 1);
+        ctx.drawImage(img, w * -1, 0, w, h);
+        ctx.restore();
+    } else {
+        ctx.drawImage(img, 0, 0, w, h);
     }
 }
 //----------------------------------------------------------------------------------

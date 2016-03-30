@@ -5,7 +5,7 @@
     var changeFilterFlag = false;
 
     filterBtn.onclick = function(e) {
-        drawPanelAnime(filterPanel, '56px', 1, '10px', '0 0 10px', 'relative');
+        drawPanelAnime(filterPanel, '80px', 1, '10px', '0 0 10px', 'relative');
     };
     filterPanel.onclick = function(e) {
         e.preventDefault();
@@ -36,10 +36,10 @@
                 }
                 removeResizing(activeEl);
                 currCtx.putImageData(resultData, 0, 0);
-                changeFilterFlag = true;
+                activeEl.filtered = true;
             }
-            if (changeFilterFlag && buttId == 'filtCancel') {
-                changeFilterFlag = false;
+            if (activeEl.filtered && buttId == 'filtCancel') {
+                activeEl.filtered = false;
                 restoreImg(activeEl, currCtx, currCanv);
             }
         }
@@ -48,7 +48,7 @@
     function restoreImg(container, ctx, canv) {
         var img = new Image();
         img.src = container.imgSrc;
-        ctx.drawImage(img, 0, 0, canv.width, canv.height);
+        drawMirroredImg(container, img, ctx, canv.width, canv.height);
 
         var ancrEl = addToolElem(container, 'canvAncor');
         ancrEl.onmousedown = function(e) {
