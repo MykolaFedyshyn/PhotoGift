@@ -2,18 +2,11 @@
 // Create a connection to Firebase database
     var ref = new Firebase("https://intense-torch-8426.firebaseio.com");
     ref.on("value", function(data) { // Listen for realtime changes
-    var postcardTempl = [];
-    var calendarTempl = [];
-    var templObj = data.val();
-    
-        for ( var key in templObj.postcards) {
-            postcardTempl.push(templObj.postcards[key]);
-        }
-        for ( var key in templObj.calendars) {
-            calendarTempl.push(templObj.calendars[key]);
-        }    
-        addPostcardTemplate(postcardTempl, 'postcards');
-        addPostcardTemplate(calendarTempl, 'calendars');
+
+    var templObj = data.val();   
+        addPostcardTemplate(templObj.postcards, 'postcards', 'templates');
+        addPostcardTemplate(templObj.calendars, 'calendars', 'templates');
+        addPostcardTemplate(templObj.assets, 'assets', 'assetsEl');
         carousel();
     });
 
@@ -26,7 +19,8 @@
         }
         function draw(){
             var mainel = document.getElementById('work-field');
-            var canvas = document.getElementById('work-field-canvas');
+            var img = new Image();
+            img.src = this.src;
             while(true) {
                 var sibling = canvas.nextElementSibling;
                 if(sibling) {
@@ -40,11 +34,11 @@
             canvas.height = this.naturalHeight;
             mainel.style.width = canvas.width + 20 + 'px';
             mainel.style.height = canvas.height + 20 + 'px';
-            ctx.drawImage(this,0,0);
+            ctx.drawImage(img,0,0);
         }
     }
 
-    function addPostcardTemplate(data, id){
+    function addPostcardTemplate(data, id, elClass){
         var li, img, i;
         var spin = document.getElementById('spinner');
         var ul = document.getElementById(id);
@@ -52,11 +46,11 @@
                 ul.removeChild(spin);
             }
        
-        for (i=0; i<data.length;i++){
+        for (i=1; i<data.length;i++){
             li = document.createElement('li');
             li.className = 'visibl fade-in';
             img = document.createElement('img');
-            img.className = 'templates';
+            img.className = elClass;
             img.src = data[i];
             img.style.height = '100%';
             li.appendChild(img);
@@ -72,8 +66,11 @@
         var collapseBtn = document.querySelector('#collapse-btn');
         var allPostCards = document.querySelectorAll('#postcards > li');
         var allCalendars = document.querySelectorAll('#calendars > li');
+        var allAssets = document.querySelectorAll('#assets > li');
         var prevNav = document.querySelector('#carousel .prev');
         var nextNav = document.querySelector('#carousel .next');
+        var prevNavAsset = document.querySelector('#graphicEl .prev');
+        var nextNavAsset = document.querySelector('#graphicEl .next');
         var postcardCateg = document.querySelector('#categories .postcardItem');
         var calendarCateg = document.querySelector('#categories .calendarItem');
         var currIndex = 0;
@@ -91,6 +88,12 @@
             } else {
                 ulMover(-1, allCalendars);
             }
+        });
+        prevNavAsset.addEventListener('click', function() {
+            ulMover(1, allAssets);
+        });
+        nextNavAsset.addEventListener('click', function() {
+            ulMover(-1, allAssets);
         });
         calendarCateg.addEventListener('click', function(event) {
             event.preventDefault();

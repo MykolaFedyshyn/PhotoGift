@@ -1,0 +1,92 @@
+#tools-panel #addAsset{
+	background-image: url('../img/biber.png');
+}
+
+#graphicEl{
+    padding: 0 10px;
+    height: 0;
+    opacity: 0;
+    transition: all 0.25s;
+    box-shadow: rgba(50, 50, 50, 0.74902) 0px 2px 5px 0px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+    position: relative;
+}
+
+#graphicEl .carouselList{
+    width: 95%;
+    overflow: hidden;
+    margin: 0 auto;
+    height: 80px;
+}
+
+#graphicEl .carouselList ul {
+    list-style: none;
+    height: 70px;
+    overflow: hidden;
+    margin: 5px;
+    padding: 0;
+    position: relative;
+    transition: left 0.9s linear;
+    left: 0;
+}
+
+#graphicEl .carouselList li {
+    height: 70px;
+    margin: 0 1%;
+    padding: 5px 10px;
+    line-height: 100px;
+    transition: all 1s linear;
+    cursor: move;
+}
+
+#graphicEl .carouselList li.visibl {
+    display: inline-block;
+}
+
+#graphicEl .carouselList li.invisibl {
+    display: none;
+}
+
+#graphicEl .templNav {
+    width: 40px;
+    height: 80px;
+    position: absolute;
+    cursor: pointer;
+    border-radius: 9px;
+}
+
+#graphicEl .templNav:hover {
+    background: rgba(72, 168, 168, 0.6);
+}
+
+#graphicEl .templNav::before {
+    position: absolute;
+    display: block;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    line-height: 80px;
+    font-size: 18px;
+    color: #fff;
+}
+
+#graphicEl .prev {
+    left: 0;
+    text-align: center;
+}
+
+#graphicEl .next {
+    right: 0;
+    text-align: center;
+}
+
+.assetsEl:hover {
+	-webkit-box-shadow: 0px 18px 0px -1px rgba(28,120,97,1);
+	-moz-box-shadow: 0px 18px 0px -1px rgba(28,120,97,1);
+	box-shadow: 0px 18px 0px -1px rgba(28,120,97,1);
+}
+
+.toolBtn:hover{
+	cursor: pointer;
+}

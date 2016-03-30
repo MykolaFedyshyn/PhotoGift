@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/toolPanelExtra.css">
     <link rel="stylesheet" type="text/css" href="css/drawingPanel.css">
     <link rel="stylesheet" type="text/css" href="css/filterPanel.css">
+    <link rel="stylesheet" type="text/css" href="css/graphicElPanel.css">
 </head>
 
 <body>
@@ -29,6 +30,7 @@
                 <div id="layer-down" class="toolBtn"></div>
                 <div id="addDrawBox" class="toolBtn"></div>
                 <div id="addFilter" class="toolBtn"></div>
+                <div id="addAsset" class="toolBtn"></div>
                 <div class="tool-button" id="addTextBox"><i class="icon fa fa-font"></i>&nbsp;TEXT</div>
             </div>
             <div id="work-field-container">
@@ -60,6 +62,14 @@
                         <a href="" id="thresSbutt">Threshold</a>
                         <a href="" id="negSbutt">Negative</a>
                         <a href="" id="filtCancel">Restore original image</a>
+                    </div>
+                    <div id="graphicEl">
+                        <div class="carouselList">
+                            <div class="prev fa fa-chevron-left templNav"></div>
+                            <div class="next fa fa-chevron-right templNav"></div>
+                            <ul class="elements-list" id="assets">
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div id="work-field">
@@ -93,8 +103,8 @@
         </div>
         <div id="carousel">
             <div id="categories">
-                <a href="" class="postcardItem active">Postcard</a>
-                <a href="" class="calendarItem">Calendar</a>
+                <a href="#" class="postcardItem active">Postcard</a>
+                <a href="#" class="calendarItem">Calendar</a>
                 <span id='collapse-btn'><i class="fa fa-chevron-down collapse" ></i></span>
             </div>
             <div id="template-wrapper">
@@ -112,7 +122,7 @@
         </div>
         <div id="footer">&copy; PhotoGift</div>
     </div>
-    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src="scripts/firebase.js"></script>
     <script src="scripts/postcardTemplates.js"></script>
     <script src="scripts/rightPanel.js"></script>
     <script src="scripts/save.js"></script>
@@ -120,10 +130,10 @@
     <script src="scripts/help.js"></script>
     <script src="scripts/rotate.js"></script>
     <script src="scripts/layerChange.js"></script>
-    <!-- <script src="scripts/textBoxManager.js"></script> -->
     <script src="scripts/filters.js"></script>
     <script src="scripts/tools-scripts.js"></script>
     <script src="scripts/print.js"></script>
+    <script src="scripts/graphicElementsPanel.js"></script>
 </body>
 
 </html>
