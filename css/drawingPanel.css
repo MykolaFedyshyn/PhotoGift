@@ -4,7 +4,7 @@
     opacity: 0;
     /* display: none; */
     transition: all 0.25s;
-    box-shadow: rgba(50, 50, 50, 0.74902) 0px 2px 5px 0px;
+    box-shadow: rgba(50, 50, 50, 0.75) 0px 2px 5px 0px;
     background: rgba(255, 255, 255, 0.35);
     border-radius: 10px;
     position: relative;

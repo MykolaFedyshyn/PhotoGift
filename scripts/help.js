@@ -46,16 +46,6 @@
         createHelpBox(containerArr[i], objArr[i], wrap, coverDiv);
     };
 
-    helpBtn.onmouseover = function() {
-        this.style.right = 0;
-    };
-    helpBtn.onmouseout = function() {
-        var that = this;
-        setTimeout(function() {
-            that.style.right = '-58px';
-        }, 1000);
-    };
-
     function createHelpBox(container, obj, wrap, coverDiv) {
         var tempElem = null;
         if(container.id == 'file-buttons') {

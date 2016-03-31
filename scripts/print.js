@@ -54,18 +54,6 @@
 			    printWin.print();
 			    printWin.close();
     	}
-
-    	printBtn.onmouseover = function () {
-        	this.style.right = 0;
-    	};
-
-    	printBtn.onmouseout = function () {
-       		var that = this;
-        	setTimeout(function () {
-            	that.style.right = '-58px';
-        	}, 1000);
-   		};
-
    		function drawRotElem(context, elem, x, y, angle) {
 	        var widthEl = elem.width / 2;
 	        var heightEl = elem.height / 2;

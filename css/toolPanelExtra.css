@@ -1,18 +1,21 @@
 #tools-panel .toolBtn {
-    background: #65a9d7 no-repeat center center;
+    background: #ACBECA no-repeat center center;
     width: 50%;
     padding: 22px 0;
     border-radius: 10px;
     margin: 0 auto 7px;
-    border-top: 1px solid #96d1f8;
+    border-top: 1px solid #D7D8D8;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 1);
+     transition: all 0.05s;
 }
 #tools-panel .toolBtn:hover {
-    background-color: #28597a;
+    background-color: rgba(172, 190, 202, 0.7);
+    transform: scale(1.05, 1.05);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 1);
 }
 #tools-panel .toolBtn:active {
-    background-color: #1b435e;
+    background-color: #ACBECA;
+    transform: scale(1, 1);
 }
 #tools-panel #rotate-left {
     background-image: url('../img/rotate-left.png');
@@ -34,4 +37,7 @@
 }
 #tools-panel #mirrorImg {
     background-image: url('../img/mirror.png');
+}
+#tools-panel #newWindow {
+    background-image: url('../img/newWindow.png');
 }

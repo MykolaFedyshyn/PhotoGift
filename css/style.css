@@ -3,9 +3,9 @@
 }
 
 body {
-    background: #70e1f5;
-    background: -webkit-linear-gradient(to left, #70e1f5 , #ffd194);
-    background: linear-gradient(to left, #70e1f5 , #ffd194);
+    background: #403B4A;
+    background: -webkit-linear-gradient(to left, #403B4A, #E7E9BB);
+    background: linear-gradient(to left, #403B4A, #E7E9BB);
 }
 
 #wrapper {
@@ -47,7 +47,7 @@ body {
 #tools-panel {
     height: 550px;
     width: 10%;
-    background-color: rgb(100, 220, 242);
+    background-color: rgba(255, 255, 255, 0.35);
     float: left;
     position: relative;
 }
@@ -84,7 +84,7 @@ body {
 
 #work-field {
     z-index: 10;
-    transition: all 0.5s;
+    /* transition: all 0.5s; */
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -93,10 +93,17 @@ body {
     height: auto;
     border-radius: 10px;
     border: 10px solid rgb(99, 109, 120);
-    background-color: #269;
+    /* background-color: #269; */
+    background-color: #5F7483;
     background-image: linear-gradient(white 2px, transparent 2px), linear-gradient(90deg, white 2px, transparent 2px), linear-gradient(rgba(255, 255, 255, .3) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .3) 1px, transparent 1px);
     background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
-    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+
+#work-field > * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 #content-panel {
@@ -106,7 +113,7 @@ body {
     text-align: center;
     /* margin-bottom: 30px; */
     border-radius: 0 0 20px 20px;
-    background: rgba(157, 188, 185, 0.56);
+    background: rgba(187, 195, 196, 0.64);
     border: 1px solid rgba(104, 131, 121, 0.57);
     border-top: none;
     padding: 10px 0 0 24px;

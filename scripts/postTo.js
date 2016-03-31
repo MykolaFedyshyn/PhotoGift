@@ -11,14 +11,4 @@
             'top=' + winTop + ',left=' + winLeft + ',width=626, height=436'
         );
     };
-
-    postToBtn.onmouseover = function() {
-        this.style.right = 0;
-    };
-    postToBtn.onmouseout = function() {
-        var that = this;
-        setTimeout(function() {
-            that.style.right = '-58px';
-        }, 1000);
-    };
 })();

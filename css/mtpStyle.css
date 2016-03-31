@@ -60,7 +60,6 @@
     background: rgba(255, 255, 255, 0.5);
 }
 
-
 /*-----------------------button for downloading a picture-------*/
 
 #content-panel .inputfile {
@@ -75,7 +74,6 @@
 #content-panel .inputfile + label {
     cursor: pointer;
 }
-
 
 /*----------------------picture container-----------------------*/
 
@@ -95,7 +93,7 @@
     overflow: hidden;
     display: block;
     position: relative;
-    background: #E0E4E9;
+    background: rgba(224, 228, 233, 0.63);
 }
 
 #content-panel .pictHolder > canvas {
@@ -136,14 +134,13 @@
     z-index: 25;
 }
 
-#file-buttons a,
-#content-panel .inputfile + label {
-    border-top: 1px solid #96d1f8;
-    background: #65a9d7;
-    padding: 9px 23px;
+#content-panel label {
+    border-top: 1px solid #D7D8D8;
+    background: #ACBECA;
+    padding: 9px 22px;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-    text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
+    text-shadow: rgba(0, 0, 0, 0.6) 0px 0px 15px;
     color: #fff;
     font-size: 15px;
     text-decoration: none;
@@ -151,14 +148,18 @@
     margin: 0 10px;
     display: inline-block;
 }
-
-#file-buttons a:hover,
-#content-panel .inputfile + label:hover {
-    border-top-color: #28597a;
-    background: #28597a;
-    color: #ccc;
+#content-panel label {
+    transition: all 0.5s;
 }
 
+#content-panel label:hover {
+    background-color: rgba(172, 190, 202, 0.7);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 1);
+}
+#content-panel label:active {
+    position: relative;
+    top: 1px;
+}
 #file-buttons a:active {
     border-top-color: #1b435e;
     background: #1b435e;
@@ -183,43 +184,51 @@
     margin-left: 0;
 }
 
-#file-buttons .save,
-#file-buttons .print,
-#file-buttons .postTo,
-#file-buttons .help {
+#file-buttons a {
+    color: #fff;
+    text-decoration: none;
+    vertical-align: middle;
+    margin: 0 10px;
+    display: inline-block;
+    border-top: 1px solid #96d1f8;
     position: fixed;
-    right: -58px;
+    right: -70px;
     margin: 0;
     border-radius: 8px 0 0 8px;
     font-size: 20px;
     box-shadow: 0px 2px 5px 1px rgba(50, 50, 50, 0.75);
-    transition: all 0.5s;
+    text-shadow: rgba(0, 0, 0, .4) -2px 2px 6px;
+    transition: all 0.8s;
+    background: rgba(172, 190, 202, 0.5);
+    border-top: 1px solid #D7D8D8;
+    transition-timing-function: cubic-bezier(.42,1.89,.25,.7);
+}
+#file-buttons a:hover {
+    right: -10px;
+    box-shadow: -1px 3px 5px 1px rgba(50, 50, 50, 0.75);
 }
 
 #file-buttons .save {
     top: 10px;
-    padding: 11px 15px 11px 45px;
+    padding: 11px 25px 11px 45px;
 }
 
 #file-buttons .print {
     top: 70px;
-    padding: 11px 15px 11px 45px;
+    padding: 11px 25px 11px 45px;
 }
 
 #file-buttons .postTo {
     top: 130px;
-    padding: 11px 19px 11px 45px;
+    padding: 11px 29px 11px 45px;
 }
 
 #file-buttons .help {
     top: 190px;
-    padding: 11px 5px 11px 45px;
+    padding: 11px 15px 11px 45px;
 }
 
-#file-buttons .save::before,
-#file-buttons .print::before,
-#file-buttons .postTo::before,
-#file-buttons .help::before {
+#file-buttons a::before {
     position: absolute;
     left: 10px;
     top: 50%;
@@ -229,6 +238,7 @@
 
 #file-buttons span {
     font-family: "Times New Roman", Georgia, Serif;
+    padding: 0 0 0 5px
 }
 
 

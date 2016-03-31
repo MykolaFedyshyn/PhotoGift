@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/drawingPanel.css">
     <link rel="stylesheet" type="text/css" href="css/filterPanel.css">
     <link rel="stylesheet" type="text/css" href="css/graphicElPanel.css">
+    <link rel="stylesheet" type="text/css" href="css/newWindow.css">
 </head>
 
 <body>
@@ -24,6 +25,7 @@
         </div>
         <div id="container" class="clearfix">
             <div id="tools-panel">
+                <div id="newWindow" class="toolBtn"></div>
                 <div id="rotate-left" class="toolBtn"></div>
                 <div id="rotate-right" class="toolBtn"></div>
                 <div id="layer-up" class="toolBtn"></div>
@@ -70,6 +72,16 @@
                             <div class="next fa fa-chevron-right templNav"></div>
                             <ul class="elements-list" id="assets">
                             </ul>
+                        </div>
+                    </div>
+                    <div id="newWindTools">
+                        <div>
+                            <label for="wSize">Width:</label>
+                            <input type="range" min="300" max="808" id="wSize" step="1" value="808">
+                        </div>
+                        <div>
+                            <label for="hSize">Height:</label>
+                            <input type="range" min="300" max="808" id="hSize" step="1" value="542">
                         </div>
                     </div>
                 </div>
@@ -136,6 +148,7 @@
     <script src="scripts/print.js"></script>
     <script src="scripts/mirrorImg.js"></script>
     <script src="scripts/graphicElementsPanel.js"></script>
+    <script src="scripts/newWind.js"></script>
 </body>
 
 </html>
