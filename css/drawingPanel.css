@@ -2,35 +2,32 @@
     padding: 0 10px;
     height: 0;
     opacity: 0;
-    /* display: none; */
     transition: all 0.25s;
     box-shadow: rgba(50, 50, 50, 0.75) 0px 2px 5px 0px;
     background: rgba(255, 255, 255, 0.35);
     border-radius: 10px;
     position: relative;
 }
-#drawAllow {
-    border-top: 1px solid #96d1f8;
-    background: #65a9d7;
-    padding: 9px 0;
-    border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-    text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
-    color: #fff;
-    font-size: 15px;
-    text-decoration: none;
-    vertical-align: super;
+.drawCheck {
     display: inline-block;
-    width: 135px;
-    text-align: center;
-    margin: 0 10px;
+    margin-left: 10px;
 }
-#drawAllow:hover,
+#drawAllow {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 11px;
+    cursor: pointer;
+    background: url('../img/checkCircle.png');
+}
+#drawAllow:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
 #drawAllow.drawON {
-    border-top-color: #28597a;
-    background: #28597a;
-    color: #ccc;
+    background: url('../img/checkCircle2.png');
 }
+
 #colorChooser,
 #sizeChooser {
     display: inline-block;
@@ -48,7 +45,7 @@
     vertical-align: text-bottom;
     cursor: pointer;
 }
-
+.drawCheck span:first-of-type,
 #colorChooser div:first-of-type,
 #sizeChooser div:first-of-type {
     width: auto;

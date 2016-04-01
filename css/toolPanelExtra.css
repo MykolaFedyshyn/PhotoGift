@@ -1,9 +1,9 @@
 #tools-panel .toolBtn {
     background: #ACBECA no-repeat center center;
-    width: 50%;
+    width: 66%;
     padding: 22px 0;
     border-radius: 10px;
-    margin: 0 auto 7px;
+    margin: 0 auto 11px;
     border-top: 1px solid #D7D8D8;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 1);
      transition: all 0.05s;
@@ -40,4 +40,7 @@
 }
 #tools-panel #newWindow {
     background-image: url('../img/newWindow.png');
+}
+#tools-panel #addTextBox {
+    background-image: url('../img/insert_text.png');
 }

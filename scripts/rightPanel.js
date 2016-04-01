@@ -357,7 +357,7 @@ function drawMirroredImg(container, img, ctx, w, h) {
 // Add an area for drawing and draw on it
 //----------------------------------------------------------------------------------
 drawAllow.onclick = function(e) {
-    e.preventDefault();
+    //e.preventDefault();
     if (!canMove) {
         startDraw(this, true);
     } else {
@@ -447,11 +447,9 @@ function startDraw(container, flag) {
     if (flag) {
         canMove = true;
         container.className = '';
-        container.innerHTML = 'Start drawing';
     } else {
         canMove = false;
         container.className = 'drawON';
-        container.innerHTML = 'Stop drawing';
     }
 }
 
