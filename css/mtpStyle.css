@@ -9,8 +9,7 @@
 
 #toolsFeatures {
     width: 100%;
-    /* height: 50px; */
-    /* background: rgba(255, 255, 255, 0.35); */
+    text-align: center;
 }
 
 #work-field-container .active {

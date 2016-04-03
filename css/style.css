@@ -100,7 +100,7 @@ body {
     background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
 }
 
-#work-field > * {
+body > * {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;

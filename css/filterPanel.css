@@ -10,21 +10,52 @@
 }
 
 #filterTools a {
-    border-top: 1px solid #96d1f8;
-    background: #65a9d7;
-    padding: 9px 12px;
+    border-top: 1px solid #ADAEAF;
+    width: 64px;
+    height: 40px;
     border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-    text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
-    color: #fff;
-    font-size: 15px;
-    text-decoration: none;
+    box-shadow: rgba(0, 0, 0, 0.9) 0 1px 0;
     margin: 11px 10px;
     display: inline-block;
-    text-align: center;
+    transition: all 0.1s;
 }
 #filterTools a:hover {
-    border-top-color: #28597a;
-    background: #28597a;
-    color: #ccc;
+    position: relative;
+    top: -2px;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 3px 0;
+}
+#filterTools a:active {
+    top: 0;
+    box-shadow: rgba(0, 0, 0, 0.9) 0px 1px 0;
+}
+#brightButt {
+    background: #65a9d7 url('../img/filters/brightness_small.png') no-repeat center center;
+}
+#graysButt {
+    background: #65a9d7 url('../img/filters/grayscale_small.png') no-repeat center center;
+}
+#sepiaButt {
+    background: #65a9d7 url('../img/filters/sepia_small.png') no-repeat center center;
+}
+#thresSbutt {
+    background: #65a9d7 url('../img/filters/threshold_small.png') no-repeat center center;
+}
+#negSbutt {
+    background: #65a9d7 url('../img/filters/negative_small.png') no-repeat center center;
+}
+#filterTools #filtCancel {
+    width: 32px;
+    height: 32px;
+    margin-left: 50px;
+    border: none;
+    box-shadow: none;
+    background: url('../img/undo.png') no-repeat center center;
+    transition: all 0.2s;
+}
+#filterTools #filtCancel:hover {
+    top: 0;
+    transform: rotate(-10deg);
+}
+#filterTools #filtCancel:active {
+    transform: rotate(-20deg);
 }
