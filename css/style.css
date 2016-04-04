@@ -22,8 +22,9 @@ body {
 }
 
 #logo {
+    margin-left: 5px;
     height: 38px;
-    width: 134px;
+    width: 138px;
     background-image: url('../img/logo.png');
     display: inline-block;
     float: left;

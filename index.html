@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>PhotoGift</title>
@@ -20,7 +19,7 @@
 <body>
     <div id="wrapper">
         <div id="header">
-            <div id="logo"></div>
+            <a href="#"><div id="logo"></div></a>
             <div id="login"></div>
         </div>
         <div id="container" class="clearfix">
@@ -70,11 +69,9 @@
                         <a href="" id="filtCancel"></a>
                     </div>
                     <div id="graphicEl">
-                        <div class="carouselList">
+                        <div class="carouselList" id="assetsList">
                             <div class="prev fa fa-chevron-left templNav"></div>
                             <div class="next fa fa-chevron-right templNav"></div>
-                            <ul class="elements-list" id="assets">
-                            </ul>
                         </div>
                     </div>
                     <div id="newWindTools">
@@ -119,20 +116,19 @@
         </div>
         <div id="carousel">
             <div id="categories">
-                <a href="#" class="postcardItem active">Postcard</a>
-                <a href="#" class="calendarItem">Calendar</a>
+                <div id="category-wrapper">
+                    <a href="#" class="item active" id="simpleList">Simple</a>
+                    <a href="#" class="item no-active" id="hbList">Happy Birthday</a>
+                    <a href="#" class="item no-active" id="vacationList">Vacation</a>
+                    <a href="#" class="item no-active" id="greetingList">Greeting</a>
+                </div>
                 <span id='collapse-btn'><i class="fa fa-chevron-down collapse" ></i></span>
             </div>
             <div id="template-wrapper">
                 <div class="prev fa fa-chevron-left templNav"></div>
                 <div class="next fa fa-chevron-right templNav"></div>
-                <div class="carouselList">
-                    <ul class="postcard-list" id="postcards">
-                        <!-- Postcards templates from FireBase -->
-                        <li id="spinner" class="fade-in"><img src="img/spinner.gif" height="90px"></li>
-                    </ul>
-                    <ul class="calendar-list" id="calendars">
-                    </ul>
+                <div class="carouselList" id="postList">
+                    <ul id="spinner" class="fade-in"><li><img src="img/spinner.gif" height="90px"></li></ul>
                 </div>
             </div>
         </div>
@@ -150,7 +146,6 @@
     <script src="scripts/tools-scripts.js"></script>
     <script src="scripts/print.js"></script>
     <script src="scripts/mirrorImg.js"></script>
-    <script src="scripts/graphicElementsPanel.js"></script>
     <script src="scripts/newWind.js"></script>
     <script src="scripts/toolTips.js"></script>
 </body>

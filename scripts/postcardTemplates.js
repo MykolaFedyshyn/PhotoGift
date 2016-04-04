@@ -2,12 +2,8 @@
 // Create a connection to Firebase database
     var ref = new Firebase("https://intense-torch-8426.firebaseio.com");
     ref.on("value", function(data) { // Listen for realtime changes
-
-    var templObj = data.val();   
-        addPostcardTemplate(templObj.postcards, 'postcards', 'templates');
-        addPostcardTemplate(templObj.calendars, 'calendars', 'templates');
-        addPostcardTemplate(templObj.assets, 'assets', 'assetsEl');
-        carousel();
+        var templObj = data.val();   
+        carousel(templObj.simple, templObj.hb, templObj.vacation, templObj.greeting, templObj.assets);
     });
 
     function addToCanvas(){
@@ -34,105 +30,148 @@
             canvas.height = this.naturalHeight;
             mainel.style.width = canvas.width + 20 + 'px';
             mainel.style.height = canvas.height + 20 + 'px';
-            ctx.drawImage(img,0,0);
+            var canvEl = createElem({
+                source: canvasContainer,
+                name: 'tmpl',
+                image: img,
+                width: this.naturalWidth,
+                height: this.naturalHeight,
+                posX: 0,
+                posY: 0,
+                canRotate: false
+            });
+            var innerCanv = canvEl.getElementsByTagName('canvas')[0];
+            innerCanv.clickX = [];
+            innerCanv.clickY = [];
+            innerCanv.clickDrag = [];
+            innerCanv.clickColor = [];
+            innerCanv.clickSize = [];
+            context = innerCanv.getContext('2d');
+            canvEl.onclick = function() {
+                var that = this;
+                addMoveListeners(that);
+            };
         }
     }
 
     function addPostcardTemplate(data, id, elClass){
-        var li, img, i;
-        var spin = document.getElementById('spinner');
-        var ul = document.getElementById(id);
-            if (id == 'postcards') {
-                ul.removeChild(spin);
+        var list, assetsList, ul, li, img, i;
+            ul = document.createElement('ul');
+            list = document.getElementById('postList');
+            assetsList = document.getElementById('assetsList');
+
+            ul.id = id;
+            ul.className = "postcard-list";
+            
+            if ( id == 'assets') {
+                assetsList.appendChild(ul);   
+            } else {
+                list.appendChild(ul);
+                document.getElementById('spinner').style.display = 'none';
             }
-       
-        for (i=1; i<data.length;i++){
-            li = document.createElement('li');
-            li.className = 'visibl fade-in';
-            img = document.createElement('img');
-            img.className = elClass;
-            img.src = data[i];
-            img.style.height = '100%';
-            li.appendChild(img);
-            ul.appendChild(li);
-        }
-         addToCanvas();
+            
+            for (i=1; i<data.length;i++){
+                li = document.createElement('li');
+                li.className = 'visibl fade-in';
+                img = document.createElement('img');
+                img.className = elClass;
+                img.src = data[i];
+                img.style.height = '100%';
+                li.appendChild(img);
+                ul.appendChild(li);
+            }
+            addToCanvas();
     }
 
+
+
 //---------------work with categories------------------------------------------------//
-    function carousel() {
+    function carousel(simple, hb, vacation, greeting, assets) {
         var tmplPanel = document.querySelector('#template-wrapper');
-        var collapsePanel = document.querySelector('#categories');
+        var templateList = document.querySelector('#postList');
+        var categoryPanel = document.querySelector('#categories');
+        var categories =document.querySelectorAll('#category-wrapper > a');
         var collapseBtn = document.querySelector('#collapse-btn');
         var allPostCards = document.querySelectorAll('#postcards > li');
         var allCalendars = document.querySelectorAll('#calendars > li');
-        var allAssets = document.querySelectorAll('#assets > li');
         var prevNav = document.querySelector('#carousel .prev');
         var nextNav = document.querySelector('#carousel .next');
         var prevNavAsset = document.querySelector('#graphicEl .prev');
         var nextNavAsset = document.querySelector('#graphicEl .next');
-        var postcardCateg = document.querySelector('#categories .postcardItem');
-        var calendarCateg = document.querySelector('#categories .calendarItem');
+        var postcardCateg = document.querySelector('#postcardList');
+        var calendarCateg = document.querySelector('#calendarList');
+        var categoryHandler = document.querySelector('#category-wrapper')
+        var assetBtn = document.getElementById('addAsset');
+        var assetsPanel = document.getElementById('graphicEl');
         var currIndex = 0;
 
-        prevNav.addEventListener('click', function() {
-            if (postcardCateg.className == 'postcardItem active') {
-                ulMover(1, allPostCards);
-            } else {
-                ulMover(1, allCalendars);
-            }
-        });
-        nextNav.addEventListener('click', function() {
-            if (postcardCateg.className == 'postcardItem active') {
-                ulMover(-1, allPostCards);
-            } else {
-                ulMover(-1, allCalendars);
-            }
+        assetBtn.addEventListener('click', function(e) {
+            drawPanelAnime(assetsPanel, '80px', 1, '0px', '0 0 10px', 'relative');
+            addPostcardTemplate(assets, 'assets', 'assetsEl');
+            currIndex = 0;
         });
         prevNavAsset.addEventListener('click', function() {
-            ulMover(1, allAssets);
+            ulMover(1, document.querySelectorAll('#assets > li'));
         });
         nextNavAsset.addEventListener('click', function() {
-            ulMover(-1, allAssets);
+            ulMover(-1, document.querySelectorAll('#assets > li'));
         });
-        calendarCateg.addEventListener('click', function(event) {
-            event.preventDefault();
-            
-            for (var i = 0; i < allPostCards.length; i++) {
-                allPostCards[i].className = 'invisibl';
-            }
-            for (var i = 0; i < allCalendars.length; i++) {
-                allCalendars[i].className = 'visibl fade-in';
-            }
-            calendarCateg.className = 'calendarItem active';
-            postcardCateg.className = 'postcardItem no-active';
-        });
-        postcardCateg.addEventListener('click', function(event) {
-            event.preventDefault();
 
-            for (var i = 0; i < allPostCards.length; i++) {
-                allPostCards[i].className = 'visibl fade-in';
+        addPostcardTemplate(simple, 'simple', 'templates');
+        
+
+        categoryHandler.addEventListener('click', function(e) {
+            var e = e || window.event;
+            var target = e.target; 
+
+            for(var i=0; i<categories.length;i++){
+                categories[i].className = 'item no-active';    
             }
-            for (var i = 0; i < allCalendars.length; i++) {
-                allCalendars[i].className = 'invisibl';
+            target.className = 'item active';
+            switch(target.id){
+                case 'simpleList': 
+                    currIndex = 0;
+                    templateList.removeChild(templateList.childNodes[3]);
+                    addPostcardTemplate(simple, 'simple', 'templates');
+                    break;
+                case 'hbList':
+                    currIndex = 0;
+                    templateList.removeChild(templateList.childNodes[3]);
+                    addPostcardTemplate(hb, 'happybirthday', 'templates');
+                    break;
+                case 'vacationList':
+                    currIndex = 0;
+                    templateList.removeChild(templateList.childNodes[3]);
+                    addPostcardTemplate(vacation, 'vacation', 'templates');
+                    break;
+                case 'greetingList':
+                    currIndex = 0;
+                    templateList.removeChild(templateList.childNodes[3]);
+                    addPostcardTemplate(greeting, 'greeting', 'templates');
+                    break;
             }
-            calendarCateg.className = 'calendarItem no-active';
-            postcardCateg.className = 'postcardItem active';
-        });
+        }, false);
+
         collapseBtn.addEventListener('click', function(event) {
-            
             if (collapseBtn.className !== 'collapsed') {
                 tmplPanel.style.display = 'none';
-                collapsePanel.style.position = 'absolute';
-                collapsePanel.style.bottom = '0';
+                categoryPanel.style.position = 'absolute';
+                categoryPanel.style.bottom = '0';
                 collapseBtn.className = 'collapsed';
                 collapseBtn.innerHTML = '<i class="fa fa-chevron-up collapse"></i>';
             } else {
                 tmplPanel.style.display = 'block';
-                collapsePanel.style.position = 'static';
+                categoryPanel.style.position = 'static';
                 collapseBtn.className = '';
                 collapseBtn.innerHTML = '<i class="fa fa-chevron-down collapse"></i>';
             }
+        }); 
+
+        prevNav.addEventListener('click', function() {
+            ulMover(1, templateList.childNodes[3].querySelectorAll('li'));
+        });
+        nextNav.addEventListener('click', function() {
+            ulMover(-1, templateList.childNodes[3].querySelectorAll('li'));
         });
 
     function ulMover(flag, containerLi) {
@@ -141,20 +180,17 @@
                 currIndex--;
                 containerLi[currIndex].className = 'visibl';
                 containerLi[currIndex + 8].className = 'invisibl';
+                console.log(currIndex + '-');
             }
         } else {
             if (currIndex + 8 < containerLi.length) {
                 containerLi[currIndex].className = 'invisibl';
                 containerLi[currIndex + 8].className = 'visibl';
                 currIndex++;
+                console.log(currIndex + "+");
             }
         }
     }
 }
 
 })();
-
-
-
-
-
