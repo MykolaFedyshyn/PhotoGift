@@ -37,7 +37,6 @@ inpFile.addEventListener('change', function(e) {
         tempCanv.id = 'picture' + index;
         tempCanv.setAttribute('width', '160');
         tempCanv.setAttribute('height', '160');
-        //tempCanv.setAttribute('draggable', 'true');
         tempEl.appendChild(tempCanv);
         pictContainer.appendChild(tempEl);
         pictContainer.style.overflowY = 'scroll';
@@ -58,9 +57,7 @@ canvasContainer.ondrop = function(ev) {
     var img = new Image();
     img.src = data;
     var rect = this.getBoundingClientRect();
-
-    //var mainCont = document.getElementById('work-field');
-    var ratio = (mainCanvas.width / 3) / img.width;
+    var ratio = (mainCanvas.width / 4) / img.width;
     var newWidth = Math.floor(img.width * ratio);
     var newHeight = Math.floor(img.height * ratio);
     var xPos = (ev.clientX - rect.left) - (newWidth / 2);
@@ -216,8 +213,6 @@ function addMoveListeners(context) {
     } else {
         changeZindex(context, ['canvAncor', 'canvDel fa fa-times'], 5, 1);
     }
-    // changeZindex(context, 'canvAncor', 5, 1);
-    // changeZindex(context, 'canvDel fa fa-times', 5, 1);
 
     context.onmousedown = function(e) {
         if (this.className == 'active' && canMove) {

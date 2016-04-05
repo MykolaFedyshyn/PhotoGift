@@ -53,13 +53,15 @@
     height: 80px;
     position: absolute;
     cursor: pointer;
-    border-radius: 9px;
+    border-radius: 10px;
 }
 
 #graphicEl .templNav:hover {
-    background: rgba(72, 168, 168, 0.6);
+    background: rgba(255, 255, 255, 0.5);
 }
-
+#graphicEl .templNav:hover::before {
+    color: rgba(0, 0, 0, 0.5);
+}
 #graphicEl .templNav::before {
     position: absolute;
     display: block;

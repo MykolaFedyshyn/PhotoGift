@@ -20,7 +20,7 @@
     <div id="wrapper">
         <div id="header">
             <a href="#"><div id="logo"></div></a>
-            <div id="login"></div>
+            <!-- <div id="login"></div> -->
         </div>
         <div id="container" class="clearfix">
             <div id="tools-panel">
@@ -61,12 +61,12 @@
                         </div>
                     </div>
                     <div id="filterTools">
-                        <a href="" id="graysButt"></a>
-                        <a href="" id="sepiaButt"></a>
-                        <a href="" id="brightButt"></a>
-                        <a href="" id="thresSbutt"></a>
-                        <a href="" id="negSbutt"></a>
-                        <a href="" id="filtCancel"></a>
+                        <a href="" id="graysButt"><span>Grayscale</span></a>
+                        <a href="" id="sepiaButt"><span>Sepia</span></a>
+                        <a href="" id="brightButt"><span>Brightness</span></a>
+                        <a href="" id="thresSbutt"><span>Threshold</span></a>
+                        <a href="" id="negSbutt"><span>Negative</span></a>
+                        <a href="" id="filtCancel"><span>Restore original image</span></a>
                     </div>
                     <div id="graphicEl">
                         <div class="carouselList" id="assetsList">
@@ -77,16 +77,16 @@
                     <div id="newWindTools">
                         <div>
                             <label for="wSize">Width:</label>
-                            <input type="range" min="300" max="808" id="wSize" step="1" value="808">
+                            <input type="range" min="300" max="856" id="wSize" step="1" value="856">
                         </div>
                         <div>
                             <label for="hSize">Height:</label>
-                            <input type="range" min="300" max="808" id="hSize" step="1" value="542">
+                            <input type="range" min="300" max="856" id="hSize" step="1" value="552">
                         </div>
                     </div>
                 </div>
                 <div id="work-field">
-                    <canvas id="work-field-canvas" width="808" height="542">
+                    <canvas id="work-field-canvas" width="856" height="552">
                     </canvas>
                 </div>
             </div>
@@ -132,7 +132,7 @@
                 </div>
             </div>
         </div>
-        <div id="footer">&copy; PhotoGift</div>
+        <!-- <div id="footer">&copy; PhotoGift</div> -->
     </div>
     <script src="scripts/firebase.js"></script>
     <script src="scripts/postcardTemplates.js"></script>

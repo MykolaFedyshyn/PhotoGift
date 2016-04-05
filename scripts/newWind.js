@@ -5,8 +5,8 @@
     var hInput = document.getElementById('hSize');
 
     newWbtn.onclick = function() {
-        wInput.value = '808';
-        hInput.value = '542';
+        wInput.value = '856';
+        hInput.value = '552';
         drawPanelAnime(newWpanel, '80px', 1, '10px', '0 0 10px', 'relative');
         mainctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
         while (true) {
@@ -17,7 +17,7 @@
                 break;
             }
         }
-        changeContSize(canvasContainer, mainCanvas, 808, 542);
+        changeContSize(canvasContainer, mainCanvas, 856, 552);
     };
     newWpanel.oninput = function(e) {
         e.stopPropagation();
