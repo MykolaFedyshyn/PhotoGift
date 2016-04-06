@@ -59,6 +59,7 @@
     background: rgba(255, 255, 255, 0.5);
 }
 
+
 /*-----------------------button for downloading a picture-------*/
 
 #content-panel .inputfile {
@@ -73,6 +74,7 @@
 #content-panel .inputfile + label {
     cursor: pointer;
 }
+
 
 /*----------------------picture container-----------------------*/
 
@@ -147,6 +149,7 @@
     margin: 0 10px;
     display: inline-block;
 }
+
 #content-panel label {
     transition: all 0.1s;
 }
@@ -155,11 +158,13 @@
     background-color: #C5C9CD;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
 }
+
 #content-panel label:active {
     position: relative;
     box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
     top: 1px;
 }
+
 #file-buttons a:active {
     border-top-color: #1b435e;
     background: #1b435e;
@@ -201,8 +206,9 @@
     transition: all 0.8s;
     background: rgba(172, 190, 202, 0.5);
     border-top: 1px solid #D7D8D8;
-    transition-timing-function: cubic-bezier(.42,1.89,.25,.7);
+    transition-timing-function: cubic-bezier(.42, 1.89, .25, .7);
 }
+
 #file-buttons a:hover {
     right: -10px;
     box-shadow: -1px 3px 5px 1px rgba(50, 50, 50, 0.75);
@@ -243,7 +249,8 @@
 
 
 /*-----------------info boxes----------------------*/
-    @font-face {
+
+@font-face {
     font-family: funnyFont;
     src: url(../fonts/Hangyaboly.ttf);
 }
@@ -384,9 +391,11 @@
 #carousel .templNav:hover {
     background: rgba(255, 255, 255, 0.5);
 }
+
 #carousel .templNav:hover::before {
     color: rgba(0, 0, 0, 0.5);
 }
+
 #carousel .templNav::before {
     position: absolute;
     font-size: 24px;
@@ -428,7 +437,7 @@
     background-color: rgba(128, 128, 128, 0.5);
 }
 
-#category-wrapper{
+#category-wrapper {
     margin: 4px 4px 0px 0px;
     float: left;
 }
@@ -444,4 +453,39 @@ a.item {
     padding: 3px;
     border-radius: 12px;
     cursor: pointer;
+}
+
+
+/* -----------------warning block------------------ */
+
+.warningBlock {
+    position: absolute;
+    width: 500px;
+    top: 200px;
+    text-align: center;
+    background: rgba(128, 128, 128, 0.47);
+    border: 2px solid rgba(19, 18, 18, 0.76);
+    padding: 10px;
+    border-radius: 10px;
+    text-shadow: -1px 1px 3px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 0px 0px 39px 5px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0px 0px 39px 5px rgba(0, 0, 0, 0.8));
+    box-shadow: 0px 0px 39px 5px rgba(0, 0, 0, 0.8));
+}
+
+.warningBlock p {
+    margin-top: 0;
+    color: #CCC9C9;
+    font-size: 18px;
+}
+
+.warningBlock a {
+    display: inline-block;
+    color: #fff;
+    margin: 0 35px;
+    text-decoration: none;
+    font-size: 23px;
+}
+.warningBlock a:hover {
+    text-decoration: underline;
 }

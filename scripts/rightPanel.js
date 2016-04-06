@@ -283,10 +283,6 @@ function addResizeListeners(that, ev, img) {
     var maxHeiht = 70;
     var container = that.parentNode;
     var containerCanv = container.getElementsByTagName('canvas')[0];
-    // if (!!img) {
-    //     var img = new Image();
-    //     img.src = container.imgSrc;
-    // }
 
     if (canMove) {
         resizeInit(ev);
