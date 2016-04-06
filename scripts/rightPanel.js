@@ -83,6 +83,7 @@ mainCanvas.onclick = function() {
     var allElems = this.parentNode.children;
     for (var i = 0; i < allElems.length; i++) {
         allElems[i].className = '';
+        allElems[i].style.cursor = 'default';
         changeZindex(allElems[i], ['canvAncor', 'canvDel fa fa-times'], -5, 0);
     }
     drawPanelAnime(drawPanel, 0, 0, '0 10px', 0, 'absolute');
@@ -206,6 +207,7 @@ function addMoveListeners(context) {
 
     for (var i = 0; i < allElems.length; i++) {
         allElems[i].className = '';
+        allElems[i].style.cursor  = 'default';
         changeZindex(allElems[i], ['canvAncor', 'canvDel fa fa-times'], -5, 0);
     }
     if (context.canDraw && !canMove) {
@@ -254,9 +256,7 @@ function addMoveListeners(context) {
         drawPanelAnime(drawPanel, 0, 0, '0 10px', 0, 'absolute');
         startDraw(drawAllow, true);
     }
-    context.onmouseover = function() {
-        context.style.cursor = (context.canDraw && !canMove) ? 'url(img/Pencil.cur), auto' : 'move';
-    }
+    context.style.cursor = (context.canDraw && !canMove) ? 'url(img/Pencil.cur), auto' : 'move';
 }
 
 function drawPanelAnime(ctx, hgt, op, padd, marg, pos) {
@@ -349,10 +349,13 @@ function drawMirroredImg(container, img, ctx, w, h) {
 //----------------------------------------------------------------------------------
 drawAllow.onclick = function(e) {
     //e.preventDefault();
+    var activeEl = canvasContainer.getElementsByClassName('active')[0];
     if (!canMove) {
         startDraw(this, true);
+        activeEl.style.cursor = 'move';
     } else {
         startDraw(this, false);
+        activeEl.style.cursor = 'url(img/Pencil.cur), auto';
     }
 };
 drawBtn.onclick = function(e) {
