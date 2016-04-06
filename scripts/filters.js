@@ -27,11 +27,17 @@
                     case 'brightButt':
                         resultData = brightFilter(imgData);
                         break;
+                     case 'darkButt':
+                        resultData = darkFilter(imgData);
+                        break;
                     case 'thresSbutt':
                         resultData = thresFilter(imgData);
                         break;
                     case 'negSbutt':
                         resultData = negFilter(imgData);
+                        break;
+                    case 'blurButt':
+                        resultData = blurFilter(imgData, currCanv.width, currCanv.width);
                         break;
                 }
                 removeResizing(activeEl);
@@ -110,6 +116,16 @@
         }
         return pixels;
     }
+    function darkFilter(pixels) {
+        var d = pixels.data;
+        var adjustment = 0.9;
+        for (var i = 0; i < d.length; i += 4) {
+            d[i] *= adjustment;
+            d[i + 1] *= adjustment;
+            d[i + 2] *= adjustment;
+        }
+        return pixels;
+    }
 
     function thresFilter(pixels) {
         var d = pixels.data;
@@ -119,6 +135,39 @@
             var b = d[i + 2];
             var v = (0.2126 * r + 0.7152 * g + 0.0722 * b >= 110) ? 255 : 0;
             d[i] = d[i + 1] = d[i + 2] = v
+        }
+        return pixels;
+    }
+    function blurFilter(pixels, iW, iH) {
+        var data = pixels.data;
+        var iMW, iSumOpacity, iCnt,iSumRed, iSumGreen, iSumBlue, aCloseData;
+        var p1 = p2 = p3 = 0.99;
+        var er = eg = eb = 0;
+        var iBlurRate = 1;
+        for (var br = 0; br < iBlurRate; br += 1) {
+            for (var i = 0, n = data.length; i < n; i += 4) {
+                iMW = 4 * iW;
+                iSumOpacity = iSumRed = iSumGreen = iSumBlue = 0;
+                iCnt = 0;
+                aCloseData = [
+                    i - iMW - 4, i - iMW, i - iMW + 4,
+                    i - 4, i + 4,
+                    i + iMW - 4, i + iMW, i + iMW + 4
+                ];
+                for (var e = 0; e < aCloseData.length; e += 1) {
+                    if (aCloseData[e] >= 0 && aCloseData[e] <= data.length - 3) {
+                        iSumOpacity += data[aCloseData[e]];
+                        iSumRed += data[aCloseData[e] + 1];
+                        iSumGreen += data[aCloseData[e] + 2];
+                        iSumBlue += data[aCloseData[e] + 3];
+                        iCnt += 1;
+                    }
+                }
+                data[i] = (iSumOpacity / iCnt) * p1 + er;
+                data[i + 1] = (iSumRed / iCnt) * p2 + eg;
+                data[i + 2] = (iSumGreen / iCnt) * p3 + eb;
+                data[i + 3] = (iSumBlue / iCnt);
+            }
         }
         return pixels;
     }

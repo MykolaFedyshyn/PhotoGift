@@ -47,6 +47,12 @@
 #negSbutt {
     background: #65a9d7 url('../img/filters/negative_small.png') no-repeat center center;
 }
+#blurButt {
+    background: #65a9d7 url('../img/filters/blur_small.png') no-repeat center center;
+}
+#darkButt {
+    background: #65a9d7 url('../img/filters/darkness_small.png') no-repeat center center;
+}
 #filterTools #filtCancel {
     width: 32px;
     height: 32px;
