@@ -1,9 +1,9 @@
 (function() {
     var objArr = [{
         content: 'Choose proper template',
-        top: '-90px',
+        top: '-100px',
         // left: '50px',
-        left: '1%',
+        left: '12%',
         classN: 'fa fa-arrow-down'
     }, {
         content: 'Add your images',
@@ -21,7 +21,7 @@
         content: 'Use the tools panel',
         top: '200px',
         // right: '-350px',
-        right: '-430%',
+        right: '-490%',
         classN: 'fa fa-arrow-left'
     }, {
         content: 'Save the postcard',
