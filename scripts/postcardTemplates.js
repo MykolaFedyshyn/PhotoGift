@@ -11,7 +11,8 @@
         // var ctx = canvas.getContext('2d');
         var tmpl = document.getElementsByClassName('templates');
         for (var i = 0; i < tmpl.length; i++) {
-            tmpl[i].addEventListener('click', function() {
+            tmpl[i].addEventListener('click', function(e) {
+                e.stopPropagation();
                 var that = this;
                 if (canvasContainer.children.length > 2) {
                     showWarning(draw, that);

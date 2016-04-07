@@ -4,7 +4,8 @@
     var wInput = document.getElementById('wSize');
     var hInput = document.getElementById('hSize');
 
-    newWbtn.onclick = function() {
+    newWbtn.onclick = function(e) {
+        e.stopPropagation();
         if (canvasContainer.children.length > 2) {
             showWarning(createNewArea);
         } else {
