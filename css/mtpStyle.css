@@ -357,6 +357,49 @@
     transition: left 0.9s linear;
     left: 0;
 }
+#carousel #spinner .loader {
+  margin: 25px auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 8px solid rgba(255, 255, 255, 0.2);
+  border-right: 8px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 8px solid rgba(255, 255, 255, 0.2);
+  border-left: 8px solid #fff;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+  cursor: default;
+  box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.5),  inset 0px 0px 20px 0px rgba(0,0,0,0.4);
+}
+#carousel #spinner .loader,
+#carousel #spinner .loader::after {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 
 #carousel .carouselList li {
     height: 100px;

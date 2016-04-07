@@ -21,7 +21,7 @@
             newEl.style.left = (rect.left + window.scrollX) + rect.width / 2 + 'px';
             newEl.style.top = (rect.top + window.scrollY) + rect.height + 15 + 'px';
             setTimeout(function() {
-                newEl.style.top = (rect.bottom + window.scrollX) + 5 + 'px';
+                newEl.style.top = (rect.top + window.scrollY) + rect.height + 5 + 'px';
             }, 0);
         } else {
             newEl.style.left = (rect.right + window.scrollX) + 15 + 'px';

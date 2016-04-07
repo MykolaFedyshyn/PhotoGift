@@ -1,4 +1,21 @@
 (function() {
+    var tmplPanel = document.querySelector('#template-wrapper');
+    var templateList = document.querySelector('#postList');
+    var categoryPanel = document.querySelector('#categories');
+    var categories = document.querySelectorAll('#category-wrapper > a');
+    var collapseBtn = document.querySelector('#collapse-btn');
+    var allPostCards = document.querySelectorAll('#postcards > li');
+    var allCalendars = document.querySelectorAll('#calendars > li');
+    var prevNav = document.querySelector('#carousel .prev');
+    var nextNav = document.querySelector('#carousel .next');
+    var prevNavAsset = document.querySelector('#graphicEl .prev');
+    var nextNavAsset = document.querySelector('#graphicEl .next');
+    var postcardCateg = document.querySelector('#postcardList');
+    var calendarCateg = document.querySelector('#calendarList');
+    var categoryHandler = document.querySelector('#category-wrapper')
+    var assetBtn = document.getElementById('addAsset');
+    var assetsPanel = document.getElementById('graphicEl');
+    var currIndex = 0;
     // Create a connection to Firebase database
     var ref = new Firebase("https://intense-torch-8426.firebaseio.com");
     ref.on("value", function(data) { // Listen for realtime changes
@@ -88,28 +105,8 @@
         }
         addToCanvas();
     }
-
-
-
     //---------------work with categories------------------------------------------------//
     function carousel(simple, hb, vacation, greeting, assets) {
-        var tmplPanel = document.querySelector('#template-wrapper');
-        var templateList = document.querySelector('#postList');
-        var categoryPanel = document.querySelector('#categories');
-        var categories = document.querySelectorAll('#category-wrapper > a');
-        var collapseBtn = document.querySelector('#collapse-btn');
-        var allPostCards = document.querySelectorAll('#postcards > li');
-        var allCalendars = document.querySelectorAll('#calendars > li');
-        var prevNav = document.querySelector('#carousel .prev');
-        var nextNav = document.querySelector('#carousel .next');
-        var prevNavAsset = document.querySelector('#graphicEl .prev');
-        var nextNavAsset = document.querySelector('#graphicEl .next');
-        var postcardCateg = document.querySelector('#postcardList');
-        var calendarCateg = document.querySelector('#calendarList');
-        var categoryHandler = document.querySelector('#category-wrapper')
-        var assetBtn = document.getElementById('addAsset');
-        var assetsPanel = document.getElementById('graphicEl');
-        var currIndex = 0;
 
         assetBtn.addEventListener('click', function(e) {
             drawPanelAnime(assetsPanel, '80px', 1, '0px', '0 0 10px', 'relative');
@@ -157,22 +154,6 @@
                     break;
             }
         }, false);
-
-        collapseBtn.addEventListener('click', function(event) {
-            if (collapseBtn.className !== 'collapsed') {
-                tmplPanel.style.display = 'none';
-                categoryPanel.style.position = 'absolute';
-                categoryPanel.style.bottom = '0';
-                collapseBtn.className = 'collapsed';
-                collapseBtn.innerHTML = '<i class="fa fa-chevron-up collapse"></i>';
-            } else {
-                tmplPanel.style.display = 'block';
-                categoryPanel.style.position = 'static';
-                collapseBtn.className = '';
-                collapseBtn.innerHTML = '<i class="fa fa-chevron-down collapse"></i>';
-            }
-        });
-
         prevNav.addEventListener('click', function() {
             ulMover(1, templateList.childNodes[3].querySelectorAll('li'));
         });
@@ -198,5 +179,20 @@
             }
         }
     }
+
+    collapseBtn.addEventListener('click', function(event) {
+        if (collapseBtn.className !== 'collapsed') {
+            tmplPanel.style.display = 'none';
+            categoryPanel.style.position = 'absolute';
+            categoryPanel.style.bottom = '0';
+            collapseBtn.className = 'collapsed';
+            collapseBtn.innerHTML = '<i class="fa fa-chevron-up collapse"></i>';
+        } else {
+            tmplPanel.style.display = 'block';
+            categoryPanel.style.position = 'static';
+            collapseBtn.className = '';
+            collapseBtn.innerHTML = '<i class="fa fa-chevron-down collapse"></i>';
+        }
+    });
 
 })();
