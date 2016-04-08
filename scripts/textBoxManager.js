@@ -63,9 +63,6 @@ var TextBoxManager = {
     	textBox.appendChild(canvas);
   		}
 		});
-		if (textBox.querySelector("div[contenteditable='true']")) {
-			textBox.querySelector("div[contenteditable='true']").setAttribute("contenteditable", "false");
-		};
 	},
 
 	
@@ -83,9 +80,6 @@ var TextBoxManager = {
         changeZindex(allElems[i], ['canvAncor', 'canvDel fa fa-times'], -5, 0);
     };
 		textBox.setAttribute("class", "active");
-		if (textBox.querySelector("div[contenteditable='false']")) {
-			textBox.querySelector("div[contenteditable='false']").setAttribute("contenteditable", "true");
-		};
 		var textPanel = document.getElementById("textControlPanel");
 		drawPanelAnime(textPanel, '80px', 1, '0px', '0 0 10px', 'relative');
 		this.onDragEnd(textBox);
