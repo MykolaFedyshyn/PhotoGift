@@ -1,8 +1,6 @@
 var textBoxCounter = 0;
 var TextBoxManager = {
-	/**
-	 * Cached DOM queries
-	 */
+	// Cached DOM queries
 	addButtonDOMNode: document.querySelector('#addTextBox'),
 	workFieldDOMNode: document.getElementById("work-field"),
 
@@ -11,10 +9,8 @@ var TextBoxManager = {
 		this.addButtonDOMNode.addEventListener("click", this.add.bind(this), false);
 	},
 
-	/**
-	 * Create new textBox
-	 * @param {Object} event - Click event object
-	 */
+	// Create new textBox
+
 	add: function(event) {
 		var newTextBoxId = "textBox-" + textBoxCounter;
 		var newTextBox = document.createElement("div");
@@ -67,47 +63,36 @@ var TextBoxManager = {
     	textBox.appendChild(canvas);
   		}
 		});
+		if (textBox.querySelector("div[contenteditable='true']")) {
+			textBox.querySelector("div[contenteditable='true']").setAttribute("contenteditable", "false");
+		};
 	},
 
-	/**
-	 * Remove existing textBox once X button is clicked
-	 * @param  {Node}   textBox - TextBox DOM Node that needs to be removed
-	 * @return {null}
-	 */
+	
+	// Remove existing textBox once X button is clicked
+
 	remove: function(textBox) {
 		this.workFieldDOMNode.removeChild(textBox);
 	},
 
-	onSelect: function(textBox, event) {
-		event.stopPropagation();
+	onSelect: function(textBox) {
 		textControlPanel.render(textBox);
 		var allElems = textBox.parentNode.children;
 		for (var i = 0; i < allElems.length; i++) {
         allElems[i].className = '';
         changeZindex(allElems[i], ['canvAncor', 'canvDel fa fa-times'], -5, 0);
     };
-		textBox.dataset.isActive = true;
-		textBox.querySelector("div[contenteditable]").setAttribute("contenteditable", "true");
+		textBox.setAttribute("class", "active");
+		if (textBox.querySelector("div[contenteditable='false']")) {
+			textBox.querySelector("div[contenteditable='false']").setAttribute("contenteditable", "true");
+		};
 		var textPanel = document.getElementById("textControlPanel");
 		drawPanelAnime(textPanel, '80px', 1, '0px', '0 0 10px', 'relative');
 		this.onDragEnd(textBox);
 	},
 
-	onUnselect: function(event) {
-		var activeTextBoxes = Array.prototype.slice.call(this.workFieldDOMNode.querySelectorAll("[data-is-active = 'true']"));
-		console.log(this.workFieldDOMNode.querySelectorAll(".active"));
-		activeTextBoxes.forEach(function(activeTextBox) {
-			activeTextBox.dataset.isActive = false;
-			activeTextBox.querySelector("div[contenteditable]").setAttribute("contenteditable", "false");
-		});
-	},
+	// Handle textBox "mousedown" event
 
-	/**
-	 * Handle textBox "mousedown" event
-	 * @param  {Node} textBox - textBox DOM Node
-	 * @param  {Object} event - mousedown event object
-	 * @return {null}
-	 */
 	onDragStart: function(textBox, event) {
 		event.stopPropagation();
 
@@ -116,18 +101,13 @@ var TextBoxManager = {
 		textBox.startX = event.offsetX;
 		textBox.startY = event.offsetY;
 
-		/**
-		 * Start listening to mousemove event.
-		 */
+		// Start listening to mousemove event
+
 		this.workFieldDOMNode.addEventListener("mousemove", textBox.onDrag, false);
 	},
 
-	/**
-	 * Handle textBox "move" event
-	 * @param  {Node} textBox - textBox DOM Node
-	 * @param  {Object} event - "move" event object
-	 * @return {null}
-	 */
+	// Handle textBox "move" event
+
 	onDrag: function(textBox, event) {
 		if(textBox.dataset.draggable !== "true") return null;
 
@@ -145,12 +125,8 @@ var TextBoxManager = {
 		this.workFieldDOMNode.addEventListener("mouseup",   textBox.onDragEnd, false);
 	},
 
-	/**
-	 * Handle textBox "mouseup" event
-	 * @param  {Node} textBox - textBox DOM Node
-	 * @param  {Object} event - "mouseup" event object
-	 * @return {null}
-	 */
+	// Handle textBox "mouseup" event
+
 	 onDragEnd: function(textBox, event) {
  		textBox.dataset.draggable = false;
  		/**
@@ -209,22 +185,16 @@ var TextBoxManager = {
  		this.workFieldDOMNode.removeEventListener("mouseup", textBox.onResizeEnd);
  	},
 
- 	/**
- 	 * Handle textBox removal
- 	 * @param  {Node} textBox - textBox DOM Node
- 	 * @param  {Object} event - "click" event object
- 	 * @return {null}
- 	 */
+ 	// Handle textBox removal
+
  	onRemove: function(textBox, event) {
  		event.stopPropagation();
  		this.unmountedFromTheDOM(textBox);
  		this.remove(textBox);
  	},
 
- 	/**
- 	 * Triggered whenever specified textBox is added to the DOM
- 	 * @param  {Object} textBox - DOM node reference
- 	 */
+ 	// Triggered whenever specified textBox is added to the DOM
+
  	mountedInTheDOM: function(textBox) {
  		/**
  		 * Reapply newly created event listeners,
@@ -244,9 +214,6 @@ var TextBoxManager = {
 
 		textBox.renderCanvas = this.renderCanvas.bind(this, textBox);
 
-
-
-
  		/**
  		 * Now assign them to DOM Nodes
  		 */
@@ -255,14 +222,9 @@ var TextBoxManager = {
 		textBox.querySelector("div[contenteditable='true']").addEventListener("mouseout", textBox.renderCanvas, false);
  		textBox.querySelector("button.resize").addEventListener("mousedown", textBox.onResizeStart, false);
  		textBox.querySelector("button.remove").addEventListener("click", textBox.onRemove, false);
-		document.addEventListener("click", this.onUnselect.bind(this), false);
-
  	},
 
- 	/**
- 	 * Triggered whenever specified textBox is removed from the DOM
- 	 * @param  {Object} textBox - DOM node reference
- 	 */
+ 	// Triggered whenever specified textBox is removed from the DOM
  	unmountedFromTheDOM: function(textBox) {
  		textBox.removeEventListener("mousedown", textBox.onDragStart);
 		textBox.removeEventListener("click", textBox.onSelect);
