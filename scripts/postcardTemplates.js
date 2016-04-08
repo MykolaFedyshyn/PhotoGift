@@ -41,6 +41,7 @@
         }
 
         function draw(that) {
+            totalZindex = 1;
             var canvas = document.getElementById('work-field-canvas');
             var ctx = canvas.getContext('2d');
             var mainel = document.getElementById('work-field');

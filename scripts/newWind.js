@@ -27,6 +27,7 @@
     }
 
     function createNewArea() {
+        totalZindex = 1;
         wInput.value = '856';
         hInput.value = '552';
         drawPanelAnime(newWpanel, '80px', 1, '10px', '0 0 10px', 'relative');

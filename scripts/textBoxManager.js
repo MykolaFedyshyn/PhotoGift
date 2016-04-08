@@ -16,9 +16,10 @@ var TextBoxManager = {
 		var newTextBox = document.createElement("div");
 
 		// Specify textBox attributes
-		newTextBox.setAttribute("style", "z-index: 1");
+		newTextBox.setAttribute("style", "z-index:" + totalZindex);
 		newTextBox.setAttribute("id", newTextBoxId);
 		textBoxCounter++;
+        totalZindex++;
 
 		newTextBox.innerHTML =
 			"<button class='remove'>" +
@@ -65,7 +66,7 @@ var TextBoxManager = {
 		});
 	},
 
-	
+
 	// Remove existing textBox once X button is clicked
 
 	remove: function(textBox) {
