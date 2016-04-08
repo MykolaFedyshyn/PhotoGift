@@ -46,6 +46,9 @@
 
 function showWarning(applyFunc, that) {
     var wrap = document.getElementById('wrapper');
+    if(wrap.getElementsByClassName('hoverBlack')[0]) {
+        return;
+    }
     var coverDiv = document.createElement('div');
     coverDiv.className = 'hoverBlack';
     wrap.appendChild(coverDiv);
