@@ -67,9 +67,6 @@ var TextBoxManager = {
     	textBox.appendChild(canvas);
   		}
 		});
-		if (textBox.querySelector("div[contenteditable='true']")) {
-			textBox.querySelector("div[contenteditable='true']").setAttribute("contenteditable", "false");
-		};
 	},
 
 	/**
@@ -81,20 +78,28 @@ var TextBoxManager = {
 		this.workFieldDOMNode.removeChild(textBox);
 	},
 
-	onSelect: function(textBox) {
+	onSelect: function(textBox, event) {
+		event.stopPropagation();
 		textControlPanel.render(textBox);
 		var allElems = textBox.parentNode.children;
 		for (var i = 0; i < allElems.length; i++) {
         allElems[i].className = '';
         changeZindex(allElems[i], ['canvAncor', 'canvDel fa fa-times'], -5, 0);
     };
-		textBox.setAttribute("class", "active");
-		if (textBox.querySelector("div[contenteditable='false']")) {
-			textBox.querySelector("div[contenteditable='false']").setAttribute("contenteditable", "true");
-		};
+		textBox.dataset.isActive = true;
+		textBox.querySelector("div[contenteditable]").setAttribute("contenteditable", "true");
 		var textPanel = document.getElementById("textControlPanel");
 		drawPanelAnime(textPanel, '80px', 1, '0px', '0 0 10px', 'relative');
 		this.onDragEnd(textBox);
+	},
+
+	onUnselect: function(event) {
+		var activeTextBoxes = Array.prototype.slice.call(this.workFieldDOMNode.querySelectorAll("[data-is-active = 'true']"));
+		console.log(this.workFieldDOMNode.querySelectorAll(".active"));
+		activeTextBoxes.forEach(function(activeTextBox) {
+			activeTextBox.dataset.isActive = false;
+			activeTextBox.querySelector("div[contenteditable]").setAttribute("contenteditable", "false");
+		});
 	},
 
 	/**
@@ -239,6 +244,9 @@ var TextBoxManager = {
 
 		textBox.renderCanvas = this.renderCanvas.bind(this, textBox);
 
+
+
+
  		/**
  		 * Now assign them to DOM Nodes
  		 */
@@ -247,6 +255,8 @@ var TextBoxManager = {
 		textBox.querySelector("div[contenteditable='true']").addEventListener("mouseout", textBox.renderCanvas, false);
  		textBox.querySelector("button.resize").addEventListener("mousedown", textBox.onResizeStart, false);
  		textBox.querySelector("button.remove").addEventListener("click", textBox.onRemove, false);
+		document.addEventListener("click", this.onUnselect.bind(this), false);
+
  	},
 
  	/**
