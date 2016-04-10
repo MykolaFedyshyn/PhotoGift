@@ -34,9 +34,8 @@ body > * {
     margin-left: 5px;
     height: 38px;
     width: 138px;
-    background-image: url('../img/logo.png');
+    background: url('../img/spritesheet.png') no-repeat -5px -147px;
     display: inline-block;
-    float: left;
 }
 
 #login {

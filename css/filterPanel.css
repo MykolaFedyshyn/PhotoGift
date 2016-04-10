@@ -17,6 +17,8 @@
     box-shadow: rgba(0, 0, 0, 0.9) 0 1px 0;
     margin: 11px 10px;
     display: inline-block;
+    background-image: url(../img/spritesheet.png);
+    background-repeat: no-repeat;
     transition: all 0.1s;
 }
 #filterTools a:hover {
@@ -33,25 +35,25 @@
     visibility: hidden;
 }
 #brightButt {
-    background: #65a9d7 url('../img/filters/brightness_small.png') no-repeat center center;
+    background-position: -163px -5px;
 }
 #graysButt {
-    background: #65a9d7 url('../img/filters/grayscale_small.png') no-repeat center center;
+    background-position: -139px -55px;
 }
 #sepiaButt {
-    background: #65a9d7 url('../img/filters/sepia_small.png') no-repeat center center;
+    background-position: -5px -197px;
 }
 #thresSbutt {
-    background: #65a9d7 url('../img/filters/threshold_small.png') no-repeat center center;
+    background-position: -79px -197px;
 }
 #negSbutt {
-    background: #65a9d7 url('../img/filters/negative_small.png') no-repeat center center;
+    background-position: -152px -147px;
 }
 #blurButt {
-    background: #65a9d7 url('../img/filters/blur_small.png') no-repeat center center;
+    background-position: -89px -5px;
 }
 #darkButt {
-    background: #65a9d7 url('../img/filters/darkness_small.png') no-repeat center center;
+    background-position: -65px -55px;
 }
 #filterTools #filtCancel {
     width: 32px;
@@ -59,7 +61,7 @@
     margin-left: 50px;
     border: none;
     box-shadow: none;
-    background: url('../img/undo.png') no-repeat center center;
+    background: url('../img/spritesheet.png') no-repeat -226px -131px;
     transition: all 0.2s;
 }
 #filterTools #filtCancel:hover {

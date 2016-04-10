@@ -1,5 +1,5 @@
 #tools-panel .toolBtn {
-    background: #ACBECA no-repeat center center;
+    background: #ACBECA url(../img/spritesheet.png) no-repeat center center;
     width: 75%;
     padding: 22px 0;
     border-radius: 10px;
@@ -41,37 +41,40 @@
 }
 
 #tools-panel #rotate-left {
-    background-image: url('../img/rotate-left.png');
+    background-position: -230px -41px;
 }
 
 #tools-panel #rotate-right {
-    background-image: url('../img/rotate-right.png');
+    background-position: -208px -83px;
 }
 
 #tools-panel #layer-up {
-    background-image: url('../img/layer-top.png');
+    background-position: -82px -99px;
 }
 
 #tools-panel #layer-down {
-    background-image: url('../img/layer-back.png');
+    background-position: -40px -99px;
 }
 
 #tools-panel #addDrawBox {
-    background-image: url('../img/paint.png');
+    background-position: -230px 1px;
 }
 
 #tools-panel #addFilter {
-    background-image: url('../img/CMYK.png');
+     background-position: 1px 0;
 }
 
 #tools-panel #mirrorImg {
-    background-image: url('../img/mirror.png');
+    background-position: -124px -99px;
 }
 
 #tools-panel #newWindow {
-    background-image: url('../img/newWindow.png');
+    background-position: -166px -99px;
 }
 
 #tools-panel #addTextBox {
-    background-image: url('../img/insert_text.png');
+    background-position: 2px -97px;
+}
+#tools-panel #addAsset{
+    background-position: -41px 0;
 }
