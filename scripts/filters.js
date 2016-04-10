@@ -2,10 +2,9 @@
     var canvasContainer = document.getElementById('work-field');
     var filterBtn = document.getElementById('addFilter');
     var filterPanel = document.getElementById('filterTools');
-    var changeFilterFlag = false;
 
     filterBtn.onclick = function(e) {
-        drawPanelAnime(filterPanel, '80px', 1, '10px', '0 0 10px', 'relative');
+        appObj.drawPanelAnime(filterPanel, '80px', 1, '10px', '0 0 10px', 'relative');
     };
     filterPanel.onclick = function(e) {
         e.preventDefault();
@@ -54,13 +53,13 @@
     function restoreImg(container, ctx, canv) {
         var img = new Image();
         img.src = container.imgSrc;
-        drawMirroredImg(container, img, ctx, canv.width, canv.height);
+        appObj.drawMirroredImg(container, img, ctx, canv.width, canv.height);
 
-        var ancrEl = addToolElem(container, 'canvAncor');
+        var ancrEl = appObj.addToolElem(container, 'canvAncor');
         ancrEl.onmousedown = function(e) {
             e.stopPropagation();
             var that = this;
-            addResizeListeners(that, e, img);
+            appObj.addResizeListeners(that, e, img);
         };
     }
 

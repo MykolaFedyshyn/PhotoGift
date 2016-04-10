@@ -1,4 +1,4 @@
-var textBoxCounter = 0;
+// var textBoxCounter = 0;
 var TextBoxManager = {
 	// Cached DOM queries
 	addButtonDOMNode: document.querySelector('#addTextBox'),
@@ -12,14 +12,14 @@ var TextBoxManager = {
 	// Create new textBox
 
 	add: function(event) {
-		var newTextBoxId = "textBox-" + textBoxCounter;
+		var newTextBoxId = "textBox-" + appObj.textBoxCounter;
 		var newTextBox = document.createElement("div");
 
 		// Specify textBox attributes
-		newTextBox.setAttribute("style", "z-index:" + totalZindex);
+		newTextBox.setAttribute("style", "z-index:" + appObj.totalZindex);
 		newTextBox.setAttribute("id", newTextBoxId);
-		textBoxCounter++;
-        totalZindex++;
+		appObj.textBoxCounter++;
+        appObj.totalZindex++;
 
 		newTextBox.innerHTML =
 			"<button class='remove'>" +
@@ -78,11 +78,11 @@ var TextBoxManager = {
 		var allElems = textBox.parentNode.children;
 		for (var i = 0; i < allElems.length; i++) {
         allElems[i].className = '';
-        changeZindex(allElems[i], ['canvAncor', 'canvDel fa fa-times'], -5, 0);
+        appObj.changeZindex(allElems[i], ['canvAncor', 'canvDel fa fa-times'], -5, 0);
     };
 		textBox.setAttribute("class", "active");
 		var textPanel = document.getElementById("textControlPanel");
-		drawPanelAnime(textPanel, '80px', 1, '0px', '0 0 10px', 'relative');
+		appObj.drawPanelAnime(textPanel, '80px', 1, '0px', '0 0 10px', 'relative');
 		this.onDragEnd(textBox);
 	},
 

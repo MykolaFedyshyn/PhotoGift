@@ -1,4 +1,5 @@
 (function() {
+    var canvasContainer = document.getElementById('work-field');
     var tmplPanel = document.querySelector('#template-wrapper');
     var templateList = document.querySelector('#postList');
     var categoryPanel = document.querySelector('#categories');
@@ -24,24 +25,21 @@
     });
 
     function addToCanvas() {
-        // var canvas = document.getElementById('work-field-canvas');
-        // var ctx = canvas.getContext('2d');
         var tmpl = document.getElementsByClassName('templates');
         for (var i = 0; i < tmpl.length; i++) {
             tmpl[i].addEventListener('click', function(e) {
                 e.stopPropagation();
                 var that = this;
                 if (canvasContainer.children.length > 2) {
-                    showWarning(draw, that);
+                    appObj.showWarning(draw, that);
                 } else {
                     draw(that);
                 }
             }, false);
-
         }
 
         function draw(that) {
-            totalZindex = 1;
+            appObj.totalZindex = 1;
             var canvas = document.getElementById('work-field-canvas');
             var ctx = canvas.getContext('2d');
             var mainel = document.getElementById('work-field');
@@ -60,7 +58,7 @@
             canvas.height = that.naturalHeight;
             mainel.style.width = canvas.width + 20 + 'px';
             mainel.style.height = canvas.height + 20 + 'px';
-            var canvEl = createElem({
+            var canvEl = appObj.createElem({
                 source: canvasContainer,
                 name: 'tmpl',
                 image: img,
@@ -73,7 +71,7 @@
             });
             canvEl.onclick = function() {
                 var that = this;
-                addMoveListeners(that);
+                appObj.addMoveListeners(that);
             };
         }
     }
@@ -110,7 +108,7 @@
     function carousel(simple, hb, vacation, greeting, assets) {
 
         assetBtn.addEventListener('click', function(e) {
-            drawPanelAnime(assetsPanel, '80px', 1, '0px', '0 0 10px', 'relative');
+            appObj.drawPanelAnime(assetsPanel, '80px', 1, '0px', '0 0 10px', 'relative');
             addPostcardTemplate(assets, 'assets', 'assetsEl');
             currIndex = 0;
         });

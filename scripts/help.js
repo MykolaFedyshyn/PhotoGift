@@ -2,31 +2,26 @@
     var objArr = [{
         content: 'Choose proper template',
         top: '-100px',
-        // left: '50px',
         left: '12%',
         classN: 'fa fa-arrow-down'
     }, {
         content: 'Add your images',
         top: '-1px',
-        //left: '-310px',
         left: '-150%',
         classN: 'fa fa-arrow-right'
     }, {
         content: 'Drag the images to the work field',
         top: '25px',
-        // left: '170px',
         left: '20%',
         classN: 'fa fa-arrow-down'
     }, {
         content: 'Use the tools panel',
         top: '200px',
-        // right: '-350px',
         right: '-490%',
         classN: 'fa fa-arrow-left'
     }, {
         content: 'Save the postcard',
         top: '10px',
-        // right: '110px',
         right: '8%',
         classN: 'fa fa-arrow-right'
     }];

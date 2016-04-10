@@ -1,13 +1,16 @@
 (function() {
+    var canvasContainer = document.getElementById('work-field');
     var newWbtn = document.getElementById('newWindow');
     var newWpanel = document.getElementById('newWindTools');
     var wInput = document.getElementById('wSize');
     var hInput = document.getElementById('hSize');
+    var mainCanvas = document.getElementById('work-field-canvas');
+    var mainctx = mainCanvas.getContext('2d');
 
     newWbtn.onclick = function(e) {
         e.stopPropagation();
         if (canvasContainer.children.length > 2) {
-            showWarning(createNewArea);
+            appObj.showWarning(createNewArea);
         } else {
             createNewArea();
         }
@@ -27,10 +30,10 @@
     }
 
     function createNewArea() {
-        totalZindex = 1;
+        appObj.totalZindex = 1;
         wInput.value = '856';
         hInput.value = '552';
-        drawPanelAnime(newWpanel, '80px', 1, '10px', '0 0 10px', 'relative');
+        appObj.drawPanelAnime(newWpanel, '80px', 1, '10px', '0 0 10px', 'relative');
         mainctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
         while (true) {
             var sibling = mainCanvas.nextElementSibling;
@@ -43,49 +46,3 @@
         changeContSize(canvasContainer, mainCanvas, 856, 552);
     }
 })();
-
-function showWarning(applyFunc, that) {
-    var wrap = document.getElementById('wrapper');
-    if(wrap.getElementsByClassName('hoverBlack')[0]) {
-        return;
-    }
-    var coverDiv = document.createElement('div');
-    coverDiv.className = 'hoverBlack';
-    wrap.appendChild(coverDiv);
-    coverDiv.style.zIndex = 200;
-    coverDiv.style.width = screen.width + 'px';
-    coverDiv.style.height = screen.height + 'px';
-    createWarningBlock(coverDiv, applyFunc, that);
-}
-
-function createWarningBlock(container, applyFunction, that) {
-    var newEl = document.createElement('div');
-    newEl.className = 'warningBlock';
-    var textMessage = document.createElement('p');
-    textMessage.innerHTML = 'This action will remove everything you have done before.\
-        Do you really want to do that?';
-    newEl.appendChild(textMessage);
-    var confirmElem = document.createElement('a');
-    confirmElem.className = 'warnConfirm';
-    confirmElem.href = '#';
-    confirmElem.innerHTML = 'Let\’s rock!'
-    confirmElem.onclick = function() {
-        if(that) {
-            applyFunction(that);
-        } else {
-            applyFunction();
-        }
-        container.parentNode.removeChild(container);
-    };
-    newEl.appendChild(confirmElem);
-    var cancelElem = document.createElement('a');
-    cancelElem.className = 'warnCancel';
-    cancelElem.href = '#';
-    cancelElem.innerHTML = 'Cancel';
-    cancelElem.onclick = function() {
-        container.parentNode.removeChild(container);
-    };
-    newEl.appendChild(cancelElem);
-    container.appendChild(newEl);
-    newEl.style.left = (screen.width / 2) - 250 + 'px';
-}
