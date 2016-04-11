@@ -49,7 +49,7 @@ appObj.createElem = function(paramObj) {
         if (!!paramObj.image) {
             appObj.addResizeListeners(that, e, paramObj.image);
         } else {
-            ppObj.addResizeListeners(that, e);
+            appObj.addResizeListeners(that, e);
         }
     };
     var delEl = appObj.addToolElem(canvEl, 'canvDel fa fa-times');

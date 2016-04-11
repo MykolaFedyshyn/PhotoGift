@@ -1,51 +1,80 @@
-#tools-panel {
-  height: 572px;
-  width: 6%;
-  background-color: rgba(187, 195, 196, 0.64);
-  float: left;
-  border: 1px solid rgba(104, 131, 121, 0.57);
-  border-top: none;
-  border-radius: 10px;
-  margin-top: 10px;
-  padding: 10px 5px;
-  box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.75);
+#tools-panel .toolBtn {
+    background: #ACBECA url(../img/spritesheet.png) no-repeat center center;
+    width: 75%;
+    padding: 22px 0;
+    border-radius: 10px;
+    margin: 0 auto 11px;
+    border-top: 1px solid #D7D8D8;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 1);
+    transition: all 0.05s;
+    position: relative;
 }
 
-#tools-panel .tool-button {
-  width: 98%;
-  margin: 0 auto 7%;
-  height: 52px;
-  background-color: #65a9d7;
-  font-size: 1em;
-  color: #fff;
-  border: 0 none;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 0 0 160px;
-  text-align: center;
-  line-height: 1.3;
-  font-size: 12px;
-  color: #fff;
-  text-transform: none;
-  font-weight: 500;
-  transition: all 100ms ease-in-out;
-  text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
+#tools-panel .toolBtn span {
+    position: absolute;
+    visibility: hidden;
 }
 
-#tools-panel .tool-button:hover {
-  opacity: .9;
-  transition: all 100ms ease;
+.toolTipEl {
+    position: absolute;
+    color: rgb(51, 48, 48);
+    padding: 4px 8px;
+    border-radius: 5px;
+    background: rgba(195, 199, 204, 0.51);
+    border: 1px solid rgba(88, 119, 124, 0.4);
+    z-index: 200;
+    box-shadow: 5px 4px 16px 0px rgba(50, 50, 50, 0.54);
+    transition: all 0.5s;
 }
 
-#tools-panel .tool-button:active {
-  opacity: .75;
-  transform: scale(.97);
-  transition: all 100ms ease;
+#tools-panel .toolBtn:hover {
+    background-color: rgba(172, 190, 202, 0.7);
+    -webkit-transform: scale(1.05, 1.05);
+    transform: scale(1.05, 1.05);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 1);
 }
 
-.icon {
-  font-size: 1.5em;
+#tools-panel .toolBtn:active {
+    background-color: #ACBECA;
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+}
+
+#tools-panel #rotate-left {
+    background-position: -230px -41px;
+}
+
+#tools-panel #rotate-right {
+    background-position: -208px -83px;
+}
+
+#tools-panel #layer-up {
+    background-position: -82px -99px;
+}
+
+#tools-panel #layer-down {
+    background-position: -40px -99px;
+}
+
+#tools-panel #addDrawBox {
+    background-position: -230px 1px;
+}
+
+#tools-panel #addFilter {
+     background-position: 1px 0;
+}
+
+#tools-panel #mirrorImg {
+    background-position: -124px -99px;
+}
+
+#tools-panel #newWindow {
+    background-position: -166px -99px;
+}
+
+#tools-panel #addTextBox {
+    background-position: 2px -97px;
+}
+#tools-panel #addAsset{
+    background-position: -41px 0;
 }

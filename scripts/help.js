@@ -1,8 +1,8 @@
 (function() {
     var objArr = [{
-        content: 'Choose proper template',
+        content: 'Choose a proper template',
         top: '-100px',
-        left: '12%',
+        left: '120px',
         classN: 'fa fa-arrow-down'
     }, {
         content: 'Add your images',

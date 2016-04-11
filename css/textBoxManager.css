@@ -37,11 +37,7 @@
 	width: 100px;
 	height: 50px;
 	font-family: Arial;
-	border: 2px dashed #333;
-}
-
-[id^="textBox"]:hover {
-	background-color: rgba(219, 221, 219, 0.298039);
+	border: 2px dashed rgba(0, 0, 0, 0.2);
 }
 
 [id^="textBox"] div[contenteditable="true"] {
@@ -53,6 +49,7 @@
 	right: 0;
 	overflow: hidden;
 	text-decoration: inherit;
+    background: rgba(219, 221, 219, 0.3);
 }
 
 [id^="textBox"] canvas {
@@ -97,17 +94,8 @@
 [id^="textBox"].active button.resize {
 	visibility: visible;
 }
-
-[id^="textBox"].active button.resize:before {
-	content: "\21F2"; // U+21F2
-	display: block;
-	width: 20px;
-	height: 20px;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	color: #fff;
-	text-indent: 0;
+[id^="textBox"].active button.resize:hover {
+    background: rgba(255, 255, 255, 0.5);
 }
 
 [id^="textBox"]:hover button.resize:focus {
@@ -118,7 +106,6 @@
 	display: block;
 	text-indent: -9999px;
 }
-
 
 /**
  * Remove button. Is only shown, when textBox is hovered.
@@ -142,18 +129,20 @@
 	visibility: visible;
 }
 
-[id^="textBox"].active button.remove:before {
-	content: "\2716"; // U+2716
+[id^="textBox"].active button.remove::before {
+	content: "\2716"; /* // U+2716 */
 	display: block;
 	width: 20px;
 	height: 20px;
 	position: absolute;
 	top: 0;
 	left: 0;
-	color: #fff;
+	color: #989191;
 	text-indent: 0;
 }
-
+[id^="textBox"].active button.remove:hover::before {
+    color: rgba(255, 255, 255, 0.8);
+}
 [id^="textBox"]:hover button.remove:focus {
 	outline: none;
 }
@@ -180,39 +169,39 @@ input[type=checkbox] {
 	display: none;
 }
 
-input[type=checkbox] + label:before {
+input[type=checkbox] + label::before {
 	font-family: FontAwesome;
 	display: inline-block;
 }
 
-#bold + label:before,
-#italic + label:before,
-#underline + label:before {
+#bold + label::before,
+#italic + label::before,
+#underline + label::before {
 	padding: 4px;
-	border: 1px solid black;
+	border: 1px solid #000;
 	border-radius: 4px;
 	background-color: #fff;
 }
 
-#bold:checked + label:before,
-#italic:checked + label:before,
-#underline:checked + label:before {
+#bold:checked + label::before,
+#italic:checked + label::before,
+#underline:checked + label::before {
 	padding: 4px;
-	border: 1px solid black;
+	border: 1px solid #000;
 	border-radius: 4px;
 	background-color: #999;
 }
 
 
-#bold + label:before {
+#bold + label::before {
 	content: "\f032";;
 }
 
-#italic + label:before {
+#italic + label::before {
 	content: "\f033";
 }
 
-#underline + label:before {
+#underline + label::before {
 	content: "\f0cd";
 }
 
