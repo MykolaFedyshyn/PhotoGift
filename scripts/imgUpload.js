@@ -6,11 +6,11 @@
     var mainctx = mainCanvas.getContext('2d');
 
     inpFile.addEventListener('change', function(e) {
-        if (appObj.neElemIndex > 3) {
+        if (appObj.newElemIndex > 3) {
             var tempEl = document.createElement('div');
             tempEl.className = 'pictHolder';
             var tempCanv = document.createElement('canvas');
-            tempCanv.id = 'picture' + appObj.neElemIndex;
+            tempCanv.id = 'picture' + appObj.newElemIndex;
             tempCanv.setAttribute('width', '160');
             tempCanv.setAttribute('height', '160');
             tempEl.appendChild(tempCanv);
