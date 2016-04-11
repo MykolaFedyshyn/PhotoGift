@@ -42,7 +42,6 @@
 
 [id^="textBox"]:hover {
 	background-color: rgba(219, 221, 219, 0.298039);
-	border: none;
 }
 
 [id^="textBox"] div[contenteditable="true"] {
@@ -95,11 +94,11 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
-[id^="textBox"]:hover button.resize {
+[id^="textBox"].active button.resize {
 	visibility: visible;
 }
 
-[id^="textBox"]:hover button.resize:before {
+[id^="textBox"].active button.resize:before {
 	content: "\21F2"; // U+21F2
 	display: block;
 	width: 20px;
@@ -139,11 +138,11 @@
     text-indent: -9999px;
 }
 
-[id^="textBox"]:hover button.remove {
+[id^="textBox"].active button.remove {
 	visibility: visible;
 }
 
-[id^="textBox"]:hover button.remove:before {
+[id^="textBox"].active button.remove:before {
 	content: "\2716"; // U+2716
 	display: block;
 	width: 20px;
