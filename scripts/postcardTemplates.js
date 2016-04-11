@@ -5,14 +5,10 @@
     var categoryPanel = document.querySelector('#categories');
     var categories = document.querySelectorAll('#category-wrapper > a');
     var collapseBtn = document.querySelector('#collapse-btn');
-    var allPostCards = document.querySelectorAll('#postcards > li');
-    var allCalendars = document.querySelectorAll('#calendars > li');
     var prevNav = document.querySelector('#carousel .prev');
     var nextNav = document.querySelector('#carousel .next');
     var prevNavAsset = document.querySelector('#graphicEl .prev');
     var nextNavAsset = document.querySelector('#graphicEl .next');
-    var postcardCateg = document.querySelector('#postcardList');
-    var calendarCateg = document.querySelector('#calendarList');
     var categoryHandler = document.querySelector('#category-wrapper')
     var assetBtn = document.getElementById('addAsset');
     var assetsPanel = document.getElementById('graphicEl');
@@ -173,7 +169,6 @@
                     containerLi[currIndex].className = 'invisibl';
                     containerLi[currIndex + 8].className = 'visibl';
                     currIndex++;
-                    // console.log(currIndex + "+");
                 }
             }
         }
