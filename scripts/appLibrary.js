@@ -245,8 +245,8 @@ appObj.showWarning = function(applyFunc, that) {
     coverDiv.className = 'hoverBlack';
     wrap.appendChild(coverDiv);
     coverDiv.style.zIndex = 200;
-    coverDiv.style.width = screen.width + 'px';
-    coverDiv.style.height = screen.height + 'px';
+    coverDiv.style.width = window.innerWidth + 'px';
+    coverDiv.style.height = window.innerHeight + 'px';
     appObj.createWarningBlock(coverDiv, applyFunc, that);
 };
 appObj.createWarningBlock = function(container, applyFunction, that) {
